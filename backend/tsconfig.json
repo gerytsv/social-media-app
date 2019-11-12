@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "commonjs",
+    "noEmitOnError": true,
+    "lib": ["es2018", "dom"],
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strictNullChecks": false,
+    "noImplicitAny": true,
+
+    "strict": true,
+    "strictPropertyInitialization": false,
+
+    "inlineSourceMap": true,
+    "inlineSources": true,
+
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
+}
