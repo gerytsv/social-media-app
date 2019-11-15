@@ -1,9 +1,22 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './features/users/users.module';
+import { PassportModule } from '@nestjs/passport';
+import { ConfigModule } from './config/config.module';
+import { DatabaseModule } from './database/database.module';
+import { NotificationModule } from './features/notifications/notifications.module';
 
 @Module({
-  imports: [],
+  imports: [
+    ConfigModule,
+    DatabaseModule,
+    UsersModule,
+    AuthModule,
+    NotificationModule,
+    PassportModule.register({ defaultStrategy: 'jwt' }),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
