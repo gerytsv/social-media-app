@@ -8,10 +8,14 @@ import {
   CreateDateColumn,
 } from 'typeorm';
 import { Role } from './roles.entity';
+import { Post } from './posts.entity';
+import { Comment } from './comments.entity';
+import { History } from './history.entity';
+import { Notification } from './notifications.entity';
 
 @Entity('users')
 export class User {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn('increment')
   public id: string;
 
   @Column({ type: 'nvarchar', length: 30, unique: true })
@@ -20,7 +24,7 @@ export class User {
   @Column({ type: 'nvarchar' })
   public password: string;
 
-  @Column({ type: 'nvarchar'})
+  @Column({ type: 'nvarchar', unique: true})
   public email: string;
 
   @CreateDateColumn({ type: 'timestamp' })
@@ -33,4 +37,35 @@ export class User {
   @JoinTable()
   public roles: Role[];
 
+  @ManyToMany(type => User)
+  @JoinTable()
+  public followers: Promise<User[]>;
+
+  @ManyToMany(type => User)
+  @JoinTable()
+  public followed: Promise<User[]>;
+
+  @Column({ type: 'nvarchar', nullable: true})
+  public name: string;
+
+  @Column({ type: 'nvarchar', nullable: true})
+  public country: string;
+
+  @Column({ type: 'nvarchar', nullable: true})
+  public phone: string;
+
+  @Column({ type: 'nvarchar', nullable: true})
+  public birthDate: string;
+
+  @Column({ type: 'nvarchar', default: '../../../default-profile-icon.jpg' })
+  public avatarUrl: string;
+
+  @OneToMany( type => Post, post => post.user )
+  public posts: Promise<Post[]>;
+
+  @OneToMany( type => Comment, comment => comment.user )
+  public comments: Promise<Post[]>;
+
+  @OneToMany( type => Notification, notifications => notifications.user )
+  public notifications: Promise<Notification[]>;
 }
