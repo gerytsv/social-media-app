@@ -7,6 +7,7 @@ import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
 import { NotificationModule } from './features/notifications/notifications.module';
+import { PhotoStorageModule } from './photo/photo-storage.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { NotificationModule } from './features/notifications/notifications.modul
     UsersModule,
     AuthModule,
     NotificationModule,
+    PhotoStorageModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
   ],
   controllers: [AppController],
