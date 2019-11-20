@@ -1,17 +1,13 @@
-import Swal from 'sweetalert2';
-// import 'sweetalert2/src/sweetalert2.scss';
-
 import { Router } from '@angular/router';
 import { StorageService } from './storage.service';
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../../common/users/user';
-import { UserLoginDTO } from '../../common/users/user-login-dto';
-import { UserRegisterDTO } from '../../common/users/user-register-dto';
+import { User } from '../../components/users/models/user';
+import { UserLoginDTO } from '../../components/users/models/user-login-dto';
+import { UserRegisterDTO } from '../../components/users/models/user-register-dto';
 
 @Injectable()
 export class AuthService {
