@@ -1,0 +1,47 @@
+<div class="register-form">
+  <img class="logo">
+  <div class="welcome">Sign up</div>
+  <form [formGroup]="registerForm">
+    <div class="username">
+      <input formControlName="username" type="text" class="username-input" placeholder="Username">
+      <div class="error" *ngIf="registerForm.controls.username?.errors?.minlength">
+        Username should be at least 6 characters long.
+      </div>
+      <i class="material-icons">
+        account_box
+      </i>
+    </div>
+    <div [formGroup]="passwordFormGroup">
+      <div class="password">
+        <input type="password" formControlName="password" class="password-input" placeholder="Password">
+        <div class="error" *ngIf="passwordFormGroup.controls.password?.errors?.minlength">
+          Password should be at least 8 characters long.
+        </div>
+        <i class="material-icons">
+          vpn_key
+        </i>
+      </div>
+      <div class="password">
+        <input type="password" formControlName="repeatPassword" this.password=[value] class="password-input"
+          placeholder="Repeat password">
+        <i class="material-icons">
+          vpn_key
+        </i>
+
+        <div class="error" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</div>
+      </div>
+    </div>
+    <div class="email">
+      <input type="text" formControlName="email" class="email-input" placeholder="Email">
+      <i class="material-icons">
+        email
+      </i>
+      <div class="error" *ngIf="registerForm.controls.email?.errors?.email">
+        Please enter a valid email.
+      </div>
+    </div>
+    <button type="button" (click)="register()" [disabled]="!registerForm.valid || !passwordFormGroup.valid">
+      Create an account
+    </button>
+  </form>
+</div>
