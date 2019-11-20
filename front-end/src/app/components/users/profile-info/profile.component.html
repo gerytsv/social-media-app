@@ -1,0 +1,26 @@
+<div class="wrapper">
+<div class="profile-container">
+  <img class="avatar" src="{{this.user.avatarUrl}}" alt="logo" />
+  <div class="info" >
+    <div class="profile-header">
+      <div class="username">{{this.user.username}}</div>
+      <div class="contols">
+        <i class="material-icons" (click)="this.toggleEditMenu()" *ngIf="this.isOwner">build</i>
+        <i class="material-icons" *ngIf="!this.isOwner && this.loggedIn" >person_add</i>
+      </div>
+    </div>
+    <div class="followers-count">
+      <div class="posts"><span>{{this.user.postsCount}}</span> posts</div>
+      <div class="followers"><span>{{this.user.followersCount}}</span> followers</div>
+      <div class="followed"><span>{{this.user.followedCount}}</span> followed</div>
+    </div>
+    <div class="info-wrapper">
+      <div class="name">{{this.user.name}}</div>
+      <div class="email">{{this.user.email}}</div>
+      <div class="country">{{this.user.country}}</div>
+      <div class="description">{{this.user.description}}</div>
+    </div>
+  </div>
+</div>
+<app-update-profile *ngIf="this.showEditMenu" [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"></app-update-profile>
+</div>
