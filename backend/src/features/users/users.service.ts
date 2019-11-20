@@ -105,4 +105,44 @@ export class UsersService {
   public async validate(payload: JwtPayload): Promise<User> {
     return await this.userRepository.findOne({ username: payload.username });
   }
+
+  public async getUserInfo(userId: string) {
+    const info = await this.userRepository.findOne({
+      where: { id: userId, isDeleted: false },
+      relations: ['followers', 'posts', 'followed'],
+    });
+    if (!info) {
+      throw new SystemError('The user is not found', 404);
+    }
+    const followers = await info.followers;
+    const followed = await info.followed;
+    const posts = await info.posts;
+
+    return {
+      ...info,
+      followersCount: followers.length,
+      followedCount: followed.length,
+      postsCount: posts.length,
+    };
+  }
+
+  public async updateUserInfo(
+    userId: string,
+    name: string ,
+    country: string ,
+    description: string ,
+    avatarUrl: string ,
+  ) {
+    const user = await this.userRepository.findOne({ where: {id: userId, isDeleted: false}});
+    if (!user) {
+      throw new SystemError('No such user', 400);
+    }
+    user.name = name;
+    user.country = country;
+    user.description = description;
+    if (avatarUrl) {
+    user.avatarUrl = avatarUrl;
+    }
+    return await this.userRepository.save(user);
+  }
 }
