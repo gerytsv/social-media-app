@@ -55,7 +55,7 @@ export class User {
   public phone: string;
 
   @Column({ type: 'nvarchar', nullable: true})
-  public birthDate: string;
+  public description: string;
 
   @Column({ type: 'nvarchar', default: '../../../default-profile-icon.jpg' })
   public avatarUrl: string;
