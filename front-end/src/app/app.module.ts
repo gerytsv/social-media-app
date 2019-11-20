@@ -9,10 +9,18 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { JwtModule } from '@auth0/angular-jwt';
 import { TokenInterceptorService } from './common/auth/token-interceptor.service';
+import { LoginComponent } from './components/users/login/login.component';
+import { AppRoutingModule } from './app-routing.module';
+import { RegisterComponent } from './components/users/register/register.component';
+import { ProfileInfoComponent } from './components/users/profile-info/profile.component';
+import { UsersModule } from './components/users/users.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent],
   imports: [
+    CommonModule,
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -20,6 +28,7 @@ import { TokenInterceptorService } from './common/auth/token-interceptor.service
     HttpClientModule,
     CoreModule,
     ReactiveFormsModule,
+    UsersModule,
     ToastrModule.forRoot({
       timeOut: 3000,
       positionClass: 'toast-top-right',
