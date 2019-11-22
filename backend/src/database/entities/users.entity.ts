@@ -57,7 +57,7 @@ export class User {
   @Column({ type: 'nvarchar', nullable: true})
   public description: string;
 
-  @Column({ type: 'nvarchar', default: '../../../default-profile-icon.jpg' })
+  @Column({ type: 'nvarchar', default: 'https://i.imgur.com/vVKl3kB.jpg' })
   public avatarUrl: string;
 
   @OneToMany( type => Post, post => post.user )
