@@ -1,0 +1,54 @@
+nav {
+  background-color: #48e7a8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  
+}
+
+img {
+  transform: scale(0.5);
+  transition: transform 300ms;
+  z-index: 0;
+}
+
+img:hover {
+  transform: scale(0.7);
+}
+
+img:focus {
+  outline: none;
+}
+
+
+
+.logo, .mid{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+    margin-left: -2rem;
+}
+
+button {
+  z-index: 3;
+  all: unset;
+}
+
+@media only screen and (max-width: 700px) {
+    .logo{
+        display: none;
+    }
+    .mid{
+        flex-wrap: wrap;
+    }
+  }
