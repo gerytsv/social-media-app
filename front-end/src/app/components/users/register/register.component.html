@@ -28,7 +28,7 @@
           vpn_key
         </i>
 
-        <div class="error" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</div>
+        <div class="error two" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</div>
       </div>
     </div>
     <div class="email">
@@ -36,7 +36,7 @@
       <i class="material-icons">
         email
       </i>
-      <div class="error" *ngIf="registerForm.controls.email?.errors?.email">
+      <div class="error two" *ngIf="registerForm.controls.email?.errors?.email">
         Please enter a valid email.
       </div>
     </div>

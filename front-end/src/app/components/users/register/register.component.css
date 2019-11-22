@@ -102,6 +102,12 @@ button:active {
   color: red;
   z-index: 10;
   position: absolute;
-  bottom: -1.5em;
+  bottom: -2.5em;
   font-size: 0.8em;
+}
+
+.two {
+
+  bottom: -1.5em;
+
 }
