@@ -12,13 +12,16 @@ import { TokenInterceptorService } from './common/auth/token-interceptor.service
 import { LoginComponent } from './components/users/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterComponent } from './components/users/register/register.component';
-import { ProfileInfoComponent } from './components/users/profile-info/profile.component';
 import { UsersModule } from './components/users/users.module';
 import { CommonModule } from '@angular/common';
+import { NavComponent } from './components/nav/nav.component';
+import { SearchComponent } from './components/nav/search/search.component';
+import { HomepageComponent } from './components/homepage/homepage.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, RegisterComponent],
+  declarations: [AppComponent, LoginComponent, RegisterComponent, NavComponent, SearchComponent, HomepageComponent],
   imports: [
+    CoreModule,
     CommonModule,
     AppRoutingModule,
     BrowserModule,
