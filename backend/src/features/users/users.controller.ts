@@ -19,15 +19,16 @@ import { ShowUserDTO } from './models/show-user.dto';
 import { CreateUserDTO } from './models/create-user.dto';
 import { ShowUserInfoDTO } from './models/show-user-info.dto';
 import { UpdateInfoDTO } from './models/update-Info.dto';
+import { ShowDetailedInfoDTO } from './models/show-detailed-info.dto';
 
 @Controller('api/users')
 export class UsersController {
   public constructor(private readonly userService: UsersService) {}
 
-  @Get(':id')
-  @UseInterceptors(new TransformInterceptor(ShowUserInfoDTO))
-  public async getUserById(@Param('id') userId: string) {
-    return await this.userService.getUserInfo(userId);
+  @Get(':username')
+  @UseInterceptors(new TransformInterceptor(ShowDetailedInfoDTO))
+  public async getUserByUsername(@Param('username') username: string) {
+    return await this.userService.getUserInfo(username);
   }
 
   @Get()

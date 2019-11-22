@@ -24,7 +24,8 @@ img {
 
 .info{
   padding: 1.5rem;
-  width: 25rem;
+  max-width: 25rem;
+  min-width: 20rem;
   justify-content: space-between;
 }
 
@@ -57,9 +58,13 @@ img {
   font-style: normal;
 }
 
+.material-icons{
+  transition: transform 300ms;
+}
+
 .material-icons:hover{
   cursor: pointer;
-  transform: scale(1.1)
+  transform: scale(1.2)
 }
 
 .username{
@@ -69,4 +74,31 @@ img {
 .name{
   font-size: 1.1rem;
   font-weight: 500;
+}
+
+.edit-wrapper {
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, 0.753);
+}
+
+.close{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20
+}
+
+.close:hover{
+  cursor: pointer;
+  transform: none;
 }

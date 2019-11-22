@@ -6,13 +6,14 @@
       <div class="username">{{this.user.username}}</div>
       <div class="contols">
         <i class="material-icons" (click)="this.toggleEditMenu()" *ngIf="this.isOwner">build</i>
-        <i class="material-icons" *ngIf="!this.isOwner && this.loggedIn" >person_add</i>
+        <i class="material-icons" *ngIf="!this.isOwner && this.loggedIn && !this.followed" title="follow"(click)= "this.followUser()">person_add</i>
+        <i class="material-icons" *ngIf="!this.isOwner && this.loggedIn && this.followed" title="unfollow" (click)= "this.unfollowUser()">person_add_disabled</i>
       </div>
     </div>
     <div class="followers-count">
-      <div class="posts"><span>{{this.user.postsCount}}</span> posts</div>
-      <div class="followers"><span>{{this.user.followersCount}}</span> followers</div>
-      <div class="followed"><span>{{this.user.followedCount}}</span> followed</div>
+      <div class="posts"><span>{{this.user.posts.length}}</span> posts</div>
+      <div class="followers"><span>{{this.user.followers.length}}</span> followers</div>
+      <div class="followed"><span>{{this.user.followed.length}}</span> followed</div>
     </div>
     <div class="info-wrapper">
       <div class="name">{{this.user.name}}</div>
@@ -22,5 +23,8 @@
     </div>
   </div>
 </div>
-<app-update-profile *ngIf="this.showEditMenu" [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"></app-update-profile>
+<div class="edit-wrapper" *ngIf="this.showEditMenu">
+    <i class="material-icons close" (click)="this.toggleEditMenu()">close</i>
+<app-update-profile  [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"></app-update-profile>
+</div>
 </div>

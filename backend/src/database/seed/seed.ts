@@ -37,7 +37,7 @@ const main = async () => {
   firstPost.user = user;
   firstPost.likes = [];
   firstPost.comments = [];
-  firstPost.photoUrl = '../../../test-imgs/the-desire-life-success-motivation-love-how-to-first-blog-post.jpg';
+  firstPost.photoUrl = 'https://imgur.com/vVKl3kB';
   postRepo.create(firstPost);
   const post = await postRepo.save(firstPost);
 
