@@ -1,0 +1,11 @@
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 5px;
+  height: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #fef1f1;
+}

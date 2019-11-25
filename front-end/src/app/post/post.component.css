@@ -1,0 +1,55 @@
+.photo {
+}
+
+.photo img {
+  border-style: solid;
+  width: 20rem;
+  height: 20rem;
+  border-color: white;
+  border-top-width: 4vw;
+  border-bottom-width: 10vw;
+  border-left-width: 5vw;
+  border-right-width: 5vw;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* height: 30vh; */
+  object-fit: cover;
+}
+
+.post {
+  height: 65vh;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  width: 100%;
+  display: inline-flex;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.user-info {
+  width: 100%;
+  height: 100%;
+  top: 85%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.user-info p {
+  top: 0;
+  bottom: 0;
+}
+
+.user-info img {
+  height: 4vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
