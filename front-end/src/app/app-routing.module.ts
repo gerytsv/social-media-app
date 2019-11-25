@@ -3,6 +3,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { AuthGuard } from "./common/auth/auth.guard";
 import { NewsfeedComponent } from "./newsfeed/newsfeed.component";
 import { NewsfeedResolver } from "./core/resolvers/newsfeed.resolver";
+import { HomepageComponent } from "./components/homepage/homepage.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "home", pathMatch: "full" },
@@ -15,6 +16,16 @@ const routes: Routes = [
     path: "explore",
     loadChildren: () =>
       import("./../app/explore/explore.module").then(m => m.ExploreModule)
+  },
+  {
+    path: "users",
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import("./components/users/users.module").then(m => m.UsersModule)
+  },
+  {
+    path: "homepage",
+    component: HomepageComponent
   }
 ];
 

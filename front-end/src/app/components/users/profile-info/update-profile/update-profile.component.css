@@ -1,0 +1,142 @@
+.container{
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding: 1rem;
+  border: 1px solid black;
+  background-color: #fff;
+}
+
+span{
+  font-size: 0.7rem;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  height:100%;
+  text-align:center;
+  position:relative;
+}
+
+.button-wrapper {
+  position: relative;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.button-wrapper span.label {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: #48e7a8;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 0;
+  text-transform:uppercase;
+  font-size:12px;
+}
+
+.submit {
+  outline: none;
+  border: none;
+}
+
+.submit {
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  width: 100%;
+  background: #48e7a8;
+  cursor: pointer;
+  color: #fff;
+  padding: 10px 0;
+  text-transform:uppercase;
+  font-size:12px;
+  margin-top: 1rem;
+}
+
+#upload {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.info-sec{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 1rem;
+  margin: 0 1rem;
+}
+
+img{
+  width:10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.pic-section{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  margin: 0 1rem;
+}
+
+.field{
+  display: flex;
+  flex-direction: row;
+  justify-content: stretch;
+  align-items: stretch;
+  margin: 0.5rem 0;
+}
+.field span{
+flex: 30%;
+text-align: right;
+line-height: 2;
+}
+.field input{
+  flex: 70%;
+  line-height: 1;
+  margin-left: 1rem;
+  border: none;
+  border-bottom: 1px solid grey;
+  }
+
+  .text {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  textarea {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    resize: none;
+    height: 4rem;
+  }
+
+  .close{
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .close:hover{
+   
+    cursor: pointer;
+  }

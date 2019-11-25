@@ -1,0 +1,8 @@
+<div class="wrapper">
+<app-login *ngIf=this.showLogin></app-login>
+<app-register *ngIf=this.showRegister></app-register>
+<div>
+<button (click)=toggleLogin() class="login" [ngClass]="(this.showLogin)?'my-class1':'my-class2'" >Login</button>
+<button (click)=toggleRegister() [ngClass]="(this.showRegister)?'my-class1':'my-class2'">Register</button>
+</div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="pic-section">
+    <img class="img-preview" src="{{ this.user.avatarUrl }}" />
+    <div class="button-wrapper">
+      <span class="label">
+        Upload avatar
+      </span>
+      <input
+        type="file"
+        #fileInput
+        (change)="updateProfilePic(fileInput.files[0])"
+        type="file"
+        class="upload-box"
+        id="upload"
+      />
+    </div>
+  </div>
+  <div class="info-sec">
+    <div class="field">
+      <span>Name</span>
+      <input type="text" [(ngModel)]="this.user.name" class="name" />
+    </div>
+    <div class="field">
+      <span>Country</span>
+      <input type="text" [(ngModel)]="this.user.country" class="country" />
+    </div>
+    <div class="field  text">
+      <span>Description</span>
+      <textarea
+        [(ngModel)]="this.user.description"
+        class="description"
+      ></textarea>
+    </div>
+    <button
+      type="button"
+      (click)="this.updateProfileInfo()"
+      (click)="this.emitUpdatedProfileInfo()"
+      class="submit"
+    >
+      Save changes
+    </button>
+  </div>
+</div>

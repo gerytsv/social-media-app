@@ -1,0 +1,26 @@
+object {
+  transform: scale(0.5);
+  transition: all 300ms;
+}
+
+object:hover {
+  transform: scale(0.7);
+}
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  background-color: #8befc8;
+  height: 2.5rem;
+}
+
+input {
+  background-color: transparent;
+  all: unset;
+  line-height: 2;
+  color: white;
+}
+
+input::placeholder {
+  color: white;
+}
