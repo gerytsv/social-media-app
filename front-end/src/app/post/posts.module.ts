@@ -1,4 +1,4 @@
-import { PostPreviewComponent } from "./../post-preview/post-preview.component";
+import { PostPreviewComponent } from "../components/post-preview/post-preview.component";
 import { CoreModule } from "./../core/core.module";
 import { PostsDataService } from "./services/posts-data.service";
 import { PostComponent } from "./post.component";
