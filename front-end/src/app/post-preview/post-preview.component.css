@@ -1,0 +1,30 @@
+.post-container {
+  justify-self: center;
+  flex: 25%;
+  max-width: 25%;
+}
+
+.photo-web {
+  object-fit: cover;
+  overflow: hidden;
+  /* width: 20rem;
+  height: 20rem; */
+}
+
+.photo-phone {
+  overflow: hidden;
+  /* width: 5rem;
+  height: 5rem; */
+}
+
+img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+  height: auto;
+  /* top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; */
+  object-fit: cover;
+}
