@@ -1,6 +1,6 @@
 <nav>
   <div class="logo">
-    <img src="../../../assets/icons/explore_2.svg" />
+    <img src="../../../assets/icons/logo.svg" />
     <img src="../../../assets/icons/Line 75.svg" />
     <img src="../../../assets/icons/Huggo.svg" class="name" />
   </div>
@@ -8,10 +8,7 @@
     <img *ngIf=this.loggedIn src="../../../../assets/icons/Icons.svg" class="icons" />
     <app-search *ngIf=this.loggedIn></app-search>
     <img *ngIf=this.loggedIn src="../../../assets/icons/create_post_nav.svg" class="icons" />
-    <img  src="../../../assets/icons/compass.svg" class="icons" />
-    <img *ngIf=this.loggedIn
-      [routerLink]="['/users', this.username]"
-      src="../../../assets/icons/user.svg"
-    />
+    <div [routerLink]="['/explore']"><img src="../../../assets/icons/compass.svg" class="icons" /></div>
+    <div [routerLink]="['/users', this.username]"><img *ngIf=this.loggedIn src="../../../assets/icons/user.svg" /></div>
   </div>
 </nav>

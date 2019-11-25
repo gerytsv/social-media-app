@@ -1,14 +1,14 @@
+import { ExploreComponent } from "./explore.component";
 import { Routes, RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
-import { NewsfeedComponent } from "./newsfeed.component";
-import { NewsfeedResolver } from "../core/resolvers/newsfeed.resolver";
+import { AllPostsResolver } from "../../core/resolvers/all-posts.resolver";
 
 const routes: Routes = [
   {
     path: "",
-    component: NewsfeedComponent,
+    component: ExploreComponent,
     pathMatch: "full",
-    resolve: { posts: NewsfeedResolver }
+    resolve: { posts: AllPostsResolver }
   }
 ];
 
@@ -16,4 +16,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class NewsfeedRoutingModule {}
+export class ExploreRoutingModule {}

@@ -1,7 +1,7 @@
-import { NewsfeedResolver } from "./../core/resolvers/newsfeed.resolver";
+import { NewsfeedResolver } from "../../core/resolvers/newsfeed.resolver";
 import { Component, OnInit } from "@angular/core";
-import { PostDTO } from "../post/models/post.dto";
-import { PostsDataService } from "../post/services/posts-data.service";
+import { PostDTO } from "../../post/models/post.dto";
+import { PostsDataService } from "../../post/services/posts-data.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({

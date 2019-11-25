@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { PostDTO } from "../post/models/post.dto";
+import { PostDTO } from "../../post/models/post.dto";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
