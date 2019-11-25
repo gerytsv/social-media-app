@@ -1,3 +1,4 @@
+import { PostsModule } from './features/posts/posts.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -13,6 +14,7 @@ import { NotificationModule } from './features/notifications/notifications.modul
     ConfigModule,
     DatabaseModule,
     UsersModule,
+    PostsModule,
     AuthModule,
     NotificationModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
