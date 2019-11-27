@@ -17,6 +17,7 @@ import { CommonModule } from "@angular/common";
 import { NavComponent } from "./components/nav/nav.component";
 import { SearchComponent } from "./components/nav/search/search.component";
 import { HomepageComponent } from "./components/homepage/homepage.component";
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HomepageComponent } from "./components/homepage/homepage.component";
     RegisterComponent,
     NavComponent,
     SearchComponent,
-    HomepageComponent
+    HomepageComponent,
+    NotFoundComponent
   ],
   imports: [
     CoreModule,
