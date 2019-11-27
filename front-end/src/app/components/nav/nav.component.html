@@ -1,15 +1,50 @@
 <nav>
   <div class="logo">
-    <img src="../../../assets/icons/logo.svg" />
-    <img src="../../../assets/icons/Line 75.svg" />
-    <img src="../../../assets/icons/Huggo.svg" class="name" />
+<img src="../../../assets/icons/logo.svg" />
+<img src="../../../assets/icons/Line 75.svg" />
+<img src="../../../assets/icons/Huggo.svg" class="name" />
   </div>
   <div class="mid">
-    <div [routerLink]="['/home']"><img *ngIf=this.loggedIn src="../../../../assets/icons/Home.svg" class="icons" />
+    <img
+      src="../../../../assets/icons/Icons.svg"
+      class="icons"
+      title="Newsfeed"
+      [routerLink]="['/home']"
+    />
+    <div class="search">
+      <app-search></app-search>
     </div>
-    <app-search *ngIf=this.loggedIn></app-search>
-    <img *ngIf=this.loggedIn src="../../../assets/icons/create_post_nav.svg" class="icons" />
-    <div [routerLink]="['/explore/posts']"><img src="../../../assets/icons/compass.svg" class="icons" /></div>
-    <div [routerLink]="['/users', this.username]"><img *ngIf=this.loggedIn src="../../../assets/icons/user.svg" /></div>
+    <img
+      *ngIf="this.loggedIn"
+      src="../../../assets/icons/create_post_nav.svg"
+      class="icons"
+      title="Create Post"
+    />
+    <img
+      src="../../../assets/icons/compass.svg"
+      class="icons"
+      title="Explore"
+      [routerLink]="['/explore/posts']"
+    />
+    <img
+      [routerLink]="this.profileLink"
+      src="../../../assets/icons/user.svg"
+      title="View Pofile"
+    />
+    <div class="admin">
+      <img
+        *ngIf="this.isAdmin"
+        src="../../../assets/icons/control_x2C__management.svg"
+        class="icons"
+        title="History"
+        [routerLink]="['admin/history']"
+      />
+    </div>
+    <img
+      src="../../../assets/icons/logout.svg"
+      class="icons"
+      title="Logout"
+      (click)="this.logout()"
+    />
   </div>
 </nav>

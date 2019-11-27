@@ -21,8 +21,8 @@ export class UsersDataService {
     return this.http.post<any>('http://localhost:3000/api/photos', formData);
   }
 
-  public updateProfileInfo(data: any): Observable<any> {
-    return this.http.put<any>('http://localhost:3000/api/users/account', data);
+  public updateProfileInfo(data: any, id: string): Observable<any> {
+    return this.http.put<any>(`http://localhost:3000/api/users/${id}/account`, data);
   }
 
   public followUser(id: string): Observable<ShowUserInfoDTO> {
@@ -31,5 +31,9 @@ export class UsersDataService {
 
   public unfollowUser(id: string): Observable<ShowUserInfoDTO> {
     return this.http.delete<ShowUserInfoDTO>(`http://localhost:3000/api/follow/users/${id}`);
+  }
+
+  public deleteUser(id: string): Observable<{messege: string}> {
+    return this.http.delete<{messege: string}>(`http://localhost:3000/api/users/${id}`);
   }
 }

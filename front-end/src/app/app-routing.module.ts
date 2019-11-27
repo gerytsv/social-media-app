@@ -1,37 +1,41 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { AuthGuard } from "./common/auth/auth.guard";
-import { NewsfeedComponent } from "./post/newsfeed/newsfeed.component";
-import { NewsfeedResolver } from "./core/resolvers/newsfeed.resolver";
-import { HomepageComponent } from "./components/homepage/homepage.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './common/auth/auth.guard';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
+  { path: '', redirectTo: 'homepage', pathMatch: 'full' },
   {
-    path: "home",
-    loadChildren: () =>
-      import("./post/newsfeed/newsfeed.module").then(m => m.NewsfeedModule)
-  },
-  {
-    path: "explore",
-    loadChildren: () =>
-      import("./post/explore/explore.module").then(m => m.ExploreModule)
-  },
-  {
-    path: "users",
+    path: 'home',
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import("./components/users/users.module").then(m => m.UsersModule)
+      import('./../app/components/newsfeed/newsfeed.module').then(m => m.NewsfeedModule)
   },
   {
-    path: "homepage",
+    path: 'explore',
+    loadChildren: () =>
+      import('./../app/components/explore/explore.module').then(m => m.ExploreModule)
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./../app/components/admin-history/admin-history.module').then(m => m.AdminHistoryModule)
+  },
+  {
+    path: 'users',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./components/users/users.module').then(m => m.UsersModule)
+  },
+  {
+    path: 'homepage',
     component: HomepageComponent
   },
 
-  { path: "not-found", component: NotFoundComponent },
+  { path: 'not-found', component: NotFoundComponent },
 
-  { path: "**", redirectTo: "/not-found" }
+  { path: '**', redirectTo: '/not-found' }
 ];
 
 @NgModule({

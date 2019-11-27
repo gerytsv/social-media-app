@@ -5,13 +5,14 @@ import { UsersDataService } from './users-data.service';
 import { UpdateProfileComponent } from './profile-info/update-profile/update-profile.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
+import { FollowsComponent } from './profile-info/follows/follows.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
-  declarations: [ProfileInfoComponent, UpdateProfileComponent],
+  declarations: [ProfileInfoComponent, UpdateProfileComponent, FollowsComponent],
   imports: [
-   UsersRoutingModule, FormsModule, CommonModule
+   SharedModule, UsersRoutingModule, FormsModule, CommonModule
   ],
   providers: [UsersDataService],
   exports: [ProfileInfoComponent, UpdateProfileComponent]

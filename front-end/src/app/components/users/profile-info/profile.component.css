@@ -59,7 +59,7 @@ img {
   justify-content: center;
 }
 
-.followers-count {
+.follows{
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -102,7 +102,7 @@ img {
   top: 0;
   right: 0;
   left: 0;
-  background-color: rgba(128, 128, 128, 0.753);
+  background-color: rgba(128, 128, 128, 0.555);
 }
 
 .close {

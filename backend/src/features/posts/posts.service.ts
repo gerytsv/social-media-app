@@ -34,9 +34,7 @@ export class PostsService {
       relations: ['followers', 'followers.posts'],
     });
     const followers = await currentUser.followers;
-    console.log(followers);
     const posts = followers.map(follower => follower.posts);
-    console.log(posts);
     return Promise.all(posts);
   }
 

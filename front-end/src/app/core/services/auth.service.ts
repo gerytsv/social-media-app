@@ -23,7 +23,8 @@ export class AuthService {
     private readonly storage: StorageService,
     private readonly router: Router,
     private readonly helper: JwtHelperService
-  ) {}
+  ) {
+  }
 
   public get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject$.asObservable();
@@ -45,7 +46,6 @@ export class AuthService {
             this.isLoggedInSubject$.next(true);
             this.loggedUserSubject$.next(loggedUser);
           } catch (error) {
-            // error handling on the consumer side
           }
         })
       );
@@ -55,7 +55,7 @@ export class AuthService {
     this.storage.save('token', '');
     this.isLoggedInSubject$.next(false);
     this.loggedUserSubject$.next(null);
-    this.router.navigate(['home']);
+    this.router.navigate(['homepage']);
   }
 
   public register(user: UserRegisterDTO) {
