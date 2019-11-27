@@ -1,3 +1,4 @@
+import { SinglePostResolver } from "./resolvers/single-post.resolver";
 import { AllPostsResolver } from "./resolvers/all-posts.resolver";
 import { NewsfeedResolver } from "./resolvers/newsfeed.resolver";
 import { NgModule, Optional, SkipSelf } from "@angular/core";
@@ -9,14 +10,7 @@ import { StorageService } from "./services/storage.service";
 @NgModule({
   declarations: [],
   imports: [],
-  providers: [
-    AuthGuard,
-    AuthService,
-    NotificatorService,
-    StorageService,
-    NewsfeedResolver,
-    AllPostsResolver
-  ],
+  providers: [AuthGuard, AuthService, NotificatorService, StorageService],
   exports: []
 })
 export class CoreModule {
