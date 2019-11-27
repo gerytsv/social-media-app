@@ -1,0 +1,7 @@
+<div class="wrapper">
+    <div class="title">Activity history</div>
+    <app-single-history-preview
+      *ngFor="let history of this.history"
+      [singleHistory]="history"
+    ></app-single-history-preview>
+</div>
