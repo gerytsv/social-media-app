@@ -7,15 +7,18 @@ import { UserLoginDTO } from './models/login-user.dto';
 import { SystemError } from '../../common/exceptions/system.error';
 import { CreateUserDTO } from './models/create-user.dto';
 import { UserRole } from '../../common/enums/user-roles.enum';
+import { History } from '../../database/entities/history.entity';
 import { JwtPayload } from '../../common/types/jwt-payload';
 import bcrypt from 'bcryptjs';
 import { validateEmail } from '../../common/util-services/is-Email';
+import { isAdmin } from '../../common/util-services/is-admin';
 
 @Injectable()
 export class UsersService {
   public constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(Role) private readonly rolesRepository: Repository<Role>,
+    @InjectRepository(History) private readonly historyRepository: Repository<History>
   ) {}
 
   public async signIn(user: UserLoginDTO): Promise<User> {
@@ -86,19 +89,41 @@ export class UsersService {
     };
 
     const userEntity = this.userRepository.create(user);
-    return await this.userRepository.save(userEntity);
+    const savedUser = await this.userRepository.save(userEntity);
+    if (savedUser) {
+      const adminHistoryEntity = this.historyRepository.create();
+      adminHistoryEntity.content = `Account with username ${body.username} has been created`;
+      this.historyRepository.save(adminHistoryEntity);
+    }
+    return savedUser;
   }
 
-  public async delete(userId: string) {
+  public async delete(userId: string, requestUserId: string) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
     });
     if (!user) {
       throw new SystemError('The user is not found', 404);
     }
+    const requestUser = await this.userRepository.findOne({
+      where: { id: requestUserId, isDeleted: false },
+    });
+    if (!requestUser) {
+      throw new SystemError('The user is not found', 404);
+    }
+    if (!isAdmin(requestUser)) {
+      if ( requestUser.username !== user.username ) {
+        throw new SystemError('Not owner of the account', 400);
+      }
+    }
 
     user.isDeleted = true;
-    await this.userRepository.save(user);
+    const deletedUser = await this.userRepository.save(user);
+    if (deletedUser) {
+      const adminHistoryEntity = this.historyRepository.create();
+      adminHistoryEntity.content = `Account with username ${user.username} has been deleted`;
+      this.historyRepository.save(adminHistoryEntity);
+    }
     return { messege: 'User deleted succesfully' };
   }
 
@@ -122,17 +147,31 @@ export class UsersService {
 
   public async updateUserInfo(
     userId: string,
+    email: string,
     name: string,
     country: string,
     description: string,
     avatarUrl: string,
+    requestUserId: string
   ) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
     });
+    const requestUser = await this.userRepository.findOne({
+      where: { id: requestUserId, isDeleted: false },
+    });
     if (!user) {
-      throw new SystemError('No such user', 400);
+      throw new SystemError('User not found', 404);
     }
+    if (!requestUser) {
+      throw new SystemError('User not found', 404);
+    }
+    if (!isAdmin(requestUser)) {
+      if ( requestUser.username !== user.username ) {
+        throw new SystemError('Not owner of the account', 400);
+      }
+    }
+    user.email = email;
     user.name = name;
     user.country = country;
     user.description = description;

@@ -10,6 +10,7 @@ import {
   Delete,
   Put,
   Request,
+  Query
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -26,6 +27,7 @@ export class UsersController {
   public constructor(private readonly userService: UsersService) {}
 
   @Get(':username')
+  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowDetailedInfoDTO))
   public async getUserByUsername(@Param('username') username: string) {
     return await this.userService.getUserInfo(username);
@@ -33,9 +35,16 @@ export class UsersController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(ShowUserDTO))
-  public async getAll() {
-    return await this.userService.allUsers();
+  @UseInterceptors(new TransformInterceptor(ShowDetailedInfoDTO))
+  public async getAll(@Query('username') username: string) {
+    const users = await this.userService.allUsers();
+    if (username) {
+      return users.filter(user =>
+       user.username.toLowerCase().includes(username.toLowerCase()),
+      );
+    } else {
+      return users;
+    }
   }
 
   @Post()
@@ -49,24 +58,27 @@ export class UsersController {
 
   @Delete('/:id')
   @UseGuards(AuthGuard('jwt'))
-  public async deleteUser(@Param('id') userId: string) {
-    return await this.userService.delete(userId);
+  public async deleteUser(@Param('id') userId: string, @Request() req: any) {
+    return await this.userService.delete(userId, req.user.id);
   }
 
-  @Put('account')
+  @Put(':id/account')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowUserInfoDTO))
   public async updateInfo(
+    @Param('id') id: string,
     @Request() req: any,
     @Body(new ValidationPipe({ transform: true, whitelist: true }))
     body: UpdateInfoDTO,
   ) {
     return await this.userService.updateUserInfo(
-      req.user.id,
+      id,
+      body.email,
       body.name,
       body.country,
       body.description,
       body.avatarUrl,
+      req.user.id
     );
   }
 }
