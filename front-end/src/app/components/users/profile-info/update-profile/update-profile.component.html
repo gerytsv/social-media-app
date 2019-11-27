@@ -21,6 +21,10 @@
       <input type="text" [(ngModel)]="this.user.name" class="name" />
     </div>
     <div class="field">
+      <span>e-mail</span>
+      <input type="text" [(ngModel)]="this.user.email" class="name" />
+    </div>
+    <div class="field">
       <span>Country</span>
       <input type="text" [(ngModel)]="this.user.country" class="country" />
     </div>
@@ -34,7 +38,6 @@
     <button
       type="button"
       (click)="this.updateProfileInfo()"
-      (click)="this.emitUpdatedProfileInfo()"
       class="submit"
     >
       Save changes
