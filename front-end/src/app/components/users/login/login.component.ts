@@ -36,8 +36,8 @@ export class LoginComponent implements OnInit {
   public login() {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
-        this.router.navigate(['/']);
-        this.notificator.success('Loggin Succesfull');
+        this.router.navigate(['/home']);
+        this.notificator.success('Login Succesfull');
       },
       () => this.notificator.error(`Invalid username/password!`)
     );
