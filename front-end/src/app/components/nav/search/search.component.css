@@ -1,11 +1,14 @@
 .search {
   position: relative;
+  border-radius: 12px;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   flex-wrap:wrap;
   width: 20rem;
   background-color: #8befc8;
+  height: 2.5rem;
+  padding-left: 5%;
 }
 
 input {

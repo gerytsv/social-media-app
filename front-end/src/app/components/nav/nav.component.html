@@ -1,12 +1,15 @@
 <nav>
   <div class="logo">
-    <img src="../../../assets/icons/Huggo.svg" class="name" />
+<img src="../../../assets/icons/logo.svg" />
+<img src="../../../assets/icons/Line 75.svg" />
+<img src="../../../assets/icons/Huggo.svg" class="name" />
   </div>
   <div class="mid">
     <img
       src="../../../../assets/icons/Icons.svg"
       class="icons"
       title="Newsfeed"
+      [routerLink]="['/home']"
     />
     <div class="search">
       <app-search></app-search>
@@ -21,6 +24,7 @@
       src="../../../assets/icons/compass.svg"
       class="icons"
       title="Explore"
+      [routerLink]="['/explore/posts']"
     />
     <img
       [routerLink]="this.profileLink"

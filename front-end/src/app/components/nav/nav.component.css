@@ -1,11 +1,18 @@
 nav {
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  width: 100%;
   background-color: #48e7a8;
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  
+  -webkit-box-shadow: 0px 5px 21px -6px rgba(95, 94, 94, 0.75);
+  -moz-box-shadow: 0px 5px 21px -6px rgba(91, 91, 91, 0.75);
+  box-shadow: 0px 5px 21px -6px rgba(90, 90, 90, 0.75);
 }
 
 img {
@@ -22,9 +29,8 @@ img:focus {
   outline: none;
 }
 
-
-
-.logo, .mid{
+.logo,
+.mid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +43,7 @@ img:focus {
 }
 
 .name {
-    margin-left: -2rem;
+  margin-left: -2rem;
 }
 
 button {
@@ -85,4 +91,5 @@ button {
         flex-wrap: wrap;
         width: 100%;
     }
-  }
+  
+}

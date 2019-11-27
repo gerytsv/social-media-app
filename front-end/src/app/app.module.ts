@@ -21,6 +21,7 @@ import { MinimizedUserModule } from './shared/minimized-user/minimized-user.modu
 import { ConformationDialogBoxComponent } from './shared/conformation-dialog-box/conformation-dialog-box.component';
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MatDialogModule } from '@angular/material';
     NavComponent,
     SearchComponent,
     HomepageComponent,
+    NotFoundComponent
   ],
   imports: [
     MatDialogModule,

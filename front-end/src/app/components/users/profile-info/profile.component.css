@@ -1,12 +1,26 @@
-.wrapper{
+.wrapper {
+  padding-top: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
+/* fixing padding under menu after resize */
+@media screen and (min-width: 320px) and (max-width: 535px) {
+  .wrapper {
+    padding-top: 150px;
+  }
+}
+
+@media only screen and (max-width: 240px) {
+  .wrapper {
+    padding-top: 200px;
+  }
+}
+
 img {
-  width:10rem;
+  width: 10rem;
   height: 10rem;
   border-radius: 50%;
   object-fit: cover;
@@ -18,60 +32,60 @@ img {
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  justify-content:center;
+  justify-content: center;
   font-size: 0.9rem;
 }
 
-.info{
+.info {
   padding: 1.5rem;
   max-width: 25rem;
   min-width: 20rem;
   justify-content: space-between;
 }
 
-.info div{
- margin-bottom: 0.5rem;
+.info div {
+  margin-bottom: 0.5rem;
 }
 
-.profile-header{
+.profile-header {
   display: flex;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
 }
 
-.info-wrapper{
+.info-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content:center
+  justify-content: center;
 }
 
 .follows{
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content:space-between;
+  justify-content: space-between;
   font-style: oblique;
 }
 
-.followers-count span{
+.followers-count span {
   font-weight: bolder;
   font-style: normal;
 }
 
-.material-icons{
+.material-icons {
   transition: transform 300ms;
 }
 
-.material-icons:hover{
+.material-icons:hover {
   cursor: pointer;
-  transform: scale(1.2)
+  transform: scale(1.2);
 }
 
-.username{
+.username {
   font-size: 1.3rem;
 }
 
-.name{
+.name {
   font-size: 1.1rem;
   font-weight: 500;
 }
@@ -91,14 +105,14 @@ img {
   background-color: rgba(128, 128, 128, 0.555);
 }
 
-.close{
+.close {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  z-index: 20
+  z-index: 20;
 }
 
-.close:hover{
+.close:hover {
   cursor: pointer;
   transform: none;
 }
