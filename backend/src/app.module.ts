@@ -12,6 +12,7 @@ import { PhotoStorageModule } from './photo/photo-storage.module';
 import { FollowingsController } from './features/followings/followings.controller';
 import { FollowingsService } from './features/followings/followings.service';
 import { FollowingsModule } from './features/followings/followings.module';
+import { AdminHistoryModule } from './features/admin-history/admin-history.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { FollowingsModule } from './features/followings/followings.module';
     PhotoStorageModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     FollowingsModule,
+    AdminHistoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],

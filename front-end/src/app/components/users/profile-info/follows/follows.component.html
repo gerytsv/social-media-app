@@ -1,0 +1,27 @@
+<div class="count">
+  <div class="posts">
+    <span>{{ this.user.posts.length }}</span> posts
+  </div>
+  <div class="followers" (click)="toggleFollowers()">
+    <span>{{ this.user.followers.length }}</span> followers
+  </div>
+  <div class="show-follows" *ngIf="showFollowers">
+    <i class="material-icons" (click)="close()">close</i>
+    <app-minimized-user
+      *ngFor="let user of this.user.followers"
+      [user]="user"
+      (click)="close()"
+    ></app-minimized-user>
+  </div>
+  <div class="followed" (click)="toggleFollowed()">
+    <span>{{ this.user.followed.length }}</span> followed
+  </div>
+  <div class="show-follows" *ngIf="showFollowed">
+    <i class="material-icons" (click)="close()">close</i>
+    <app-minimized-user
+      *ngFor="let user of this.user.followed"
+      [user]="user"
+      (click)="close()"
+    ></app-minimized-user>
+  </div>
+</div>

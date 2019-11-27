@@ -1,26 +1,52 @@
-object {
-  transform: scale(0.5);
-  transition: all 300ms;
-}
-
-object:hover {
-  transform: scale(0.7);
-}
 .search {
+  position: relative;
+  border-radius: 12px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: stretch;
+  flex-wrap:wrap;
+  width: 20rem;
   background-color: #8befc8;
   height: 2.5rem;
+  padding-left: 5%;
 }
 
 input {
-  background-color: transparent;
+  width: 100%;
   all: unset;
   line-height: 2;
   color: white;
 }
 
 input::placeholder {
+ 
   color: white;
+}
+
+.search-results{
+  cursor: pointer;
+  background-color: #F8F8F8;
+  display: flex;
+  position: absolute;
+  flex: 1;
+  top: 2rem;
+  flex-direction: column;
+  width: 100%;
+}
+
+.search-input{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.material-icons {
+  cursor: pointer;
+  color: white;
+}
+
+.search-input input {
+  width: 100%;
 }

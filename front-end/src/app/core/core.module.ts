@@ -1,10 +1,12 @@
-import { AllPostsResolver } from "./resolvers/all-posts.resolver";
-import { NewsfeedResolver } from "./resolvers/newsfeed.resolver";
-import { NgModule, Optional, SkipSelf } from "@angular/core";
-import { AuthGuard } from "../common/auth/auth.guard";
-import { AuthService } from "./services/auth.service";
-import { NotificatorService } from "./services/notificator.service";
-import { StorageService } from "./services/storage.service";
+import { AllPostsResolver } from './resolvers/all-posts.resolver';
+import { NewsfeedResolver } from './resolvers/newsfeed.resolver';
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { AuthGuard } from '../common/auth/auth.guard';
+import { AuthService } from './services/auth.service';
+import { NotificatorService } from './services/notificator.service';
+import { StorageService } from './services/storage.service';
+import { SearchService } from './services/search.service';
+import { DialogService } from './services/dialog.service';
 
 @NgModule({
   declarations: [],
@@ -15,7 +17,9 @@ import { StorageService } from "./services/storage.service";
     NotificatorService,
     StorageService,
     NewsfeedResolver,
-    AllPostsResolver
+    AllPostsResolver,
+    SearchService,
+    DialogService
   ],
   exports: []
 })

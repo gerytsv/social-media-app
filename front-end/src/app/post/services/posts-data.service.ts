@@ -19,7 +19,7 @@ export class PostsDataService {
     return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/feed`);
   }
 
-  public getPostById(id: number): Observable<PostDTO> {
+  public getPostById(id: string): Observable<PostDTO> {
     return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/${id}`);
   }
 

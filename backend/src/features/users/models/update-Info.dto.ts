@@ -3,6 +3,8 @@ import { IsString } from 'class-validator';
 
 export class UpdateInfoDTO {
 @IsString()
+public email: string;
+@IsString()
 public name: string;
 @IsString()
 public description: string;
