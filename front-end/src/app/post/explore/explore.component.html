@@ -1,0 +1,4 @@
+<div class="posts-container">
+  <app-post-preview class="single-post" *ngFor="let post of this.posts" [post]="post" (click)="selectPost(post)">
+  </app-post-preview>
+</div>
