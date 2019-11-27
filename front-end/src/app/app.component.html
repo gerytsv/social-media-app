@@ -1,2 +1,6 @@
-<app-nav></app-nav>
+<app-nav *ngIf=loggedIn></app-nav>
+<div class="fake-nav" *ngIf=!loggedIn >
+<img  src="../assets/icons/compass.svg" alt="explore" [routerLink]="['explore']">
+<img  src="../assets/icons/login.svg" alt="explore" [routerLink]="['homepage']">
+</div>
 <router-outlet></router-outlet>
