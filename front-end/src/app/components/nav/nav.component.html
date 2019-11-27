@@ -5,10 +5,11 @@
     <img src="../../../assets/icons/Huggo.svg" class="name" />
   </div>
   <div class="mid">
-    <img *ngIf=this.loggedIn src="../../../../assets/icons/Icons.svg" class="icons" />
+    <div [routerLink]="['/home']"><img *ngIf=this.loggedIn src="../../../../assets/icons/Home.svg" class="icons" />
+    </div>
     <app-search *ngIf=this.loggedIn></app-search>
     <img *ngIf=this.loggedIn src="../../../assets/icons/create_post_nav.svg" class="icons" />
-    <div [routerLink]="['/explore']"><img src="../../../assets/icons/compass.svg" class="icons" /></div>
+    <div [routerLink]="['/explore/posts']"><img src="../../../assets/icons/compass.svg" class="icons" /></div>
     <div [routerLink]="['/users', this.username]"><img *ngIf=this.loggedIn src="../../../assets/icons/user.svg" /></div>
   </div>
 </nav>

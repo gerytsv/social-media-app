@@ -7,11 +7,13 @@ object:hover {
   transform: scale(0.7);
 }
 .search {
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: stretch;
   background-color: #8befc8;
   height: 2.5rem;
+  padding-left: 5%;
 }
 
 input {
