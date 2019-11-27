@@ -4,7 +4,7 @@ import { CoreModule } from "../../core/core.module";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { NewsfeedComponent } from "./newsfeed.component";
-import { PostsModule } from "../posts.module";
+import { PostsModule } from "../../post/posts.module";
 
 @NgModule({
   declarations: [NewsfeedComponent],
