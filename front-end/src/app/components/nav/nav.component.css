@@ -3,6 +3,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
   
 }
@@ -44,11 +45,44 @@ button {
   all: unset;
 }
 
+.search {
+  z-index: 10;
+}
+
+.admin{
+  position: relative;
+}
+
+.dropdown{
+  cursor:pointer;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #48e7a8;
+  color: white;
+
+}
+
+.dropdown >div {
+  padding: 0.5rem;
+  line-height: 1;
+}
+
+.dropdown >div:hover {
+  padding: 0.5rem;
+  color: black;
+}
+
+
 @media only screen and (max-width: 700px) {
     .logo{
         display: none;
     }
     .mid{
         flex-wrap: wrap;
+        width: 100%;
     }
   }
