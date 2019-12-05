@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
           .subscribe(() => {
           });
       },
-      () => this.notificator.error(`Username is already taken`)
+      (res) => this.notificator.error(res.error.error)
     );
   }
 }
