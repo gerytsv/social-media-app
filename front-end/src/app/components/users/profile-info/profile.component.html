@@ -4,34 +4,42 @@
     <div class="info">
       <div class="profile-header">
         <div class="username">{{ this.user.username }}</div>
-        <div class="contols">
-          <i
-            class="material-icons"
+        <div class="controls">
+          <div
+            class="mat-wrap"
             (click)="this.toggleEditMenu()"
-            *ngIf="this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)"
-            >build</i
+            *ngIf="
+              this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
+            "
           >
-          <i
-            class="material-icons"
+            <i class="material-icons">build</i>
+          </div>
+          <div
+            class="mat-wrap"
             *ngIf="!this.isOwner && !this.followed"
             title="follow"
             (click)="this.followUser()"
-            >person_add</i
           >
-          <i
-            class="material-icons"
+            <i class="material-icons">person_add</i>
+          </div>
+          <div
+            class="mat-wrap"
             *ngIf="!this.isOwner && this.followed"
             title="unfollow"
             (click)="this.unfollowUser()"
-            >person_add_disabled</i
           >
-          <i
-            class="material-icons"
-            *ngIf="this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)"
+            <i class="material-icons">person_add_disabled</i>
+          </div>
+          <div
+            class="mat-wrap"
+            *ngIf="
+              this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
+            "
             (click)="this.delete()"
             title="delete"
-            >delete</i
           >
+            <i class="material-icons">delete</i>
+          </div>
         </div>
       </div>
       <div class="followers-count">

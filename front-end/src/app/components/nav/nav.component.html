@@ -14,7 +14,7 @@
         class="icons"
         title="Newsfeed"
       />
-      <span>News feed</span>
+      <span>News</span>
     </div>
     <div class="menu-icon" (click)=toggleHam()>
       <img
@@ -23,7 +23,7 @@
         title="Create Post"
         [routerLink]="['/posts/create']"
       />
-      <span>Create post</span>
+      <span>Create</span>
     </div>
     <div class="menu-icon" [routerLink]="['/explore/posts']" (click)=toggleHam()>
       <img
@@ -31,7 +31,7 @@
         class="icons"
         title="Explore"
       />
-      <span>Explore posts</span>
+      <span>Explore</span>
     </div>
     <div class="menu-icon" [routerLink]="this.profileLink" (click)=toggleHam()>
       <img
@@ -39,16 +39,16 @@
         src="../../../assets/icons/user.svg"
         title="View Pofile"
       />
-      <span>View Profile</span>
+      <span>Profile</span>
     </div>
-    <div class="menu-icon" [routerLink]="['admin/history']" (click)=toggleHam()>
+    <div class="menu-icon" [routerLink]="['admin/history']" (click)=toggleHam() *ngIf="this.isAdmin">
       <img
-        *ngIf="this.isAdmin"
+        
         src="../../../assets/icons/control_x2C__management.svg"
         class="icons"
         title="History"
       />
-      <span>Admin History</span>
+      <span>Admin</span>
     </div>
     <div class="menu-icon" (click)="this.logout()" (click)=toggleHam()>
       <img
