@@ -22,9 +22,14 @@ export class PhotoStorageController {
     return await this.photoStorageService.getPhoto(photoId);
   }
 
-  @Post()
+  @Post('avatar')
   @UseInterceptors(FileInterceptor('file'))
   public async uploadPhoto(@UploadedFile() file: any) {
     return await this.photoStorageService.uploadPhoto(file);
+  }
+
+  @Post('post')
+  public async uploadPhotoForPost(@Body() body: any) {
+    return await this.photoStorageService.uploadPhotoForPost(body);
   }
 }
