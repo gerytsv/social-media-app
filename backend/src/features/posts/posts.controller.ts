@@ -57,7 +57,7 @@ export class PostsController {
     }
   }
 
-  @Post()
+  @Post('create')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
   @HttpCode(HttpStatus.CREATED)

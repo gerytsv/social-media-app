@@ -61,12 +61,16 @@ export class PostsService {
   }
 
   public async createPost(creatorId: string, post: CreatePostDTO) {
-    const createdPost = await this.postsRepository.create(post);
+    const createdPost = await this.postsRepository.create();
     const creator: User = await this.usersRepository.findOne({
       where: { id: creatorId },
     });
     createdPost.likes = [];
     createdPost.comments = [];
+    createdPost.description = post.description;
+    createdPost.isPrivate = post.isPrivate;
+    createdPost.photoUrl = post.photoUrl;
+
     const postToSave = { ...createdPost, user: creator };
     return await this.postsRepository.save(postToSave);
   }

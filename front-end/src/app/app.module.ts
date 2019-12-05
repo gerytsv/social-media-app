@@ -1,3 +1,4 @@
+import { CommentModule } from './post/comments/comment.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -22,47 +23,51 @@ import { ConformationDialogBoxComponent } from './shared/conformation-dialog-box
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PostDetailPreviewComponent } from './components/explore/post-detail-preview/post-detail-preview.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    RegisterComponent,
-    NavComponent,
-    SearchComponent,
-    HomepageComponent,
-    NotFoundComponent
-  ],
-  imports: [
-    MatDialogModule,
-    MinimizedUserModule,
-    CoreModule,
-    CommonModule,
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    MaterialModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-    UsersModule,
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-top-right',
-      preventDuplicates: true,
-      countDuplicates: true
-    }),
-    JwtModule.forRoot({ config: {} }),
-    SharedModule
-  ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }
-  ],
-  entryComponents: [ConformationDialogBoxComponent],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        LoginComponent,
+        RegisterComponent,
+        NavComponent,
+        SearchComponent,
+        HomepageComponent,
+        NotFoundComponent,
+    ],
+    imports: [
+        MatDialogModule,
+        MinimizedUserModule,
+        CoreModule,
+        CommonModule,
+        AppRoutingModule,
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        MaterialModule,
+        HttpClientModule,
+        ReactiveFormsModule,
+        UsersModule,
+        ToastrModule.forRoot({
+            timeOut: 3000,
+            positionClass: 'toast-top-right',
+            preventDuplicates: true,
+            countDuplicates: true,
+        }),
+        JwtModule.forRoot({ config: {} }),
+        SharedModule,
+    ],
+    providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: TokenInterceptorService,
+            multi: true,
+        },
+    ],
+    entryComponents: [
+        ConformationDialogBoxComponent,
+        PostDetailPreviewComponent,
+    ],
+    bootstrap: [AppComponent],
 })
 export class AppModule {}

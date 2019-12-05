@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class="img-wrapper"><img class="photo" src={{this.post.photoUrl}} align="center"></div>
+  <div class="info">
+    <div class="date">{{this.dateOfPost}}</div>
+
+    <div class="user-info">
+      <div class="avatar">
+        <img src={{this.post.user.avatarUrl}}>
+      </div>
+      <div class="username">
+        <p>{{this.post.user.username}}</p>
+      </div>
+      <div class="likes">
+        <app-likes class="likes">
+        </app-likes>
+      </div>
+    </div>
+
+    <hr />
+    <p class="description">{{this.post.description}}</p>
+
+    <div class="tag-section">
+      <p class="comments-tag">Comments:</p>
+      <p class="liked-tag" float="right">Liked by:</p>
+    </div>
+    <hr />
+
+    <div class="comments">
+      <app-all-comments [post]="this.post"></app-all-comments>
+    </div>
+  </div>
+</div>

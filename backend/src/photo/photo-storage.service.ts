@@ -20,7 +20,7 @@ export class PhotoStorageService {
     const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
       method: 'POST',
       headers: {
-        'Authorization': `Client-ID ${imgurConfig.clientId}`,
+        Authorization: `Client-ID ${imgurConfig.clientId}`,
         'Content-Type': 'multipart/form-data',
       },
       data: image,
@@ -29,15 +29,29 @@ export class PhotoStorageService {
     return { photoLink: data.data.link, photoDeleteHash: data.data.deletehash };
   }
 
+  public async uploadPhotoForPost(
+    photo: any,
+  ): Promise<{ photoLink: string; photoDeleteHash: string }> {
+    const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Client-ID ${imgurConfig.clientId}`,
+        'Content-Type': 'multipart/form-data',
+      },
+      data: photo.base64,
+    });
+
+    return { photoLink: data.data.link, photoDeleteHash: data.data.deletehash };
+  }
+
   public async getPhoto(photoId: string) {
-    const { data } =  await axios(`${imgurConfig.baseUrl}/image/${photoId}`, {
+    const { data } = await axios(`${imgurConfig.baseUrl}/image/${photoId}`, {
       method: 'GET',
       headers: {
         Authorization: `Client-ID ${imgurConfig.clientId}`,
       },
     });
     return data.data;
-
   }
 
   public async deletePhoto(photoDeleteHash: string): Promise<void> {

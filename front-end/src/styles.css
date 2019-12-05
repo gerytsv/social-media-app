@@ -1,16 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+}
 
 html {
   height: 100%;
   width: 100%;
 }
 body {
-  margin-left: 0 !important;
-  margin-bottom: 0 !important;
-  margin-top: 0 !important;
-  margin-right: 0 !important;
-  font-family: "Segoe UI";
-  overflow-y: scroll;
+  margin: 0;
+  font-family: 'Segoe UI';
+  overflow-y: auto;
   overflow-x: hidden;
   padding-top: 4.5rem;
   height: 100%;
@@ -39,16 +39,23 @@ body::-webkit-scrollbar-thumb {
   );
 }
 
+.my-class .mat-dialog-container {
+  background: rgba(255, 255, 255, 0);
+  color: rgb(0, 0, 0);
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  /* overflow: auto; */
+}
 
 @media only screen and (max-width: 500px) {
-  body{
+  body {
     padding-top: 7rem;
   }
 }
 
-
 @media only screen and (max-width: 700px) {
- body {
-  padding-top: 7rem;
- }
+  body {
+    padding-top: 7rem;
+  }
 }

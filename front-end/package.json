@@ -28,7 +28,6 @@
     "hammerjs": "^2.0.8",
     "majestic": "^1.6.1",
     "moment": "^2.24.0",
-    "momentjs": "^2.0.0",
     "ngx-spinner": "^8.0.3",
     "ngx-toastr": "^11.2.1",
     "rxjs": "~6.4.0",
@@ -50,5 +49,11 @@
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
     "typescript": "~3.5.3"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true
   }
 }
