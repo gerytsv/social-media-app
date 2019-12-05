@@ -33,45 +33,41 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
     private readonly usersDataService: UsersDataService,
     private readonly authService: AuthService,
     private readonly notificator: NotificatorService,
-    private readonly dialog: DialogService,
+    private readonly dialog: DialogService
   ) {}
 
   public ngOnInit() {
-      this.routeSubscription = this.activatedRoute.params.subscribe(res => {
-        this.usersDataService
-          .getUserByUsername(res.username)
-          .subscribe(response => {
-            this.user = response;
-            this.followed = this.user.followers.some(
-              item => this.user.username === item.username
-            );
-            this.copyOfUser = { ...response };
-            this.userSubscription = this.authService.loggedUser$.subscribe(
-              user => {
-                this.loggedInUser = user;
-                this.user.username === user.username
-                  ? (this.isOwner = true)
-                  : (this.isOwner = false);
-              }
-            );
-          },
-          () => {
-            this.notificator.error(`The user ${res.username} doesn't exist anymore`);
-          });
-      });
-
-      this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(
-        loggedIn => (this.loggedIn = loggedIn)
+    this.routeSubscription = this.activatedRoute.params.subscribe(res => {
+      this.usersDataService.getUserByUsername(res.username).subscribe(
+        response => {
+          this.user = response;
+          this.copyOfUser = { ...response };
+          this.userSubscription = this.authService.loggedUser$.subscribe(
+            user => {
+              this.loggedInUser = user;
+              console.log(this.loggedInUser);
+              this.followed = this.user.followers.some(
+                item => item.username === this.loggedInUser.username
+              );
+              this.user.username === user.username
+                ? (this.isOwner = true)
+                : (this.isOwner = false);
+            }
+          );
+        },
+        () => {
+          this.notificator.error(`The user ${res.username} doesn't exist`);
+        }
       );
+    });
   }
 
   public ngOnDestroy() {
     this.routeSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
-    this.loggedInSubscription.unsubscribe();
   }
 
-  public updateProfileView(data: ShowUserInfoDTO) {
+  public updateProfileView(data: any) {
     this.user = { ...this.user, ...data };
     this.toggleEditMenu();
   }
@@ -81,32 +77,29 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   public followUser() {
-    try {
-      this.usersDataService.followUser(this.user.id).subscribe(res => {
-        this.notificator.success(`${this.user.username} has been followed`);
+    this.usersDataService.followUser(this.user.id).subscribe(
+      () => {
         this.followed = true;
         (this.user.followers as any) = [
           ...this.user.followers,
           this.loggedInUser
         ];
-      });
-    } catch {
-      this.notificator.success(`Something went wrong`);
-    }
+        this.notificator.success(`${this.user.username} has been followed`);
+      }
+    );
   }
 
   public unfollowUser() {
-    try {
-      this.usersDataService.unfollowUser(this.user.id).subscribe(res => {
-        this.notificator.success(`${this.user.username} has been unfollowed`);
+    this.usersDataService.unfollowUser(this.user.id).subscribe(
+      () => {
         this.followed = false;
-        this.user.followers = this.user.followers.filter(follower =>
-          console.log(follower.id !== this.loggedInUser.id)
-        );
-      });
-    } catch {
-      this.notificator.success(`Something went wrong`);
-    }
+        this.user.followers = this.user.followers.filter(
+          follower => {
+          follower.id !== this.loggedInUser.id 
+        });
+        this.notificator.success(`${this.user.username} has been unfollowed`);
+      }
+    );
   }
 
   public delete() {

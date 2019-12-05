@@ -16,7 +16,7 @@ export class NavComponent implements OnInit, OnDestroy {
   public username: string;
   public loggedIn = false;
   public isAdmin = false;
-  public showAdminMenu = false;
+  public showHamMenu = false;
   constructor(
     private readonly authService: AuthService,
     private readonly dialog: DialogService
@@ -41,10 +41,6 @@ export class NavComponent implements OnInit, OnDestroy {
     return ['/users', this.username];
   }
 
-  public toggleAdminDropdown() {
-    this.showAdminMenu = !this.showAdminMenu;
-  }
-
   public logout() {
     const confirmData = {
       description: 'Do you want to logout?',
@@ -57,4 +53,11 @@ export class NavComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  public toggleHam() {
+    this.showHamMenu = !this.showHamMenu;
+  }
+
+
+
 }

@@ -15,6 +15,7 @@ export class UpdateProfileComponent implements OnInit {
   @Output() public updatedUser: EventEmitter<
     ShowUserInfoDTO
   > = new EventEmitter();
+  @Output() public cancelUpdate: EventEmitter<null> = new EventEmitter();
 
   constructor(
     private readonly usersDataService: UsersDataService,
@@ -25,17 +26,15 @@ export class UpdateProfileComponent implements OnInit {
   public ngOnInit() {}
 
   public updateProfilePic(data: any) {
-    this.notificator.warn('Proceeding...');
-    this.usersDataService.updateProfilePic(data).subscribe(res => {
-      try {
+    this.usersDataService.updateProfilePic(data).subscribe(
+      res => {
         this.user.avatarUrl = res.photoLink;
         this.notificator.success(
           'Photo uploaded, save changes to update profile'
         );
-      } catch {
-        this.notificator.error('Photo was not uploaded');
-      }
-    });
+      },
+      () => this.notificator.error('Photo upload fail, check file format or size.')
+    );
   }
 
   public updateProfileInfo() {
@@ -67,4 +66,7 @@ export class UpdateProfileComponent implements OnInit {
     });
   }
 
+  public cancel() {
+    this.cancelUpdate.emit(null);
+  }
 }
