@@ -11,7 +11,7 @@ import { ImageCropperModule } from './create-post/image-cropper/image-cropper.mo
 import { CreatePostComponent } from './create-post/create-post.component';
 import { SinglePostResolver } from '../core/resolvers/single-post.resolver';
 import { PostPreviewComponent } from '../components/explore/post-preview/post-preview.component';
-import { PostDetailPreviewComponent } from '../components/explore/post-detail-preview/post-detail-preview.component';
+import { PostDetailPreviewComponent } from './post-detail-preview/post-detail-preview.component';
 
 @NgModule({
     declarations: [
