@@ -1,11 +1,7 @@
 import { ShowUserOnPost } from './../../users/models/show-user-on-post.dto';
 import { Publish } from '../../../transformer/decorators/publish';
-import { ShowUsernameDTO } from '../../users/models/show-username.dto';
-import { ShowAvatarUrlDTO } from '../../users/models/show-avatarUrl.dto';
 import { User } from '../../../database/entities/users.entity';
-import { Transform } from 'class-transformer';
 import moment = require('moment');
-import { SystemError } from '../../../common/exceptions/system.error';
 export class ShowPostDTO {
   @Publish()
   public id: string;
@@ -19,8 +15,8 @@ export class ShowPostDTO {
   // @Publish()
   // public keywords: string;
 
-  @Publish()
-  public location: string;
+  // @Publish()
+  // public location: string;
 
   @Publish()
   public postedOn: Date;
@@ -33,4 +29,7 @@ export class ShowPostDTO {
 
   @Publish(ShowUserOnPost)
   public user: User;
+
+  @Publish()
+  public comments: any;
 }

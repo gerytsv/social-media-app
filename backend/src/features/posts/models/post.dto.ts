@@ -9,11 +9,8 @@ export class PostDTO {
   @Publish()
   public photoUrl: string;
 
-  @Publish()
-  public keywords: string;
-
-  @Publish()
-  public location: string;
+  // @Publish()
+  // public keywords: string;
 
   @Publish()
   public postedOn: Date;

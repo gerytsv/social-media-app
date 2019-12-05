@@ -10,14 +10,12 @@ export class CreatePostDTO {
   @IsString()
   public description: string;
 
-  @IsString()
-  public keywords: string;
+  // @IsString()
+  // public keywords: string;
 
   @IsString()
   public photoUrl: string;
 
-  @IsString()
-  public location: string;
 
   @IsBoolean()
   public isPrivate: boolean;
