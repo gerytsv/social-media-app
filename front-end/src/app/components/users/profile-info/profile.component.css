@@ -1,23 +1,10 @@
 .wrapper {
-  padding-top: 90px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-/* fixing padding under menu after resize */
-@media screen and (min-width: 320px) and (max-width: 535px) {
-  .wrapper {
-    padding-top: 150px;
-  }
-}
-
-@media only screen and (max-width: 240px) {
-  .wrapper {
-    padding-top: 200px;
-  }
-}
 
 img {
   width: 10rem;
