@@ -21,6 +21,10 @@ img {
   z-index: 0;
 }
 
+.menu-icon {
+  padding: 1rem;
+}
+
 .menu-icon:hover {
   cursor: pointer;
 }
@@ -29,9 +33,6 @@ img {
   display: block;
 }
 
-.icons {
-  padding: 1rem;
-}
 
 img:hover {
   transform: scale(1.1);
@@ -118,7 +119,6 @@ button {
     padding-top: 1rem;
     flex-wrap: wrap;
     width: 92%;
-    flex-direction: column;
   }
   .search {
     width: 92%;
@@ -162,6 +162,7 @@ button {
 
   .icons {
     transform: 0;
+
   }
 
   .material-icons{
@@ -169,6 +170,10 @@ button {
     margin: 0 auto;
     color: white;
     cursor: pointer;
+  }
+
+  img {
+    margin-right: 1rem;
   }
  
 }
