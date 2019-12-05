@@ -1,5 +1,4 @@
 nav {
-  overflow: hidden;
   position: fixed;
   top: 0;
   z-index: 20;
@@ -16,13 +15,26 @@ nav {
 }
 
 img {
-  transform: scale(0.5);
+  width: 2.5rem;
+  height: 2.5rem;
   transition: transform 300ms;
   z-index: 0;
 }
 
+.menu-icon:hover {
+  cursor: pointer;
+}
+
+.menu-icon:hover > span {
+  display: block;
+}
+
+.icons {
+  padding: 1rem;
+}
+
 img:hover {
-  transform: scale(0.7);
+  transform: scale(1.1);
 }
 
 img:focus {
@@ -34,6 +46,10 @@ img:focus {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.mid {
+  flex-wrap: wrap;
+  flex-shrink: 1;
 }
 
 .menu {
@@ -53,43 +69,112 @@ button {
 
 .search {
   z-index: 10;
+  padding: 0 1rem;
 }
 
-.admin{
+.admin {
   position: relative;
 }
 
-.dropdown{
-  cursor:pointer;
-  width: 100%;
-  position: absolute;
+.menu-icon {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  background-color: #48e7a8;
+  justify-content: flex-start;
+  outline: none;
+  flex-direction: column;
+}
+
+.menu-icon span {
+  font-size: 0.7rem;
+  display: none;
   color: white;
-
+  position: absolute;
+  bottom: 0;
 }
 
-.dropdown >div {
-  padding: 0.5rem;
-  line-height: 1;
+.logo img {
+  width: auto;
+  margin-left: 1rem;
 }
 
-.dropdown >div:hover {
-  padding: 0.5rem;
-  color: black;
+.show{
+  display: flex;
+}
+
+.hide {
+  display: none;
+}
+
+.material-icons{
+  display: none;
 }
 
 
 @media only screen and (max-width: 700px) {
-    .logo{
-        display: none;
-    }
-    .mid{
-        flex-wrap: wrap;
-        width: 100%;
-    }
-  
+  .logo {
+    display: none;
+  }
+  .mid {
+    padding-top: 1rem;
+    flex-wrap: wrap;
+    width: 92%;
+    flex-direction: column;
+  }
+  .search {
+    width: 92%;
+    min-width: none;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .logo {
+    display: none;
+  }
+  .search {
+    padding: 0 0.5rem;
+  }
+
+  .menu-icon span {
+    display: inline;
+    position: unset;
+    font-size: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+  }
+
+  .mid {
+    padding-top: 1rem;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+
+  .menu-icon {
+    flex-direction: row;
+    width: 100%;
+    border-radius: none;
+  }
+
+  .menu-icon:focus {
+    outline: none;
+  }
+
+  .icons {
+    transform: 0;
+  }
+
+  .material-icons{
+    display: block;
+    margin: 0 auto;
+    color: white;
+    cursor: pointer;
+  }
+ 
+}
+
+@media only screen and (min-width: 500px) {
+div.mid {
+  display: flex !important
+}
 }
