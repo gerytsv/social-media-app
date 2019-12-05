@@ -33,7 +33,6 @@ img {
   display: block;
 }
 
-
 img:hover {
   transform: scale(1.1);
 }
@@ -83,6 +82,7 @@ button {
   justify-content: flex-start;
   outline: none;
   flex-direction: column;
+  padding: 1rem;
 }
 
 .menu-icon span {
@@ -162,7 +162,7 @@ button {
 
   .icons {
     transform: 0;
-
+    margin-right: 1rem;
   }
 
   .material-icons{
