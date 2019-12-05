@@ -1,0 +1,7 @@
+<div class="wrapper">
+  <app-upload-image-post (bodyToSend)="this.imageCropped($event)"></app-upload-image-post>
+  <textarea class="description" type="text" placeholder="Write a description..."
+    [(ngModel)]=this.description></textarea>
+  <p>Private <input type="checkbox" name="isPrivateBtn" (click)=this.isPrivateButtonClick()></p>
+  <button class="create-post" (click)=this.onPostButtonClick()>Create Post</button>
+</div>
