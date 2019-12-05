@@ -1,29 +1,55 @@
 <div class="wrapper">
-<div class="profile-container">
-  <img class="avatar" src="{{this.user.avatarUrl}}" alt="logo" />
-  <div class="info" >
-    <div class="profile-header">
-      <div class="username">{{this.user.username}}</div>
-      <div class="contols">
-        <i class="material-icons" (click)="this.toggleEditMenu()" *ngIf="this.isOwner || this.loggedInUser.isAdmin">build</i>
-        <i class="material-icons" *ngIf="!this.isOwner  && !this.followed" title="follow"(click)= "this.followUser()">person_add</i>
-        <i class="material-icons" *ngIf="!this.isOwner  && this.followed" title="unfollow" (click)= "this.unfollowUser()">person_add_disabled</i>
-        <i class="material-icons" *ngIf="this.isOwner || this.loggedInUser.isAdmin" (click)="this.delete()" title="delete" >delete</i>
+  <div class="profile-container">
+    <img class="avatar" src="{{ this.user.avatarUrl }}" alt="logo" />
+    <div class="info">
+      <div class="profile-header">
+        <div class="username">{{ this.user.username }}</div>
+        <div class="contols">
+          <i
+            class="material-icons"
+            (click)="this.toggleEditMenu()"
+            *ngIf="this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)"
+            >build</i
+          >
+          <i
+            class="material-icons"
+            *ngIf="!this.isOwner && !this.followed"
+            title="follow"
+            (click)="this.followUser()"
+            >person_add</i
+          >
+          <i
+            class="material-icons"
+            *ngIf="!this.isOwner && this.followed"
+            title="unfollow"
+            (click)="this.unfollowUser()"
+            >person_add_disabled</i
+          >
+          <i
+            class="material-icons"
+            *ngIf="this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)"
+            (click)="this.delete()"
+            title="delete"
+            >delete</i
+          >
+        </div>
+      </div>
+      <div class="followers-count">
+        <app-follows class="follows" [user]="this.user"></app-follows>
+      </div>
+      <div class="info-wrapper">
+        <div class="name">{{ this.user.name }}</div>
+        <div class="email">{{ this.user.email }}</div>
+        <div class="country">{{ this.user.country }}</div>
+        <div class="description">{{ this.user.description }}</div>
       </div>
     </div>
-    <div class="followers-count">
-      <app-follows class="follows" [user]=this.user></app-follows>
-    </div>
-    <div class="info-wrapper">
-      <div class="name">{{this.user.name}}</div>
-      <div class="email">{{this.user.email}}</div>
-      <div class="country">{{this.user.country}}</div>
-      <div class="description">{{this.user.description}}</div>
-    </div>
   </div>
-</div>
-<div class="edit-wrapper" *ngIf="this.showEditMenu">
-  <app-update-profile  [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"></app-update-profile>
-    <i class="material-icons close" (click)="this.toggleEditMenu()">close</i>
-</div>
+  <div class="edit-wrapper" *ngIf="this.showEditMenu">
+    <app-update-profile
+      [user]="this.copyOfUser"
+      (updatedUser)="this.updateProfileView($event)"
+      (cancelUpdate)="this.toggleEditMenu()"
+    ></app-update-profile>
+  </div>
 </div>
