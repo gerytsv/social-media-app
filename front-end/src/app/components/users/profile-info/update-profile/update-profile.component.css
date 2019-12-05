@@ -132,11 +132,15 @@ line-height: 2;
 
   .close{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 
   .close:hover{
    
     cursor: pointer;
+  }
+
+  .alert {
+    font-size: 0.7rem;
   }

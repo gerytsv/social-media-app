@@ -1,6 +1,8 @@
 <div class="container">
+  <i class="material-icons close" (click)="this.cancel()" >close</i>
   <div class="pic-section">
     <img class="img-preview" src="{{ this.user.avatarUrl }}" />
+    <div class="alert">Maximum size 10MB</div>
     <div class="button-wrapper">
       <span class="label">
         Upload avatar
@@ -9,6 +11,7 @@
         type="file"
         #fileInput
         (change)="updateProfilePic(fileInput.files[0])"
+        accept="image/*"
         type="file"
         class="upload-box"
         id="upload"
