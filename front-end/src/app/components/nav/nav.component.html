@@ -9,7 +9,8 @@
     <div class="search">
       <app-search></app-search>
     </div>
-    <img *ngIf="this.loggedIn" src="../../../assets/icons/create_post_nav.svg" class="icons" title="Create Post" />
+    <img *ngIf="this.loggedIn" src="../../../assets/icons/create_post_nav.svg" [routerLink]="['/posts/create']"
+      class="icons" title="Create Post" />
     <img src="../../../assets/icons/compass.svg" class="icons" title="Explore" [routerLink]="['/explore/posts']" />
     <img [routerLink]="this.profileLink" src="../../../assets/icons/user.svg" title="View Pofile" />
     <div class="admin">
