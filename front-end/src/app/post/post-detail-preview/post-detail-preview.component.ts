@@ -1,9 +1,9 @@
-import { PostsDataService } from '../../../post/services/posts-data.service';
 import { Component, OnInit, Inject } from '@angular/core';
-import { Post } from '../../../common/post';
 import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
 import { MAT_DIALOG_DATA } from '@angular/material';
+import { Post } from '../../common/post';
+import { PostsDataService } from '../services/posts-data.service';
 
 @Component({
     selector: 'app-post-detail-preview',
