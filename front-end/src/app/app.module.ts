@@ -23,6 +23,7 @@ import { ConformationDialogBoxComponent } from './shared/conformation-dialog-box
 import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { PostDetailPreviewComponent } from './post/post-detail-preview/post-detail-preview.component';
 
 @NgModule({
     declarations: [
