@@ -9,10 +9,9 @@ import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
 import { NotificationModule } from './features/notifications/notifications.module';
 import { PhotoStorageModule } from './photo/photo-storage.module';
-import { FollowingsController } from './features/followings/followings.controller';
-import { FollowingsService } from './features/followings/followings.service';
 import { FollowingsModule } from './features/followings/followings.module';
 import { AdminHistoryModule } from './features/admin-history/admin-history.module';
+import { CommentsModule } from './features/comments/comments.module';
 
 @Module({
   imports: [
@@ -26,6 +25,7 @@ import { AdminHistoryModule } from './features/admin-history/admin-history.modul
     PassportModule.register({ defaultStrategy: 'jwt' }),
     FollowingsModule,
     AdminHistoryModule,
+    CommentsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
