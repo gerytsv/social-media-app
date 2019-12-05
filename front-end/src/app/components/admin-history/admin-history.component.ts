@@ -14,7 +14,9 @@ export class AdminHistoryComponent implements OnInit {
   public history: ShowHistoryDTO[];
 
   ngOnInit() {
-    this.adminDataService.getHistory().subscribe(res => this.history = res);
-  }
+    this.adminDataService.getHistory().subscribe(res => this.history = res.reverse());
+    setInterval(() => {
+      this.adminDataService.getHistory().subscribe(res => this.history = res.reverse()); }, 4000);
+    }
 
 }

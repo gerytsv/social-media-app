@@ -1,22 +1,62 @@
 <nav>
   <div class="logo">
-    <img src="../../../assets/icons/logo.svg" />
-    <img src="../../../assets/icons/Line 75.svg" />
-    <img src="../../../assets/icons/Huggo.svg" class="name" />
+    <img src="../../../assets/icons/Group 176.svg">
   </div>
-  <div class="mid">
-    <img src="../../../../assets/icons/Home.svg" class="icons" title="Newsfeed" [routerLink]="['/home']" />
+  <i class="material-icons" *ngIf="!this.showHamMenu" (click)=toggleHam()>menu</i>
+  <i class="material-icons" *ngIf="this.showHamMenu" (click)=toggleHam()>close</i>
+  <div class="mid" [ngClass]="this.showHamMenu?'show':'hide'">
     <div class="search">
       <app-search></app-search>
     </div>
-    <img *ngIf="this.loggedIn" src="../../../assets/icons/create_post_nav.svg" [routerLink]="['/posts/create']"
-      class="icons" title="Create Post" />
-    <img src="../../../assets/icons/compass.svg" class="icons" title="Explore" [routerLink]="['/explore/posts']" />
-    <img [routerLink]="this.profileLink" src="../../../assets/icons/user.svg" title="View Pofile" />
-    <div class="admin">
-      <img *ngIf="this.isAdmin" src="../../../assets/icons/control_x2C__management.svg" class="icons" title="History"
-        [routerLink]="['admin/history']" />
+    <div class="menu-icon" [routerLink]="['/home']" (click)=toggleHam()>
+      <img
+        src="../../../../assets/icons/Home.svg"
+        class="icons"
+        title="Newsfeed"
+      />
+      <span>News feed</span>
     </div>
-    <img src="../../../assets/icons/logout.svg" class="icons" title="Logout" (click)="this.logout()" />
+    <div class="menu-icon" (click)=toggleHam()>
+      <img
+        src="../../../assets/icons/create_post_nav.svg"
+        class="icons"
+        title="Create Post"
+        [routerLink]="['/posts/create']"
+      />
+      <span>Create post</span>
+    </div>
+    <div class="menu-icon" [routerLink]="['/explore/posts']" (click)=toggleHam()>
+      <img
+        src="../../../assets/icons/compass.svg"
+        class="icons"
+        title="Explore"
+      />
+      <span>Explore posts</span>
+    </div>
+    <div class="menu-icon" [routerLink]="this.profileLink" (click)=toggleHam()>
+      <img
+        class="icons"
+        src="../../../assets/icons/user.svg"
+        title="View Pofile"
+      />
+      <span>View Profile</span>
+    </div>
+    <div class="menu-icon" [routerLink]="['admin/history']" (click)=toggleHam()>
+      <img
+        *ngIf="this.isAdmin"
+        src="../../../assets/icons/control_x2C__management.svg"
+        class="icons"
+        title="History"
+      />
+      <span>Admin History</span>
+    </div>
+    <div class="menu-icon" (click)="this.logout()" (click)=toggleHam()>
+      <img
+        src="../../../assets/icons/logout.svg"
+        class="icons"
+        title="Logout"
+      />
+      <span>Logout</span>
+    </div>
   </div>
 </nav>
