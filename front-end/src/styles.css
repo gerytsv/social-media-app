@@ -12,6 +12,8 @@ body {
   font-family: "Segoe UI";
   overflow-y: scroll;
   overflow-x: hidden;
+  padding-top: 4.5rem;
+  height: 100%;
 }
 
 body::-webkit-scrollbar-track {
@@ -35,4 +37,18 @@ body::-webkit-scrollbar-thumb {
     color-stop(0.72, #6ef3be),
     color-stop(0.86, #48e7a8)
   );
+}
+
+
+@media only screen and (max-width: 500px) {
+  body{
+    padding-top: 7rem;
+  }
+}
+
+
+@media only screen and (max-width: 700px) {
+ body {
+  padding-top: 7rem;
+ }
 }
