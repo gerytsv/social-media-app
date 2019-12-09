@@ -42,9 +42,9 @@ export class FollowingsService {
       });
       const followersOfuserToBeUnFollowed = await userToBeUnFollowed.followers;
       const requestUserFollowedUsers = await requestUser.followed;
-      const indexOfFollower = followersOfuserToBeUnFollowed.findIndex(user => user.id === requestUserId);
+      const indexOfFollower = followersOfuserToBeUnFollowed.findIndex(user => user.id == requestUserId);
       followersOfuserToBeUnFollowed.splice(indexOfFollower, 1);
-      const indexOfFollowed = requestUserFollowedUsers.findIndex(user => user.id === requestUserId);
+      const indexOfFollowed = requestUserFollowedUsers.findIndex(user => user.id == userId);
       requestUserFollowedUsers.splice(indexOfFollowed, 1);
       requestUser.followed = Promise.resolve(requestUserFollowedUsers);
       this.userRepository.save(requestUser);
