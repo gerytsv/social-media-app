@@ -8,7 +8,6 @@ body {
 
 .posts-container {
   overflow: hidden;
-  padding-top: 90px;
   max-width: 100%;
   /* height: 100%; */
   position: relative;
@@ -22,13 +21,11 @@ body {
 /* fixing padding under menu after resize */
 @media screen and (min-width: 320px) and (max-width: 535px) {
   .posts-container {
-    padding-top: 150px;
   }
 }
 
 @media only screen and (max-width: 240px) {
   .posts-container {
-    padding-top: 200px;
   }
 }
 
