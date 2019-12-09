@@ -5,7 +5,7 @@ import { ShowUserInfoDTO } from '../../models/show-user-info.dto';
 @Component({
   selector: 'app-follows',
   templateUrl: './follows.component.html',
-  styleUrls: ['./follows.component.css']
+  styleUrls: ['./follows.component.css'],
 })
 export class FollowsComponent implements OnInit {
   @Input() public user: ShowDetailedInfoDTO;
@@ -14,9 +14,7 @@ export class FollowsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   public toggleFollowers() {
     if (this.user.followers.length === 0) {
