@@ -1,77 +1,114 @@
 .comment-container {
-    width: 100%;
-    margin-bottom: 0.5rem;
-    /* border: solid grey; */
-    /* border-width: 1px 0px 0 0; */
-    /* margin-bottom: 30%; */
+  width: 100%;
+  margin-bottom: 0.5rem;
 }
+
 .user-info {
-    display: flex;
-    align-items: center;
-    height: 2.5rem;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
 }
 
 .username {
-    font-size: 0.8rem;
-    padding-left: 7%;
-    display: inline;
-    margin: 0;
-    top: 50%;
-    bottom: 50%;
+  font-size: 0.8rem;
+  padding-left: 7%;
+  display: inline;
+  margin: 0;
+  top: 50%;
+  bottom: 50%;
 }
 
 .avatar {
-    border: 0.05rem solid grey;
-    object-fit: cover;
-    border-radius: 50%;
-    width: 1.5rem;
-    height: 1.5rem;
+  border: 0.05rem solid grey;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .timestamp {
-    font-size: 0.7rem;
+  font-size: 0.7rem;
 }
 
 .content {
-    font-size: 0.8rem;
-    max-width: 12rem;
-    min-width: 12rem;
-    overflow-wrap: break-word;
+  font-size: 0.8rem;
+  max-width: 12rem;
+  min-width: 12rem;
+  overflow-wrap: break-word;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .delete-button {
-    text-align: right;
+  text-align: right;
+}
+
+.edit-button {
+  text-align: right;
 }
 
 .main {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 img {
-    max-width: 1.2rem;
-    max-height: 1.2rem;
+  max-width: 1.2rem;
+  max-height: 1.2rem;
 }
 
 .material-icons {
-    color: black;
+  color: black;
 }
 
 .material-icons:hover {
-    cursor: pointer;
-    color: #156800;
+  cursor: pointer;
+  color: #156800;
 }
 
-/*
-.footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 2em;
-    overflow-x: hidden;
-} */
+.edit-section {
+  display: flex;
+  align-items: space-between;
+  height: fit-content;
+  background-color: #ddffc1;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  border-radius: 0.4rem;
+}
+
+.edit-section textarea {
+  border: none;
+  font-family: 'Segoe UI';
+  background-color: transparent;
+  resize: none;
+  padding: 0.4em;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.post-edit-button {
+  width: 20%;
+  color: rgb(0, 154, 113);
+  font-size: 0.9rem;
+  margin: auto;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 3%;
+  transition: transform 0.5s ease-out;
+}
+
+.post-edit-button:hover {
+  color: rgb(0, 211, 155);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.post-edit-button:active {
+  color: #00f0a4;
+}
