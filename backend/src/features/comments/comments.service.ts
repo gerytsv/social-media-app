@@ -94,6 +94,28 @@ export class CommentsService {
     return await Promise.all(comments.map((item: any) => item.post));
   }
 
+  public async editContent(
+    userId: string,
+    commentId: string,
+    newContent: string,
+  ) {
+    const comment = await this.commentsRepository.findOne({
+      where: { id: commentId, isDeleted: false },
+    });
+    if (!comment) {
+      throw new SystemError('No such comment', 400);
+    }
+    const commentOwner = await comment.user;
+    if (!isAdmin(commentOwner)) {
+      if (commentOwner.id !== userId) {
+        throw new SystemError("This user can't edit the comment", 400);
+      }
+    }
+    comment.content = newContent;
+
+    return await this.commentsRepository.save(comment);
+  }
+
   public async removeComment(userId: string, commentId: string) {
     const comment = await this.commentsRepository.findOne({
       where: { id: commentId, isDeleted: false },

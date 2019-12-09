@@ -52,21 +52,21 @@ export class CommentsController {
     );
   }
 
-  //   @Put('/posts/comments/:commentId')
-  //   @UseInterceptors(new TransformInterceptor(ShowCommentDTO))
-  //   @UseGuards(AuthGuard())
-  //   public async editPostComment(
-  //     @Request() request: any,
-  //     @Param('commentId') commentId: string,
-  //     @Body(new ValidationPipe({ transform: true, whitelist: true }))
-  //     body: CreateCommentDTO,
-  //   ) {
-  //     return await this.commentsService.editContent(
-  //       request.user.id,
-  //       commentId,
-  //       body.content,
-  //     );
-  //   }
+  @Put('/posts/comments/:commentId')
+  @UseInterceptors(new TransformInterceptor(ShowCommentDTO))
+  @UseGuards(AuthGuard())
+  public async editPostComment(
+    @Request() request: any,
+    @Param('commentId') commentId: string,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    body: CreateCommentDTO,
+  ) {
+    return await this.commentsService.editContent(
+      request.user.id,
+      commentId,
+      body.content,
+    );
+  }
 
   @Get('user/posts/commented')
   @UseGuards(AuthGuard())
