@@ -31,6 +31,7 @@
 }
 
 .content {
+  flex: 2;
   font-size: 0.8rem;
   max-width: 12rem;
   min-width: 12rem;
@@ -44,15 +45,24 @@
 
 .delete-button {
   text-align: right;
+  flex: 1;
 }
 
 .edit-button {
   text-align: right;
+  flex: 1;
 }
 
 .main {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: row wrap;
+}
+
+.main > * {
+  /* padding: 2px; */
+  /* flex: 1 100%; */
 }
 
 img {
@@ -66,7 +76,6 @@ img {
 
 .material-icons:hover {
   cursor: pointer;
-  color: #156800;
 }
 
 .edit-section {
@@ -89,6 +98,12 @@ img {
 
 textarea:focus {
   outline: none;
+}
+
+.options {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
 }
 
 .post-edit-button {
