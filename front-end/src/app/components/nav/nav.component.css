@@ -121,7 +121,6 @@ button {
     width: 92%;
   }
   .search {
-    width: 92%;
     min-width: none;
   }
 }
@@ -158,6 +157,10 @@ button {
 
   .menu-icon:focus {
     outline: none;
+  }
+
+  .menu-icon:hover {
+    background-color: rgba(27, 136, 5, 0.397)
   }
 
   .icons {
