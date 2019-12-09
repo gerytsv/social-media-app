@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="profile-container">
+  <div class="profile-container" *ngIf=this.user>
     <img class="avatar" src="{{ this.user.avatarUrl }}" alt="logo" />
     <div class="info">
       <div class="profile-header">
