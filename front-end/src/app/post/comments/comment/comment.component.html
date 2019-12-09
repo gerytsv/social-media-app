@@ -19,14 +19,19 @@
       {{ comment.content }}
     </div>
 
-    <img class="delete" *ngIf=this.isCommentOwner class="delete-button" (click)=this.deleteComment()
-      type="image/svg+xml" src="../../../../assets/icons/trash-bin-2.svg">
+    <img class="delete-button" *ngIf=this.isCommentOwner (click)=this.deleteComment() type="image/svg+xml"
+      src="../../../../assets/icons/trash-bin-2.svg">
+
+    <img class="edit-button" *ngIf=this.isCommentOwner (click)=this.toggleEditButton();this.updateComment()
+      type="image/svg+xml" src="../../../../assets/icons/edit_button.svg">
 
   </div>
-  <!-- <div class="footer">
-    <div>
-      <button *ngIf=this.isCommentOwner class="delete-button" (click)=this.deleteComment()>Delete</button>
-    </div>
-  </div> -->
+
+  <div class="edit-section" *ngIf=this.show>
+    <textarea class="edit-field" type="text" [(ngModel)]="this.updatedComment"></textarea>
+
+    <div *ngIf=this.isCommentOwner class="post-edit-button" (click)=this.toggleEditButton();this.updateComment()>
+      Update</div>
+  </div>
 
 </div>
