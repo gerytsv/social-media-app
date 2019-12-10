@@ -1,14 +1,20 @@
 <div class="post">
-  <div class="user-info">
-    <div><img class="avatar" src={{this.post.user.avatarUrl}}></div>
-    <div>
-      <p>{{this.post.user.username}}</p>
+  <img class="photo" src={{this.post.photoUrl}}>
+  <div class="info">
+    <div class="header">
+      <div class="user-info">
+        <img class="avatar" src={{this.post.user.avatarUrl}}>
+        <p class="username">{{this.post.user.username}}</p>
+      </div>
+      <div class="date">{{this.dateOfPost}}</div>
     </div>
-  </div>
-  <div class="photo"><img src={{this.post.photoUrl}}></div>
-  <div>
-    <p>{{this.post.description}}</p>
-    <!-- <p>{{this.post.location}}</p> -->
-    <p>{{this.post.postedOn}}</p>
+    <div class="content">
+      <p class="caption">{{this.post.description}}</p>
+
+      <div class="likes">
+        <app-likes></app-likes>
+      </div>
+    </div>
+
   </div>
 </div>
