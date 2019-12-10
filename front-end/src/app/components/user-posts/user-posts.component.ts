@@ -28,7 +28,9 @@ export class UserPostsComponent implements DoCheck {
         post => post.isPrivate === false
       );
     } else {
-      this.copyOfPosts = [...this.user.posts];
+      if (this.user) {
+        this.copyOfPosts = [...this.user.posts];
+      }
     }
   }
 }
