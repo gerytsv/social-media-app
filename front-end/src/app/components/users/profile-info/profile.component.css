@@ -7,7 +7,6 @@
 
 .controls {
   display: flex;
-
 }
 
 img {
@@ -18,7 +17,8 @@ img {
 }
 
 .profile-container {
-  padding-top: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -50,7 +50,7 @@ img {
   justify-content: center;
 }
 
-.follows{
+.follows {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -65,20 +65,17 @@ img {
 
 .material-icons {
   transition: transform 300ms;
-  color: rgb(0, 0, 0)
-  
+  color: rgb(0, 0, 0);
 }
 
 div.mat-wrap {
   margin: 0 0.1 0 0.1rem;
   padding: 0.5rem;
-  margin-bottom: 0 !important
-
-
+  margin-bottom: 0 !important;
 }
 
 div.controls {
-  margin-bottom: 0 !important
+  margin-bottom: 0 !important;
 }
 
 .mat-wrap:hover {
@@ -127,8 +124,34 @@ div.controls {
   transform: none;
 }
 
+div.posts-container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  width: 80%;
+  margin: 1rem auto;
+}
+
 @media only screen and (max-width: 500px) {
   .edit-wrapper {
     padding-bottom: 16rem;
   }
+
+  div.posts-container {
+    width: 100%;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .info {
+    width: 100%;
+  }
+
 }
