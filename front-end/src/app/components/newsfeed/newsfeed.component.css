@@ -2,26 +2,26 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #fef1f1;
+}
+
 .posts-container {
   overflow: hidden;
-  padding-top: 105px;
+  background-color: #fef1f1;
   /* overflow-y: scroll; */
   display: flex;
   flex-direction: column;
-  display: flex;
   align-items: center;
-  background: #fef1f1;
 }
 
 /* fixing padding under menu after resize */
 @media screen and (min-width: 320px) and (max-width: 535px) {
   .posts-container {
-    padding-top: 150px;
   }
 }
 
 @media only screen and (max-width: 240px) {
   .posts-container {
-    padding-top: 200px;
   }
 }
