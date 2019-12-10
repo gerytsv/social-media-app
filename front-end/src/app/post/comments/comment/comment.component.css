@@ -60,14 +60,10 @@
   flex-wrap: row wrap;
 }
 
-.main > * {
-  /* padding: 2px; */
-  /* flex: 1 100%; */
-}
-
-img {
+.options img {
   max-width: 1.2rem;
   max-height: 1.2rem;
+  margin: 0 0.5rem;
 }
 
 .material-icons {
@@ -103,7 +99,7 @@ textarea:focus {
 .options {
   flex: 1;
   display: flex;
-  flex-flow: row wrap;
+  justify-content: flex-end;
 }
 
 .post-edit-button {
