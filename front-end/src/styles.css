@@ -8,6 +8,7 @@ html {
   width: 100%;
 }
 body {
+  background-color: #fef1f1;
   margin: 0;
   font-family: 'Segoe UI';
   overflow-y: auto;

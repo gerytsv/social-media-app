@@ -1,10 +1,4 @@
-import { IsString, IsBoolean, IsNumber } from 'class-validator';
-import { Transform } from 'class-transformer';
-import moment from 'moment';
-import { SystemError } from '../../../common/exceptions/system.error';
-import { Publish } from '../../../transformer/decorators/publish';
-import { User } from '../../../database/entities/users.entity';
-import { ShowUserOnPost } from '../../users/models/show-user-on-post.dto';
+import { IsString, IsBoolean } from 'class-validator';
 
 export class CreatePostDTO {
   @IsString()

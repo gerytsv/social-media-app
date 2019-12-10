@@ -8,7 +8,6 @@ import { Repository } from 'typeorm';
 import { Post } from '../../database/entities/posts.entity';
 import { User } from '../../database/entities/users.entity';
 import { SystemError } from '../../common/exceptions/system.error';
-import { symbol } from '@hapi/joi';
 
 @Injectable()
 export class PostsService {
@@ -23,6 +22,7 @@ export class PostsService {
   public async allPosts() {
     const posts: Post[] = await this.postsRepository.find({
       where: { isDeleted: false },
+      order: { postedOn: 'DESC' },
     });
 
     return posts;
@@ -31,16 +31,17 @@ export class PostsService {
   public async allPostsByFollowed(username: string) {
     const currentUser = await this.usersRepository.findOne({
       where: { username, isDeleted: false },
-      relations: ['followers', 'followers.posts'],
+      relations: ['followed', 'followed.posts'],
     });
-    const followers = await currentUser.followers;
-    const posts = followers.map(follower => follower.posts);
+    const followed = await currentUser.followed;
+    const posts = followed.map(followedUser => followedUser.posts);
     return Promise.all(posts);
   }
 
   public async getAllPostsByUser(userId: string) {
     const posts: Post[] = await this.postsRepository.find({
       where: { userId },
+      order: { postedOn: 'DESC' },
     });
     if (posts) {
       return posts;
@@ -52,6 +53,7 @@ export class PostsService {
   public async getPublicPostsByUser(userId: string) {
     const posts: Post[] = await this.postsRepository.find({
       where: { userId, isPrivate: false },
+      order: { postedOn: 'DESC' },
     });
     if (posts) {
       return posts;
