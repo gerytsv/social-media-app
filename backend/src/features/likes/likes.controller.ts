@@ -18,10 +18,10 @@ import { LikesService } from './likes.service';
 export class LikesController {
   public constructor(private readonly likesService: LikesService) {}
 
-  @Get('/posts/:postId/likes')
+  @Post('/posts/:postId/likes')
   @UseGuards(AuthGuard())
   public async likes(@Param('postId') postId: string, @Request() request: any) {
-    return await this.likesService.like(request.user.id, postId);
+    return await this.likesService.like(postId, request.user.id);
   }
 
   @Get('/posts/:postId/likes')
@@ -31,14 +31,14 @@ export class LikesController {
     @Request() request: any,
   ) {
     return {
-      votes: await this.likesService.getLikes(postId),
-      myVotes: await this.likesService.myLikes(postId, request.user.id),
+      likes: await this.likesService.getLikes(postId),
+      myLikes: await this.likesService.myLikes(postId, request.user.id),
     };
   }
 
   @Get('/posts/:postId/likes/users')
   @UseGuards(AuthGuard())
   public async getAllUsersWhoLiked(@Param('postId') postId: string) {
-    return await this.likesService.getAllUsersLiked(postId);
+    return await this.likesService.getAllUsersWhoLiked(postId);
   }
 }

@@ -33,7 +33,7 @@ export class LikesService {
     const likedAlready: PostLike = await this.likesRepository.findOne({
       where: { user, post },
     });
-    if (likedAlready.isLiked) {
+    if (likedAlready && likedAlready.isLiked) {
       likedAlready.isLiked = false;
       await this.likesRepository.save(likedAlready);
 
@@ -82,7 +82,7 @@ export class LikesService {
     return likesToReturn;
   }
 
-  public async getAllUsersLiked(postId: string) {
+  public async getAllUsersWhoLiked(postId: string) {
     const post = await this.postsRepository.findOne({
       where: { id: postId, isDeleted: false },
     });
