@@ -1,3 +1,4 @@
+import { LikesModule } from './features/likes/likes.module';
 import { PostsModule } from './features/posts/posts.module';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
@@ -26,6 +27,7 @@ import { CommentsModule } from './features/comments/comments.module';
     FollowingsModule,
     AdminHistoryModule,
     CommentsModule,
+    LikesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
