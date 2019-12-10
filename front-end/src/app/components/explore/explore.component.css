@@ -18,27 +18,20 @@ body {
   grid-template-columns: auto auto auto;
 }
 
-/* fixing padding under menu after resize */
-@media screen and (min-width: 320px) and (max-width: 535px) {
-  .posts-container {
-  }
-}
-
-@media only screen and (max-width: 240px) {
-  .posts-container {
-  }
-}
-
-@media screen and (max-width: 600px) {
-}
-
-@media screen and (max-width: 800px) {
-}
-
-@media only screen and (max-width: 1025px) {
-}
-
 .single-post {
   width: 100%;
   height: 100%;
+}
+
+@media screen and (min-width: 320px) and (max-width: 575px) {
+  .posts-container {
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .posts-container {
+  }
+}
+
+@media screen and (min-width: 575px) {
 }
