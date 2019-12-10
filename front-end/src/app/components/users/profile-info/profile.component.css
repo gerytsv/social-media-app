@@ -100,7 +100,7 @@ div.controls {
   z-index: 10;
   height: 100%;
   width: 100%;
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -108,7 +108,6 @@ div.controls {
   top: 0;
   right: 0;
   left: 0;
-  background-color: rgba(128, 128, 128, 0.555);
   padding-bottom: 4rem;
 }
 
@@ -138,9 +137,6 @@ hr {
 }
 
 @media only screen and (max-width: 500px) {
-  .edit-wrapper {
-    padding-bottom: 16rem;
-  }
 
   div.posts-container {
     width: 100%;
