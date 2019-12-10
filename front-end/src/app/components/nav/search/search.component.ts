@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SearchService } from '../../../core/services/search.service';
 import { ShowDetailedInfoDTO } from '../../users/models/show-detailed-info.dto';
 import { debounceTime, distinctUntilChanged, debounce } from 'rxjs/operators';
@@ -11,6 +11,8 @@ import { Subject } from 'rxjs';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
+
+  @Output() public closeMenu: EventEmitter<null> = new EventEmitter();
 
   private readonly searchSubject$ = new Subject<string>();
 
@@ -54,7 +56,7 @@ export class SearchComponent implements OnInit {
     this.showUsersResults = true;
   }
 
-  public closeResults(input: string){
+  public closeResults(input: string) {
     if (!input) {
       this.showUsersResults = false;
     }
@@ -62,6 +64,10 @@ export class SearchComponent implements OnInit {
 
   public clearInput() {
     this.inputValue = '';
+  }
+
+  public closeNav() {
+    this.closeMenu.emit();
   }
 
 }
