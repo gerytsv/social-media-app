@@ -1,12 +1,33 @@
 <div class="wrapper">
-  <input type="file" (change)="fileChangeEvent($event)" class="file"/>
-  <div class="options">
-    <button (click)="rotateLeft()">Rotate left</button>
-    <button (click)="rotateRight()">Rotate right</button>
-    <button (click)="flipHorizontal()">Flip horizontal</button>
-    <button (click)="flipVertical()">Flip vertical</button>
+  <div>
+    <div class="button-wrapper">
+      <span class="label">
+        Choose file
+      </span>
+      <input
+        type="file"
+        (change)="fileChangeEvent($event)"
+        class="file"
+        id="upload"
+      />
+    </div>
+    <div class="options">
+      <button (click)="rotateLeft()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <button (click)="rotateRight()">
+        <i class="material-icons">arrow_forward</i>
+      </button>
+      <button (click)="flipHorizontal()">
+        <i class="material-icons">arrow_downward</i>
+      </button>
+      <button (click)="flipVertical()">
+        <i class="material-icons">arrow_upward</i>
+      </button>
+    </div>
   </div>
-  <div class="img-wrapper">
+  <div class="placeholder" *ngIf="!this.imageChangedEvent"></div>
+  <div class="img-wrapper" *ngIf="this.imageChangedEvent">
     <image-cropper
       [imageChangedEvent]="imageChangedEvent"
       [maintainAspectRatio]="true"
@@ -21,7 +42,8 @@
       (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"
       [style.display]="showCropper ? null : 'none'"
-      [alignImage]="'center'"
-    ></image-cropper>
+      [alignImage]="'left'"
+    >
+    </image-cropper>
   </div>
 </div>
