@@ -40,22 +40,28 @@ body::-webkit-scrollbar-thumb {
 }
 
 .my-class .mat-dialog-container {
+  max-height: 100vh;
+  overflow-y: auto !important;
   background: rgba(255, 255, 255, 0);
   color: rgb(0, 0, 0);
   box-shadow: none;
   border: none;
   padding: 0;
-  /* overflow: auto; */
 }
+
+.mat-dialog-container::-webkit-scrollbar {
+  display: none;
+}
+
 
 @media only screen and (max-width: 500px) {
   body {
-    padding-top: 7rem;
+    padding-top: 1.5rem;
+  }
+  .cdk-overlay-pane {
+    max-width: 99% !important;
+    max-height: 150%
   }
 }
 
-@media only screen and (max-width: 700px) {
-  body {
-    padding-top: 7rem;
-  }
-}
+
