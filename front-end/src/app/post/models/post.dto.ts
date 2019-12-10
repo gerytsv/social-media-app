@@ -5,14 +5,10 @@ export class PostDTO {
 
     public photoUrl: string;
 
-    // public keywords: string;
-
     public postedOn: Date;
 
     public isPrivate: boolean;
 
-    // public isDeleted: boolean;
-    //ShowUserOnPost
     public user: any;
 
     public comments: any[];
