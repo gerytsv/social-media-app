@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" *ngIf="this.post">
   <div class="img-wrapper">
     <i class="material-icons close-button" (click)="this.close()">close</i>
     <img class="photo" src="{{ this.post.photoUrl }}" />
