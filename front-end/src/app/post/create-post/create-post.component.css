@@ -1,3 +1,38 @@
 .wrapper {
-    margin-top: 30%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+
+.options {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.options > *{
+    margin: 2rem 1rem;
+}
+
+.status > span {
+    margin-right: 1rem;
+}
+
+.options >button {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+}
+
+.photo-sec {
+    margin: 2rem 1rem;
 }

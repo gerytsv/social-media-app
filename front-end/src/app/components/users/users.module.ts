@@ -7,14 +7,16 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FollowsComponent } from './profile-info/follows/follows.component';
 import { SharedModule } from '../../shared/shared.module';
+import { UserPostsComponent } from '../user-posts/user-posts.component';
+import { PostsModule } from '../../post/posts.module';
 
 
 @NgModule({
-  declarations: [ProfileInfoComponent, UpdateProfileComponent, FollowsComponent],
+  declarations: [ProfileInfoComponent, UpdateProfileComponent, FollowsComponent, UserPostsComponent],
   imports: [
-   SharedModule, UsersRoutingModule, FormsModule, CommonModule
+   SharedModule, UsersRoutingModule, FormsModule, CommonModule, PostsModule
   ],
   providers: [UsersDataService],
-  exports: [ProfileInfoComponent, UpdateProfileComponent]
+  exports: [ProfileInfoComponent, UpdateProfileComponent, UserPostsComponent]
 })
 export class UsersModule { }

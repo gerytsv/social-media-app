@@ -13,7 +13,7 @@ import * as moment from 'moment';
 export class CreatePostComponent implements OnInit {
   public imgUrl: string;
   public description: string;
-  public isPrivate: boolean = false;
+  public isPrivate = false;
 
   constructor(
     private readonly postsDataService: PostsDataService,
@@ -27,8 +27,8 @@ export class CreatePostComponent implements OnInit {
   }
 
   public onPostButtonClick() {
-    let imgurUrl: string = '';
-    let dateOfPost = moment(new Date()).format('MMM Do YY');
+    let imgurUrl = '';
+    this.notificator.warn('Uploading new post...');
 
     this.postsDataService.uploadPhoto(this.imgUrl).subscribe(res => {
       imgurUrl = res.photoLink;
@@ -38,13 +38,22 @@ export class CreatePostComponent implements OnInit {
         isPrivate: this.isPrivate,
       };
 
-      this.postsDataService.createPost(post).subscribe(res => {});
+      this.postsDataService.createPost(post).subscribe(() => {
+        this.notificator.success('Post uploaded succesfully');
+      }),
+        // tslint:disable-next-line: no-unused-expression
+        () => {
+          this.notificator.error('Could not upload post');
+        };
     });
   }
 
-  public isPrivateButtonClick() {
-    this.isPrivate = !this.isPrivate;
-    // console.log(`isPrivate state: ${this.isPrivate}`);
+  public isPrivateCheck() {
+    this.isPrivate = true;
+  }
+
+  public isPublicCheck() {
+    this.isPrivate = false;
   }
 
   ngOnInit() {}

@@ -1,5 +1,5 @@
 <div class="wrapper">
-  <div class="profile-container" *ngIf=this.user>
+  <div class="profile-container" *ngIf="this.user">
     <img class="avatar" src="{{ this.user.avatarUrl }}" alt="logo" />
     <div class="info">
       <div class="profile-header">
@@ -60,4 +60,8 @@
       (cancelUpdate)="this.toggleEditMenu()"
     ></app-update-profile>
   </div>
+</div>
+<hr>
+<div class="posts-container">
+  <app-user-posts [user]="this.user" [isOwner]="this.isOwner" [followed]=this.followed></app-user-posts>
 </div>

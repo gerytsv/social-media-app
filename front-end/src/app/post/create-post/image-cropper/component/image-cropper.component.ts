@@ -12,26 +12,27 @@ import {
   ChangeDetectionStrategy,
   NgZone,
   ViewChild
-} from "@angular/core";
-import { DomSanitizer, SafeUrl, SafeStyle } from "@angular/platform-browser";
+} from '@angular/core';
+import { DomSanitizer, SafeUrl, SafeStyle } from '@angular/platform-browser';
 import {
   MoveStart,
   Dimensions,
   CropperPosition,
   ImageCroppedEvent
-} from "../interfaces";
+} from '../interfaces';
 import {
   resetExifOrientation,
   transformBase64BasedOnExifRotation
-} from "../utils/exif.utils";
-import { resizeCanvas, fitImageToAspectRatio } from "../utils/resize.utils";
+} from '../utils/exif.utils';
+import { resizeCanvas, fitImageToAspectRatio } from '../utils/resize.utils';
 
-export type OutputType = "base64" | "file" | "both";
+export type OutputType = 'base64' | 'file' | 'both';
 
 @Component({
-  selector: "image-cropper",
-  templateUrl: "./image-cropper.component.html",
-  styleUrls: ["./image-cropper.component.css"],
+  // tslint:disable-next-line: component-selector
+  selector: 'image-cropper',
+  templateUrl: './image-cropper.component.html',
+  styleUrls: ['./image-cropper.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ImageCropperComponent implements OnChanges {
@@ -45,10 +46,10 @@ export class ImageCropperComponent implements OnChanges {
   private cropperScaledMinHeight = 20;
 
   safeImgDataUrl: SafeUrl | string;
-  marginLeft: SafeStyle | string = "0px";
+  marginLeft: SafeStyle | string = '0px';
   imageVisible = false;
 
-  @ViewChild("sourceImage", { static: true }) sourceImage: ElementRef;
+  @ViewChild('sourceImage', { static: true }) sourceImage: ElementRef;
 
   @Input()
   set imageChangedEvent(event: any) {
@@ -77,8 +78,8 @@ export class ImageCropperComponent implements OnChanges {
     }
   }
 
-  @Input() format: "png" | "jpeg" | "bmp" | "webp" | "ico" = "png";
-  @Input() outputType: OutputType = "base64";
+  @Input() format: 'png' | 'jpeg' | 'bmp' | 'webp' | 'ico' = 'png';
+  @Input() outputType: OutputType = 'base64';
   @Input() maintainAspectRatio = true;
   @Input() aspectRatio = 1;
   @Input() resizeToWidth = 0;
@@ -97,9 +98,9 @@ export class ImageCropperComponent implements OnChanges {
     x2: 10000,
     y2: 10000
   };
-  @HostBinding("style.text-align")
+  @HostBinding('style.text-align')
   @Input()
-  alignImage: "left" | "center" = "center";
+  alignImage: 'left' | 'center' = 'center';
 
   @Output() imageCropped = new EventEmitter<ImageCroppedEvent>();
   @Output() startCropImage = new EventEmitter<void>();
@@ -132,9 +133,9 @@ export class ImageCropperComponent implements OnChanges {
     this.imageVisible = false;
     this.originalImage = null;
     this.safeImgDataUrl =
-      "data:image/png;base64,iVBORw0KGg" +
-      "oAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAU" +
-      "AAarVyFEAAAAASUVORK5CYII=";
+      'data:image/png;base64,iVBORw0KGg' +
+      'oAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQYV2NgAAIAAAU' +
+      'AAarVyFEAAAAASUVORK5CYII=';
     this.moveStart = {
       active: false,
       type: null,
@@ -233,7 +234,7 @@ export class ImageCropperComponent implements OnChanges {
     }
   }
 
-  @HostListener("window:resize")
+  @HostListener('window:resize')
   onResize(): void {
     this.resizeCropperPosition();
     this.setMaxSize();
@@ -328,16 +329,16 @@ export class ImageCropperComponent implements OnChanges {
     };
   }
 
-  @HostListener("document:mousemove", ["$event"])
-  @HostListener("document:touchmove", ["$event"])
+  @HostListener('document:mousemove', ['$event'])
+  @HostListener('document:touchmove', ['$event'])
   moveImg(event: any): void {
     if (this.moveStart.active) {
       event.stopPropagation();
       event.preventDefault();
-      if (this.moveStart.type === "move") {
+      if (this.moveStart.type === 'move') {
         this.move(event);
         this.checkCropperPosition(true);
-      } else if (this.moveStart.type === "resize") {
+      } else if (this.moveStart.type === 'resize') {
         this.resize(event);
         this.checkCropperPosition(false);
       }
@@ -351,7 +352,7 @@ export class ImageCropperComponent implements OnChanges {
       this.maxSize.width = sourceImageElement.offsetWidth;
       this.maxSize.height = sourceImageElement.offsetHeight;
       this.marginLeft = this.sanitizer.bypassSecurityTrustStyle(
-        "calc(50% - " + this.maxSize.width / 2 + "px)"
+        'calc(50% - ' + this.maxSize.width / 2 + 'px)'
       );
     }
   }
@@ -417,8 +418,8 @@ export class ImageCropperComponent implements OnChanges {
     }
   }
 
-  @HostListener("document:mouseup")
-  @HostListener("document:touchend")
+  @HostListener('document:mouseup')
+  @HostListener('document:touchend')
   moveStop(): void {
     if (this.moveStart.active) {
       this.moveStart.active = false;
@@ -440,13 +441,13 @@ export class ImageCropperComponent implements OnChanges {
     const diffX = this.getClientX(event) - this.moveStart.clientX;
     const diffY = this.getClientY(event) - this.moveStart.clientY;
     switch (this.moveStart.position) {
-      case "left":
+      case 'left':
         this.cropper.x1 = Math.min(
           this.moveStart.x1 + diffX,
           this.cropper.x2 - this.cropperScaledMinWidth
         );
         break;
-      case "topleft":
+      case 'topleft':
         this.cropper.x1 = Math.min(
           this.moveStart.x1 + diffX,
           this.cropper.x2 - this.cropperScaledMinWidth
@@ -456,13 +457,13 @@ export class ImageCropperComponent implements OnChanges {
           this.cropper.y2 - this.cropperScaledMinHeight
         );
         break;
-      case "top":
+      case 'top':
         this.cropper.y1 = Math.min(
           this.moveStart.y1 + diffY,
           this.cropper.y2 - this.cropperScaledMinHeight
         );
         break;
-      case "topright":
+      case 'topright':
         this.cropper.x2 = Math.max(
           this.moveStart.x2 + diffX,
           this.cropper.x1 + this.cropperScaledMinWidth
@@ -472,13 +473,13 @@ export class ImageCropperComponent implements OnChanges {
           this.cropper.y2 - this.cropperScaledMinHeight
         );
         break;
-      case "right":
+      case 'right':
         this.cropper.x2 = Math.max(
           this.moveStart.x2 + diffX,
           this.cropper.x1 + this.cropperScaledMinWidth
         );
         break;
-      case "bottomright":
+      case 'bottomright':
         this.cropper.x2 = Math.max(
           this.moveStart.x2 + diffX,
           this.cropper.x1 + this.cropperScaledMinWidth
@@ -488,13 +489,13 @@ export class ImageCropperComponent implements OnChanges {
           this.cropper.y1 + this.cropperScaledMinHeight
         );
         break;
-      case "bottom":
+      case 'bottom':
         this.cropper.y2 = Math.max(
           this.moveStart.y2 + diffY,
           this.cropper.y1 + this.cropperScaledMinHeight
         );
         break;
-      case "bottomleft":
+      case 'bottomleft':
         this.cropper.x1 = Math.min(
           this.moveStart.x1 + diffX,
           this.cropper.x2 - this.cropperScaledMinWidth
@@ -516,7 +517,7 @@ export class ImageCropperComponent implements OnChanges {
     let overflowY = 0;
 
     switch (this.moveStart.position) {
-      case "top":
+      case 'top':
         this.cropper.x2 =
           this.cropper.x1 +
           (this.cropper.y2 - this.cropper.y1) * this.aspectRatio;
@@ -533,7 +534,7 @@ export class ImageCropperComponent implements OnChanges {
               : overflowX / this.aspectRatio;
         }
         break;
-      case "bottom":
+      case 'bottom':
         this.cropper.x2 =
           this.cropper.x1 +
           (this.cropper.y2 - this.cropper.y1) * this.aspectRatio;
@@ -550,7 +551,7 @@ export class ImageCropperComponent implements OnChanges {
               : overflowX / this.aspectRatio;
         }
         break;
-      case "topleft":
+      case 'topleft':
         this.cropper.y1 =
           this.cropper.y2 -
           (this.cropper.x2 - this.cropper.x1) / this.aspectRatio;
@@ -567,7 +568,7 @@ export class ImageCropperComponent implements OnChanges {
               : overflowX / this.aspectRatio;
         }
         break;
-      case "topright":
+      case 'topright':
         this.cropper.y1 =
           this.cropper.y2 -
           (this.cropper.x2 - this.cropper.x1) / this.aspectRatio;
@@ -584,8 +585,8 @@ export class ImageCropperComponent implements OnChanges {
               : overflowX / this.aspectRatio;
         }
         break;
-      case "right":
-      case "bottomright":
+      case 'right':
+      case 'bottomright':
         this.cropper.y2 =
           this.cropper.y1 +
           (this.cropper.x2 - this.cropper.x1) / this.aspectRatio;
@@ -602,8 +603,8 @@ export class ImageCropperComponent implements OnChanges {
               : overflowX / this.aspectRatio;
         }
         break;
-      case "left":
-      case "bottomleft":
+      case 'left':
+      case 'bottomleft':
         this.cropper.y2 =
           this.cropper.y1 +
           (this.cropper.x2 - this.cropper.x1) / this.aspectRatio;
@@ -638,11 +639,11 @@ export class ImageCropperComponent implements OnChanges {
       const width = imagePosition.x2 - imagePosition.x1;
       const height = imagePosition.y2 - imagePosition.y1;
 
-      const cropCanvas = document.createElement("canvas") as HTMLCanvasElement;
+      const cropCanvas = document.createElement('canvas') as HTMLCanvasElement;
       cropCanvas.width = width;
       cropCanvas.height = height;
 
-      const ctx = cropCanvas.getContext("2d");
+      const ctx = cropCanvas.getContext('2d');
       if (ctx) {
         if (this.backgroundColor != null) {
           ctx.fillStyle = this.backgroundColor;
@@ -702,13 +703,13 @@ export class ImageCropperComponent implements OnChanges {
     output: ImageCroppedEvent
   ): ImageCroppedEvent | Promise<ImageCroppedEvent> {
     switch (outputType) {
-      case "file":
+      case 'file':
         return this.cropToFile(cropCanvas).then((result: Blob | null) => {
           output.file = result;
           this.imageCropped.emit(output);
           return output;
         });
-      case "both":
+      case 'both':
         output.base64 = this.cropToBase64(cropCanvas);
         return this.cropToFile(cropCanvas).then((result: Blob | null) => {
           output.file = result;
@@ -723,14 +724,14 @@ export class ImageCropperComponent implements OnChanges {
   }
 
   private cropToBase64(cropCanvas: HTMLCanvasElement): string {
-    return cropCanvas.toDataURL("image/" + this.format, this.getQuality());
+    return cropCanvas.toDataURL('image/' + this.format, this.getQuality());
   }
 
   private cropToFile(cropCanvas: HTMLCanvasElement): Promise<Blob | null> {
     return new Promise(resolve => {
       cropCanvas.toBlob(
         (result: Blob | null) => this.zone.run(() => resolve(result)),
-        "image/" + this.format,
+        'image/' + this.format,
         this.getQuality()
       );
     });

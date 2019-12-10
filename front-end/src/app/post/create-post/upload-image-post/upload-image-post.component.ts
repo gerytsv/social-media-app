@@ -25,13 +25,10 @@ export class UploadImagePostComponent {
     }
     imageLoaded() {
         this.showCropper = true;
-        console.log('Image loaded');
     }
     cropperReady() {
-        console.log('Cropper ready');
     }
     loadImageFailed() {
-        console.log('Load failed');
     }
     rotateLeft() {
         this.imageCropper.rotateLeft();

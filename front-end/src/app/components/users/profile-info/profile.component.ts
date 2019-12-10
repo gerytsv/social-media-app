@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { UsersDataService } from '../users-data.service';
-import { ShowUserInfoDTO } from '../models/show-user-info.dto';
 import { User } from '../models/user';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../../../core/services/auth.service';
@@ -13,7 +12,7 @@ import { ConformationDialogBoxComponent } from '../../../shared/conformation-dia
 @Component({
   selector: 'app-profile-info',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileInfoComponent implements OnInit, OnDestroy {
   private loggedInSubscription: Subscription;
@@ -76,34 +75,29 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
   }
 
   public followUser() {
-    this.usersDataService.followUser(this.user.id).subscribe(
-      () => {
-        this.followed = true;
-        (this.user.followers as any) = [
-          ...this.user.followers,
-          this.loggedInUser
-        ];
-        this.notificator.success(`${this.user.username} has been followed`);
-      }
-    );
+    this.usersDataService.followUser(this.user.id).subscribe(() => {
+      this.followed = true;
+      (this.user.followers as any) = [
+        ...this.user.followers,
+        this.loggedInUser,
+      ];
+      this.notificator.success(`${this.user.username} has been followed`);
+    });
   }
 
   public unfollowUser() {
-    this.usersDataService.unfollowUser(this.user.id).subscribe(
-      () => {
-        this.followed = false;
-        this.user.followers = this.user.followers.filter(
-          follower => {
-          follower.id !== this.loggedInUser.id
-        });
-        this.notificator.success(`${this.user.username} has been unfollowed`);
-      }
-    );
+    this.usersDataService.unfollowUser(this.user.id).subscribe(() => {
+      this.followed = false;
+      this.user.followers = this.user.followers.filter(
+        follower => follower.id !== this.loggedInUser.id
+      );
+      this.notificator.success(`${this.user.username} has been unfollowed`);
+    });
   }
 
   public delete() {
     const confirmData = {
-      description: 'Do you want to delete this account?'
+      description: 'Do you want to delete this account?',
     };
     const refDialog = this.dialog.openConfDialog(
       ConformationDialogBoxComponent,
