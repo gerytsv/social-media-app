@@ -6,7 +6,7 @@
   <i class="material-icons" *ngIf="this.showHamMenu" (click)=toggleHam()>close</i>
   <div class="mid" [ngClass]="this.showHamMenu?'show':'hide'">
     <div class="search">
-      <app-search></app-search>
+      <app-search (closeMenu)="this.toggleHam()" ></app-search>
     </div>
     <div class="menu-icon" [routerLink]="['/home']" (click)=toggleHam()>
       <img
