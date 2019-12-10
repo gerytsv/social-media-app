@@ -3,7 +3,7 @@ import { PostsDataService } from '../services/posts-data.service';
 import { NotificatorService } from '../../core/services/notificator.service';
 import { AuthService } from '../../core/services/auth.service';
 import { CreatePostDTO } from '../models/create-post.dto';
-import * as moment from 'moment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-post',
@@ -18,7 +18,7 @@ export class CreatePostComponent implements OnInit {
   constructor(
     private readonly postsDataService: PostsDataService,
     private readonly notificator: NotificatorService,
-    private readonly authService: AuthService
+    private readonly router: Router
   ) {}
 
   public imageCropped(base64: string) {
@@ -30,22 +30,26 @@ export class CreatePostComponent implements OnInit {
     let imgurUrl = '';
     this.notificator.warn('Uploading new post...');
 
-    this.postsDataService.uploadPhoto(this.imgUrl).subscribe(res => {
-      imgurUrl = res.photoLink;
-      const post: CreatePostDTO = {
-        description: this.description,
-        photoUrl: imgurUrl,
-        isPrivate: this.isPrivate,
-      };
-
-      this.postsDataService.createPost(post).subscribe(() => {
-        this.notificator.success('Post uploaded succesfully');
-      }),
-        // tslint:disable-next-line: no-unused-expression
-        () => {
-          this.notificator.error('Could not upload post');
+    this.postsDataService.uploadPhoto(this.imgUrl).subscribe(
+      res => {
+        imgurUrl = res.photoLink;
+        const post: CreatePostDTO = {
+          description: this.description,
+          photoUrl: imgurUrl,
+          isPrivate: this.isPrivate,
         };
-    });
+
+        this.postsDataService.createPost(post).subscribe(() => {
+          this.notificator.success('Post uploaded succesfully');
+          this.router.navigate(['/home']);
+        }),
+          // tslint:disable-next-line: no-unused-expression
+          () => {
+            this.notificator.error('Could not upload post');
+          };
+      },
+      () => this.notificator.error('Could not upload picture')
+    );
   }
 
   public isPrivateCheck() {

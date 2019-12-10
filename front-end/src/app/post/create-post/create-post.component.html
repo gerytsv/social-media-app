@@ -5,13 +5,15 @@
     ></app-upload-image-post>
   </div>
   <div class="options">
+    Description:
     <textarea
       class="description"
       type="text"
       placeholder="Write a description..."
       [(ngModel)]="this.description"
     ></textarea>
-    <div class="status">
+    <span>Status:</span>
+    <div class="status" id="status">
       <input
         type="radio"
         name="isPrivate"
@@ -21,6 +23,7 @@
         type="radio"
         name="isPrivate"
         (click)="this.isPublicCheck()"
+        checked
       /><span>Public</span>
     </div>
     <button class="create-post" (click)="this.onPostButtonClick()">
