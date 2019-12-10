@@ -1,6 +1,4 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { Post } from '../../common/post';
 import { PostsDataService } from '../services/posts-data.service';
@@ -17,7 +15,6 @@ export class PostDetailPreviewComponent implements OnInit {
   public avatar: string;
 
   constructor(
-    private readonly route: ActivatedRoute,
     private readonly postsService: PostsDataService,
     private readonly dialog: MatDialog,
     @Inject(MAT_DIALOG_DATA) public data: any
@@ -35,6 +32,6 @@ export class PostDetailPreviewComponent implements OnInit {
   }
 
   public close() {
-      this.dialog.closeAll();
+    this.dialog.closeAll();
   }
 }
