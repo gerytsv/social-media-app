@@ -16,12 +16,11 @@
       />
       <span>News</span>
     </div>
-    <div class="menu-icon" (click)=toggleHam()>
+    <div class="menu-icon" (click)=toggleHam() [routerLink]="['/posts/create']">
       <img
         src="../../../assets/icons/create_post_nav.svg"
         class="icons"
         title="Create Post"
-        [routerLink]="['/posts/create']"
       />
       <span>Create</span>
     </div>
