@@ -6,46 +6,46 @@ import { CreatePostDTO } from '../models/create-post.dto';
 import * as moment from 'moment';
 
 @Component({
-    selector: 'app-create-post',
-    templateUrl: './create-post.component.html',
-    styleUrls: ['./create-post.component.css'],
+  selector: 'app-create-post',
+  templateUrl: './create-post.component.html',
+  styleUrls: ['./create-post.component.css'],
 })
 export class CreatePostComponent implements OnInit {
-    public imgUrl: string;
-    public description: string;
-    public isPrivate: boolean = false;
+  public imgUrl: string;
+  public description: string;
+  public isPrivate: boolean = false;
 
-    constructor(
-        private readonly postsDataService: PostsDataService,
-        private readonly notificator: NotificatorService,
-        private readonly authService: AuthService
-    ) {}
+  constructor(
+    private readonly postsDataService: PostsDataService,
+    private readonly notificator: NotificatorService,
+    private readonly authService: AuthService
+  ) {}
 
-    public imageCropped(base64: string) {
-        const base64Arr = base64.split(',');
-        this.imgUrl = base64Arr[1];
-    }
+  public imageCropped(base64: string) {
+    const base64Arr = base64.split(',');
+    this.imgUrl = base64Arr[1];
+  }
 
-    public onPostButtonClick() {
-        let imgurUrl: string = '';
-        let dateOfPost = moment(new Date()).format('MMM Do YY');
+  public onPostButtonClick() {
+    let imgurUrl: string = '';
+    let dateOfPost = moment(new Date()).format('MMM Do YY');
 
-        this.postsDataService.uploadPhoto(this.imgUrl).subscribe(res => {
-            imgurUrl = res.photoLink;
-            const post: CreatePostDTO = {
-                description: this.description,
-                photoUrl: imgurUrl,
-                isPrivate: this.isPrivate,
-            };
-            console.log(post);
-            this.postsDataService.createPost(post).subscribe(res => {});
-        });
-    }
+    this.postsDataService.uploadPhoto(this.imgUrl).subscribe(res => {
+      imgurUrl = res.photoLink;
+      const post: CreatePostDTO = {
+        description: this.description,
+        photoUrl: imgurUrl,
+        isPrivate: this.isPrivate,
+      };
 
-    public isPrivateButtonClick() {
-        this.isPrivate = !this.isPrivate;
-        // console.log(`isPrivate state: ${this.isPrivate}`);
-    }
+      this.postsDataService.createPost(post).subscribe(res => {});
+    });
+  }
 
-    ngOnInit() {}
+  public isPrivateButtonClick() {
+    this.isPrivate = !this.isPrivate;
+    // console.log(`isPrivate state: ${this.isPrivate}`);
+  }
+
+  ngOnInit() {}
 }
