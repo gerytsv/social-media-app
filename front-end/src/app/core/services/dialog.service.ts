@@ -24,12 +24,6 @@ export class DialogService {
     dialogConfig.disableClose = false;
     dialogConfig.hasBackdrop = true;
     dialogConfig.panelClass = 'my-class';
-    dialogConfig.position = {
-      top: '0',
-      left: '0',
-      bottom: '0',
-      right: '0'
-    };
 
     this.dialog.open(PostDetailPreviewComponent, dialogConfig);
   }
