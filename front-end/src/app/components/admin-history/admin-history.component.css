@@ -6,7 +6,6 @@
     flex-wrap: wrap;
     margin: 1rem auto;
     box-shadow:5px 5px 9px 0px #ccc;
-    border: 0.01rem solid grey;
 }
 .title{
     flex: 100%;
