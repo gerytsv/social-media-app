@@ -134,6 +134,10 @@ export class CommentsService {
     }
 
     comment.isDeleted = true;
+    console.log(
+      'Im right before saving the removal of a comment (isDeleted: true)!',
+    );
+
     this.commentsRepository.save(comment);
     return {
       messege: 'Comment Deleted',
