@@ -1,6 +1,9 @@
 <div class="wrapper" *ngIf="this.post">
   <div class="img-wrapper">
-    <i class="material-icons close-button" (click)="this.close()">close</i>
+    <div class="close-button">
+      <i class="material-icons" (click)="this.close()">arrow_back</i>
+      <span (click)="this.close()">Back</span>
+    </div>
     <img class="photo" src="{{ this.post.photoUrl }}" />
   </div>
   <div class="info">
