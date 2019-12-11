@@ -22,9 +22,9 @@ export class PostComponent implements OnInit {
       this.likes = res.likes;
       this.myLike = res.myLikes.isLiked;
 
-      console.log('this.likes: ', this.likes);
-      console.log('res.myLikes.isLiked: ', res.myLikes.isLiked);
-      console.log('this.myLike: ', this.myLike);
+      // console.log('this.likes: ', this.likes);
+      // console.log('res.myLikes.isLiked: ', res.myLikes.isLiked);
+      // console.log('this.myLike: ', this.myLike);
     });
   }
 
@@ -34,9 +34,9 @@ export class PostComponent implements OnInit {
         this.likes.likes = res.likes.likes;
         this.myLike = res.myLikes.isLiked;
 
-        console.log('this.likes: ', this.likes);
-        console.log('res.myLikes.isLiked: ', res.myLikes.isLiked);
-        console.log('this.myLike: ', this.myLike);
+        // console.log('this.likes: ', this.likes);
+        // console.log('res.myLikes.isLiked: ', res.myLikes.isLiked);
+        // console.log('this.myLike: ', this.myLike);
       });
     });
   }
