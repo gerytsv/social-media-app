@@ -19,6 +19,7 @@ body {
 
 body::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: hsl(0, 0, 0, 96%);
   border-radius: 0;
 }
@@ -64,12 +65,16 @@ body::-webkit-scrollbar-thumb {
   display: none;
 }
 
+.cdk-global-scrollblock {
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 500px) {
   body {
     padding-top: 1.5rem;
   }
   .cdk-overlay-pane {
-    max-width: 99% !important;
+    max-width: 100% !important;
     max-height: 150%;
   }
 }
