@@ -1,10 +1,12 @@
 .btn {
   width: 40%;
+  font-size: 1rem;
   margin: 1rem 0.5rem 0 0.5rem;
   border: 0.08rem solid grey;
   border-radius: 10%;
   text-align: center;
   padding: 3%;
+  cursor: pointer;
 }
 
 .yes {
@@ -21,5 +23,7 @@
 
 .container {
   background-color: rgb(238, 237, 240);
+  font-size: 1.3rem;
+  border-radius: 10%;
   padding: 1rem;
 }
