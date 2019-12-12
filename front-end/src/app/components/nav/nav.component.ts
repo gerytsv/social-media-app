@@ -7,10 +7,9 @@ import { ConformationDialogBoxComponent } from '../../shared/conformation-dialog
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.css']
+  styleUrls: ['./nav.component.css'],
 })
 export class NavComponent implements OnInit, OnDestroy {
-
   private loggedInSubscription: Subscription;
   private userSubscription: Subscription;
   public username: string;
@@ -27,7 +26,7 @@ export class NavComponent implements OnInit, OnDestroy {
       this.isAdmin = user.isAdmin;
       this.username = user.username;
     });
-    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe( res => {
+    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(res => {
       this.loggedIn = res;
     });
   }
@@ -45,7 +44,10 @@ export class NavComponent implements OnInit, OnDestroy {
     const confirmData = {
       description: 'Do you want to logout?',
     };
-    const refDialog = this.dialog.openConfDialog(ConformationDialogBoxComponent, confirmData);
+    const refDialog = this.dialog.openConfDialog(
+      ConformationDialogBoxComponent,
+      confirmData
+    );
 
     refDialog.afterClosed().subscribe(result => {
       if (result) {
@@ -57,7 +59,4 @@ export class NavComponent implements OnInit, OnDestroy {
   public toggleHam() {
     this.showHamMenu = !this.showHamMenu;
   }
-
-
-
 }
