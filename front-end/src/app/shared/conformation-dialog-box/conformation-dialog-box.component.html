@@ -1,5 +1,7 @@
 <div class="container">
-    <div class=description>{{this.description}}</div>
-    <button  (click)=this.confirm()>Confirm</button>
-    <button (click)=this.cancel()>Cancel</button>
+  <div class=description>{{this.description}}</div>
+  <div class="buttons">
+    <div class="btn yes" (click)=this.confirm()>Confirm</div>
+    <div class="btn no" (click)=this.cancel()>Cancel</div>
+  </div>
 </div>
