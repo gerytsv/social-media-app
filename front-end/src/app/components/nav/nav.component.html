@@ -1,60 +1,35 @@
 <nav>
   <div class="logo">
-    <img src="../../../assets/icons/Group 176.svg">
+    <img src="../../../assets/logo.png">
   </div>
   <i class="material-icons" *ngIf="!this.showHamMenu" (click)=toggleHam()>menu</i>
   <i class="material-icons" *ngIf="this.showHamMenu" (click)=toggleHam()>close</i>
   <div class="mid" [ngClass]="this.showHamMenu?'show':'hide'">
     <div class="search">
-      <app-search (closeMenu)="this.toggleHam()" ></app-search>
+      <app-search (closeMenu)="this.toggleHam()"></app-search>
     </div>
     <div class="menu-icon" [routerLink]="['/home']" (click)=toggleHam()>
-      <img
-        src="../../../../assets/icons/Home.svg"
-        class="icons"
-        title="Newsfeed"
-      />
+      <img src="../../../../assets/icons/Home.svg" class="icons" title="Newsfeed" />
       <span>News</span>
     </div>
     <div class="menu-icon" (click)=toggleHam() [routerLink]="['/posts/create']">
-      <img
-        src="../../../assets/icons/create_post_nav.svg"
-        class="icons"
-        title="Create Post"
-      />
+      <img src="../../../assets/icons/create_post_nav.svg" class="icons" title="Create Post" />
       <span>Create</span>
     </div>
     <div class="menu-icon" [routerLink]="['/explore/posts']" (click)=toggleHam()>
-      <img
-        src="../../../assets/icons/compass.svg"
-        class="icons"
-        title="Explore"
-      />
+      <img src="../../../assets/icons/compass.svg" class="icons" title="Explore" />
       <span>Explore</span>
     </div>
     <div class="menu-icon" [routerLink]="this.profileLink" (click)=toggleHam()>
-      <img
-        class="icons"
-        src="../../../assets/icons/user.svg"
-        title="View Pofile"
-      />
+      <img class="icons" src="../../../assets/icons/user.svg" title="View Pofile" />
       <span>Profile</span>
     </div>
     <div class="menu-icon" [routerLink]="['admin/history']" (click)=toggleHam() *ngIf="this.isAdmin">
-      <img
-        
-        src="../../../assets/icons/control_x2C__management.svg"
-        class="icons"
-        title="History"
-      />
+      <img src="../../../assets/icons/control_x2C__management.svg" class="icons" title="History" />
       <span>Admin</span>
     </div>
     <div class="menu-icon" (click)="this.logout()" (click)=toggleHam()>
-      <img
-        src="../../../assets/icons/logout.svg"
-        class="icons"
-        title="Logout"
-      />
+      <img src="../../../assets/icons/logout.svg" class="icons" title="Logout" />
       <span>Logout</span>
     </div>
   </div>

@@ -78,7 +78,13 @@ export class PostsService {
   }
 
   public async findPostById(postId: string): Promise<Post> {
-    const foundPost: Post = await this.postsRepository.findOne({ id: postId });
+    const foundPost: Post = await this.postsRepository.findOne({
+      id: postId,
+      isDeleted: false,
+    });
+    const foundComments = await foundPost.comments;
+    foundPost.comments = foundComments.filter(comment => !comment.isDeleted);
+
     if (foundPost === undefined || foundPost.isDeleted) {
       throw new SystemError('No such post found', 404);
     }

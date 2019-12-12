@@ -86,7 +86,7 @@ export class CommentsService {
     const user = await this.usersRepository.findOne({
       where: { id: userId, isDeleted: false },
     });
-    let comments = await this.commentsRepository.find({
+    const comments = await this.commentsRepository.find({
       where: { user },
       relations: ['post'],
     });
@@ -134,6 +134,10 @@ export class CommentsService {
     }
 
     comment.isDeleted = true;
+    console.log(
+      'Im right before saving the removal of a comment (isDeleted: true)!',
+    );
+
     this.commentsRepository.save(comment);
     return {
       messege: 'Comment Deleted',

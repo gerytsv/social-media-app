@@ -32,9 +32,13 @@ export class CommentsDataService {
     );
   }
 
-  public updateCommentContent(commentId: string, body: { content: string }) {
-    this.http.put<CommentDTO>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/comments/${commentId}`, body
+  public updateCommentContent(
+    commentId: string,
+    body: { content: string }
+  ): Observable<CommentDTO> {
+    return this.http.put<CommentDTO>(
+      `${CONFIG.DOMAIN_NAME}/api/posts/comments/${commentId}`,
+      body
     );
   }
 }

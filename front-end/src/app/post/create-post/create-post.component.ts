@@ -21,6 +21,8 @@ export class CreatePostComponent implements OnInit {
     private readonly router: Router
   ) {}
 
+  ngOnInit() {}
+
   public imageCropped(base64: string) {
     const base64Arr = base64.split(',');
     this.imgUrl = base64Arr[1];
@@ -42,11 +44,7 @@ export class CreatePostComponent implements OnInit {
         this.postsDataService.createPost(post).subscribe(() => {
           this.notificator.success('Post uploaded succesfully');
           this.router.navigate(['/home']);
-        }),
-          // tslint:disable-next-line: no-unused-expression
-          () => {
-            this.notificator.error('Could not upload post');
-          };
+        });
       },
       () => this.notificator.error('Could not upload picture')
     );
@@ -59,6 +57,4 @@ export class CreatePostComponent implements OnInit {
   public isPublicCheck() {
     this.isPrivate = false;
   }
-
-  ngOnInit() {}
 }

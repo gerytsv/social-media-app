@@ -6,7 +6,7 @@
   </div>
 
   <div class="create-comment">
-    <app-create-comment *ngIf="!this.haveComments" (bodyToSend)="this.createComment($event)"></app-create-comment>
+    <app-create-comment (bodyToSend)="this.createComment($event)"></app-create-comment>
   </div>
   <!-- <button class="more">See more...</button> -->
 </div>

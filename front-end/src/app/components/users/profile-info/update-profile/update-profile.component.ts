@@ -8,7 +8,7 @@ import { DialogService } from '../../../../core/services/dialog.service';
 @Component({
   selector: 'app-update-profile',
   templateUrl: './update-profile.component.html',
-  styleUrls: ['./update-profile.component.css']
+  styleUrls: ['./update-profile.component.css'],
 })
 export class UpdateProfileComponent implements OnInit {
   @Input() public user: ShowUserInfoDTO;
@@ -33,13 +33,14 @@ export class UpdateProfileComponent implements OnInit {
           'Photo uploaded, save changes to update profile'
         );
       },
-      () => this.notificator.error('Photo upload fail, check file format or size.')
+      () =>
+        this.notificator.error('Photo upload fail, check file format or size.')
     );
   }
 
   public updateProfileInfo() {
     const confirmData = {
-      description: 'Do you want to save changes?'
+      description: 'Do you want to save changes?',
     };
     const refDialog = this.dialog.openConfDialog(
       ConformationDialogBoxComponent,
