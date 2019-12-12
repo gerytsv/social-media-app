@@ -10,8 +10,9 @@ import { FollowsComponent } from './follows/follows.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { FormsModule } from '@angular/forms';
 import { SharedModule } from '../../../shared/shared.module';
-import { User } from '../models/user';
 import { of, throwError } from 'rxjs';
+import { UserPostsComponent } from '../../user-posts/user-posts.component';
+import { PostsModule } from '../../../post/posts.module';
 
 describe('ProfileComponent', () => {
   let fixture: ComponentFixture<ProfileInfoComponent>;
@@ -50,7 +51,7 @@ describe('ProfileComponent', () => {
     };
 
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule, FormsModule, SharedModule],
+      imports: [RouterTestingModule, FormsModule, SharedModule, PostsModule],
       providers: [
         UsersDataService,
         AuthService,
@@ -60,7 +61,8 @@ describe('ProfileComponent', () => {
       declarations: [
         ProfileInfoComponent,
         UpdateProfileComponent,
-        FollowsComponent
+        FollowsComponent,
+        UserPostsComponent
       ]
     })
       .overrideProvider(UsersDataService, { useValue: usersDataService })
