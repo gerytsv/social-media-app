@@ -38,13 +38,15 @@ export class CommentComponent implements OnInit {
 
   public updateComment() {
     this.comment.content = this.updatedComment;
-    this.commentsDataService.updateCommentContent(this.comment.id, {
-      content: this.updatedComment.content,
-    });
+    this.commentsDataService
+      .updateCommentContent(this.comment.id, {
+        content: this.updatedComment,
+      })
+      .toPromise();
   }
 
   public deleteComment() {
     this.deleteCommentId.emit(this.comment.id);
-    this.commentsDataService.deleteComment(this.comment.id).subscribe();
+    this.commentsDataService.deleteComment(this.comment.id).toPromise();
   }
 }

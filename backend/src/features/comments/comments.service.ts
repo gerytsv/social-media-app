@@ -86,7 +86,7 @@ export class CommentsService {
     const user = await this.usersRepository.findOne({
       where: { id: userId, isDeleted: false },
     });
-    let comments = await this.commentsRepository.find({
+    const comments = await this.commentsRepository.find({
       where: { user },
       relations: ['post'],
     });
