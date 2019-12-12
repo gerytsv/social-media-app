@@ -18,7 +18,8 @@ export class UsersService {
   public constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(Role) private readonly rolesRepository: Repository<Role>,
-    @InjectRepository(History) private readonly historyRepository: Repository<History>
+    @InjectRepository(History)
+    private readonly historyRepository: Repository<History>,
   ) {}
 
   public async signIn(user: UserLoginDTO): Promise<User> {
@@ -92,7 +93,9 @@ export class UsersService {
     const savedUser = await this.userRepository.save(userEntity);
     if (savedUser) {
       const adminHistoryEntity = this.historyRepository.create();
-      adminHistoryEntity.content = `Account with username ${body.username} has been created`;
+      adminHistoryEntity.content = `Account with username ${
+        body.username
+      } has been created`;
       this.historyRepository.save(adminHistoryEntity);
     }
     return savedUser;
@@ -112,7 +115,7 @@ export class UsersService {
       throw new SystemError('The user is not found', 404);
     }
     if (!isAdmin(requestUser)) {
-      if ( requestUser.username !== user.username ) {
+      if (requestUser.username !== user.username) {
         throw new SystemError('Not owner of the account', 400);
       }
     }
@@ -121,10 +124,12 @@ export class UsersService {
     const deletedUser = await this.userRepository.save(user);
     if (deletedUser) {
       const adminHistoryEntity = this.historyRepository.create();
-      adminHistoryEntity.content = `Account with username ${user.username} has been deleted`;
+      adminHistoryEntity.content = `Account with username ${
+        user.username
+      } has been deleted`;
       this.historyRepository.save(adminHistoryEntity);
     }
-    return { messege: 'User deleted succesfully' };
+    return { message: 'User deleted succesfully' };
   }
 
   public async validate(payload: JwtPayload): Promise<User> {
@@ -152,7 +157,7 @@ export class UsersService {
     country: string,
     description: string,
     avatarUrl: string,
-    requestUserId: string
+    requestUserId: string,
   ) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
@@ -167,7 +172,7 @@ export class UsersService {
       throw new SystemError('User not found', 404);
     }
     if (!isAdmin(requestUser)) {
-      if ( requestUser.username !== user.username ) {
+      if (requestUser.username !== user.username) {
         throw new SystemError('Not owner of the account', 400);
       }
     }

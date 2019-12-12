@@ -1,6 +1,4 @@
-import { ShowAvatarUrlDTO } from './../users/models/show-avatarUrl.dto';
-import { ShowUserOnPost } from './../users/models/show-user-on-post.dto';
-import { ShowUserDTO } from './../users/models/show-user.dto';
+import { isAdmin } from './../../common/util-services/is-admin';
 import { CreatePostDTO } from './models/create-post.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -91,11 +89,41 @@ export class PostsService {
     return foundPost;
   }
 
+  public async editPost(userId: string, postId: string, newContent: string) {
+    const post = await this.postsRepository.findOne({
+      where: { id: postId, isDeleted: false },
+    });
+    if (!post) {
+      throw new SystemError('No such post found', 400);
+    }
+    const postOwner = await post.user;
+    if (!isAdmin(postOwner)) {
+      if (postOwner.id !== userId) {
+        throw new SystemError('This user cannot edit this post', 400);
+      }
+    }
+    post.description = newContent;
+
+    return await this.postsRepository.save(post);
+  }
+
   public async deletePost(userId: string, postId: string) {
     const foundPost: Post = await this.findPostById(postId);
+
+    if (!foundPost) {
+      throw new SystemError('Post not found', 400);
+    }
+
     const loggedUser: User = await this.usersRepository.findOne({
       where: { id: userId },
     });
+
+    if (!isAdmin(loggedUser)) {
+      if (!loggedUser || loggedUser.id !== userId) {
+        throw new SystemError('This user cannot delete this post', 400);
+      }
+    }
+
     if (foundPost.user.username === loggedUser.username) {
       const savedPost: Post = await this.postsRepository.save({
         ...foundPost,

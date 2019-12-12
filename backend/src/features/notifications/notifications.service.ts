@@ -20,7 +20,7 @@ export class NotificationService {
 
   public async createNotification(
     userId: string,
-    messege: string,
+    message: string,
     followedByUserId?: string,
     postId?: string,
   ) {
@@ -32,7 +32,7 @@ export class NotificationService {
     }
     const notification = {
       user,
-      content: messege,
+      content: message,
     };
 
     const createdNotification = this.notificationRepository.create(
