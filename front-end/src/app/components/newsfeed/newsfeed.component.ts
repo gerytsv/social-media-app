@@ -21,9 +21,8 @@ export class NewsfeedComponent implements OnInit {
       posts.posts.subscribe(postsArray => {
         this.posts = postsArray.flat();
         if (this.posts.length === 0) {
-          console.log('No posts to show!');
+          //
         }
-        console.log(this.posts);
       });
     });
   }
