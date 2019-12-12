@@ -6,7 +6,10 @@
     <span>{{ this.user.followers.length }}</span> followers
   </div>
   <div class="show-follows" *ngIf="showFollowers">
-    <i class="material-icons" (click)="close()">close</i>
+    <div class="title">
+      <span>Followers</span>
+      <i class="material-icons" (click)="close()">close</i>
+    </div>
     <app-minimized-user
       *ngFor="let user of this.user.followers"
       [user]="user"
@@ -17,7 +20,10 @@
     <span>{{ this.user.followed.length }}</span> followed
   </div>
   <div class="show-follows" *ngIf="showFollowed">
-    <i class="material-icons" (click)="close()">close</i>
+      <div class="title">
+          <span>Followed users</span>
+          <i class="material-icons" (click)="close()">close</i>
+        </div>
     <app-minimized-user
       *ngFor="let user of this.user.followed"
       [user]="user"

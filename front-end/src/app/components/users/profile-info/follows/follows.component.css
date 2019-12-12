@@ -14,21 +14,17 @@ span {
 
 .show-follows {
   min-width: 15rem;
-  padding: 1rem;
+  padding: 0.5rem;
   cursor: pointer;
-  position: relative;
+  position: fixed;
   background-color: rgb(248, 248, 248);
-  position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 10px 10px 5px #888;
-}
-
-i {
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
+  z-index: 50;
+  max-height: 500px;
+  overflow: auto;
 }
 
 .back-drop {
@@ -39,4 +35,18 @@ i {
 
 .followers, .followed {
   cursor: pointer;
+}
+
+.title {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(136, 136, 136, 0.322)
+}
+
+.title > span {
+  padding-left: 0.5rem;
 }
