@@ -13,6 +13,8 @@ import {
   ValidationPipe,
   Body,
   Delete,
+  Put,
+  Req,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -45,6 +47,18 @@ export class PostsController {
     return posts;
   }
 
+  @Post('create')
+  @UseGuards(AuthGuard('jwt'))
+  @UseInterceptors(new TransformInterceptor(ShowPostDTO))
+  @HttpCode(HttpStatus.CREATED)
+  public async addNewPost(
+    @Request() request: any,
+    @Body(new ValidationPipe({ transform: true, whitelist: true }))
+    body: CreatePostDTO,
+  ) {
+    return await this.postsService.createPost(request.user.id, body);
+  }
+
   @Get('/:id')
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
@@ -57,16 +71,19 @@ export class PostsController {
     }
   }
 
-  @Post('create')
-  @UseGuards(AuthGuard('jwt'))
+  @Put(':id')
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
-  @HttpCode(HttpStatus.CREATED)
-  public async addNewPost(
+  public async editPost(
     @Request() request: any,
+    @Param('id') postId: string,
     @Body(new ValidationPipe({ transform: true, whitelist: true }))
     body: CreatePostDTO,
   ) {
-    return await this.postsService.createPost(request.user.id, body);
+    return await this.postsService.editPost(
+      request.user.id,
+      postId,
+      body.description,
+    );
   }
 
   @Delete(':id')
