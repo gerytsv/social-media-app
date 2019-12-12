@@ -6,6 +6,13 @@ body {
   background-color: #fef1f1;
 }
 
+.no-posts {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(110, 104, 104);
+}
+
 .posts-container {
   overflow: hidden;
   background-color: #fef1f1;

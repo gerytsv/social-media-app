@@ -7,7 +7,7 @@ import { PostDTO } from '../../post/models/post.dto';
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
-  styleUrls: ['./newsfeed.component.css']
+  styleUrls: ['./newsfeed.component.css'],
 })
 export class NewsfeedComponent implements OnInit {
   public posts: PostDTO[] = [];
@@ -20,9 +20,6 @@ export class NewsfeedComponent implements OnInit {
     this.route.data.subscribe(({ posts }) => {
       posts.posts.subscribe(postsArray => {
         this.posts = postsArray.flat();
-        if (this.posts.length === 0) {
-          //
-        }
       });
     });
   }
