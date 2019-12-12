@@ -1,4 +1,4 @@
-<div class="background">
+<div class="background" *ngIf="this.ready" >
   <img src="../../../assets/bckg_huggo.png" />
   <div class="wrapper">
     <app-login *ngIf="this.showLogin"></app-login>

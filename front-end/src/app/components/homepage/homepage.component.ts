@@ -13,7 +13,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   public loggedInSubscription: Subscription;
   public showLogin = true;
   public showRegister = false;
-  public button = 'Login';
+  public ready = false;
 
   constructor(
     private readonly authService: AuthService,
@@ -22,8 +22,10 @@ export class HomepageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(res => {
-      if (res === true) {
+      if (res) {
         this.router.navigate(['home']);
+      } else {
+        this.ready = true;
       }
     });
   }
