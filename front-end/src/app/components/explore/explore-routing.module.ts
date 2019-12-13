@@ -12,11 +12,11 @@ const routes: Routes = [
         pathMatch: 'full',
         resolve: { posts: AllPostsResolver },
     },
-    // {
-    //   path: "posts/:id",
-    //   component: PostDetailPreviewComponent,
-    //   resolve: { post: SinglePostResolver }
-    // }
+    /* {
+       path: "posts/:id",
+       component: PostDetailPreviewComponent,
+       resolve: { post: SinglePostResolver }
+    } */
 ];
 
 @NgModule({

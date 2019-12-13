@@ -108,7 +108,7 @@ export class CommentsService {
     const commentOwner = await comment.user;
     if (!isAdmin(commentOwner)) {
       if (commentOwner.id !== userId) {
-        throw new SystemError("This user can't edit the comment", 400);
+        throw new SystemError(`This user can't edit the comment`, 400);
       }
     }
     comment.content = newContent;
@@ -129,7 +129,7 @@ export class CommentsService {
     const user = await comment.user;
     if (!isAdmin(user)) {
       if (!user || user.id !== userId) {
-        throw new SystemError("This user can't delete this comment", 400);
+        throw new SystemError(`This user can't delete this comment`, 400);
       }
     }
 
