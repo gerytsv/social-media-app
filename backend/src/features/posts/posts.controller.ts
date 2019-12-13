@@ -12,6 +12,7 @@ import {
   Body,
   Delete,
   Put,
+  Query,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -28,8 +29,12 @@ export class PostsController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
-  public async allPosts(@Request() request: any) {
-    const posts = await this.postsService.allPosts();
+  public async allPosts(
+    @Request() request: any,
+    @Query('take') take: number,
+    @Query('skip') skip: number,
+  ) {
+    const posts = await this.postsService.allPosts(take, skip);
     return posts;
   }
 
@@ -37,9 +42,15 @@ export class PostsController {
   @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
-  public async allPostsByFollowed(@Request() request: any) {
+  public async allPostsByFollowed(
+    @Request() request: any,
+    @Query('take') take: number,
+    @Query('skip') skip: number,
+  ) {
     const posts = await this.postsService.allPostsByFollowed(
       request.user.username,
+      take,
+      skip,
     );
     return posts;
   }
@@ -61,8 +72,7 @@ export class PostsController {
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
   @HttpCode(HttpStatus.OK)
   public async postById(@Param('id') postId: string) {
-      return await this.postsService.findPostById(postId);
-
+    return await this.postsService.findPostById(postId);
   }
 
   @Put(':id')
