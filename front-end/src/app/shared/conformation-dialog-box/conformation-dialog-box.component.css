@@ -19,6 +19,7 @@
 
 .buttons {
   display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -26,4 +27,5 @@
   font-size: 1.3rem;
   border-radius: 10%;
   padding: 1rem;
+  text-align: center;
 }
