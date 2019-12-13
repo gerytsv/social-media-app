@@ -14,7 +14,7 @@ body {
   background: #fef1f1;
   display: grid;
   grid-template-columns: repeat(5, 19.5vw);
-  grid-template-rows: 19.5vw;
+  /* grid-template-rows: 19.5vw; */
   grid-gap: 0.5vw;
 }
 
@@ -33,13 +33,7 @@ p {
 @media screen and (min-width: 320px) and (max-width: 575px) {
   .posts-container {
     grid-template-columns: repeat(3, 32.6vw);
-    grid-template-rows: 32vw;
     grid-gap: 0.5vw;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .posts-container {
   }
 }
 
