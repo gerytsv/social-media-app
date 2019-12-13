@@ -25,9 +25,6 @@ export class Post {
   @Column({ type: 'nvarchar', nullable: true })
   public keywords: string;
 
-  @Column({ type: 'nvarchar', nullable: true })
-  public location: string;
-
   @CreateDateColumn({ type: 'timestamp' })
   public postedOn: Date;
 

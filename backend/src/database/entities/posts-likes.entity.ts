@@ -13,7 +13,7 @@ export class PostLike {
   @Column({type: 'boolean', default: false})
   public isLiked: boolean;
 
-  @ManyToOne(type => User, user => user.comments , {eager : true})
+  @ManyToOne(type => User, user => user.likes , {eager : true})
   public user: User;
 
   @ManyToOne(type => Post, post => post.comments)
