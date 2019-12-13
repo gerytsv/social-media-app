@@ -15,6 +15,7 @@ import {
   Delete,
   Put,
   Req,
+  BadRequestException,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -67,7 +68,7 @@ export class PostsController {
     if (postId) {
       return await this.postsService.findPostById(postId);
     } else {
-      throw new SystemError('Wrong post id!', 400);
+      throw new BadRequestException('Wrong post id!');
     }
   }
 
