@@ -2,7 +2,7 @@ import { isAdmin } from './../../common/util-services/is-admin';
 import { CreatePostDTO } from './models/create-post.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository, getRepository } from 'typeorm';
+import { Repository, getRepository, In } from 'typeorm';
 import { Post } from '../../database/entities/posts.entity';
 import { User } from '../../database/entities/users.entity';
 import { SystemError } from '../../common/exceptions/system.error';
@@ -16,35 +16,78 @@ export class PostsService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  public async allPosts() {
+  public async allPosts(take: number, skip: number) {
     const posts: Post[] = await this.postsRepository.find({
       where: { isDeleted: false, isPrivate: false },
       order: { postedOn: 'DESC' },
+      take: +take,
+      skip: +skip,
     });
     if (posts) {
-    const filterPosts = posts.filter(post => post.user && post.user.isDeleted === false  );
-    return filterPosts;
+      const filterPosts = posts.filter(
+        post => post.user && post.user.isDeleted === false,
+      );
+      return filterPosts;
     }
     return [];
   }
 
-  public async allPostsByFollowed(username: string) {
-
+  public async allPostsByFollowed(
+    username: string,
+    take: number,
+    skip: number,
+  ) {
     const currentUser = await this.usersRepository.findOne({
       where: { username, isDeleted: false },
-      relations: ['followed' , 'followed.posts']
+      relations: ['followed', 'followed.posts'],
     });
 
-    const followed = await currentUser.followed;
-    const posts = followed.map(followedUser => followedUser.posts);
-    const readyPosts = await Promise.all(posts);
+    if (!currentUser) {
+      throw new SystemError('User not found', 404);
+    }
 
-    const flattednedPosts = readyPosts.flat(2);
-    const sorted = flattednedPosts.sort(
-      (x: any, y: any) => y.postedOn - x.postedOn,
-    );
+    const users = await currentUser.followed;
 
-    return sorted;
+    if (!users) {
+      throw new SystemError('User has not followed any users.');
+    }
+
+    const followedUsersPosts = users.map((user: User) => {
+      if (user.isDeleted === false) {
+        return user.posts;
+      }
+    });
+
+    let resolvedRosts = await Promise.all(followedUsersPosts);
+    resolvedRosts = resolvedRosts.flat(2);
+
+    if (!resolvedRosts) {
+      throw new SystemError('Followed users have no posts');
+    }
+
+    const follwedUsersPostsIds = resolvedRosts.map((post: any) => {
+      if (post.isDeleted === false && post.user) {
+        return post.id;
+      }
+    });
+
+    if (!follwedUsersPostsIds) {
+      throw new SystemError('Followed users have no posts');
+    }
+
+    let posts = [];
+
+    try {
+      posts = await this.postsRepository.find({
+        where: { id: In(follwedUsersPostsIds), isDeleted: false },
+        order: { postedOn: 'DESC' },
+        take: +take,
+        skip: +skip,
+      });
+    } catch {
+      return [];
+    }
+    return posts;
   }
 
   public async getAllPostsByUser(userId: string) {
@@ -53,7 +96,6 @@ export class PostsService {
       order: { postedOn: 'DESC' },
     });
     return posts;
-
   }
 
   public async getPublicPostsByUser(userId: string) {
@@ -85,16 +127,18 @@ export class PostsService {
 
   public async findPostById(postId: string): Promise<Post> {
     const post: Post = await this.postsRepository.findOne({
-      where: {id: postId , isDeleted: false},
-      relations: ['comments' , 'likes']
+      where: { id: postId, isDeleted: false },
+      relations: ['comments', 'likes'],
     });
 
     if (!post) {
       throw new SystemError('No such post found', 404);
     }
 
-    post.comments = post.comments.filter( comment => comment.isDeleted === false && comment.user);
-    post.likes =  post.likes.filter( like => like.isLiked === true && like.user);
+    post.comments = post.comments.filter(
+      comment => comment.isDeleted === false && comment.user,
+    );
+    post.likes = post.likes.filter(like => like.isLiked === true && like.user);
 
     return post;
   }
