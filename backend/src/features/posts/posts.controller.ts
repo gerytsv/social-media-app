@@ -1,5 +1,3 @@
-import { User } from './../../database/entities/users.entity';
-import { ShowUserOnPost } from './../users/models/show-user-on-post.dto';
 import {
   Controller,
   Get,
@@ -18,7 +16,6 @@ import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
 import { TransformInterceptor } from '../../transformer/interceptors/transform.interceptor';
 import { ShowPostDTO } from './models/show-post.dto';
-import { SystemError } from '../../common/exceptions/system.error';
 import { CreatePostDTO } from './models/create-post.dto';
 
 @Controller('posts')
@@ -50,11 +47,8 @@ export class PostsController {
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
   @HttpCode(HttpStatus.OK)
   public async postById(@Param('id') postId: string) {
-    if (postId) {
       return await this.postsService.findPostById(postId);
-    } else {
-      throw new SystemError('Wrong post id!', 400);
-    }
+
   }
 
   @Post('create')
