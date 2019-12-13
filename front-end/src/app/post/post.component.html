@@ -12,17 +12,8 @@
       <p class="caption">{{this.post.description}}</p>
 
       <div class="likes">
-        <i (click)=this.likePost() class="material-icons" *ngIf=!this.myLike>
-          favorite_border
-        </i>
-        <i (click)=this.likePost() class="material-icons" *ngIf=this.myLike>
-          favorite
-        </i>
-        <span class="likes-count">{{ this.likes.likes }}</span>
+        <app-likes [post]=this.post></app-likes>
       </div>
-      <!-- <div class="likes">
-        <app-likes></app-likes>
-      </div> -->
     </div>
 
   </div>
