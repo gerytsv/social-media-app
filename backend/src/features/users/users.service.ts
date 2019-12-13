@@ -85,8 +85,6 @@ export class UsersService {
       followed: Promise.resolve([]),
       posts: Promise.resolve([]),
       comments: Promise.resolve([]),
-      history: Promise.resolve([]),
-      notifications: Promise.resolve([]),
     };
 
     const userEntity = this.userRepository.create(user);
@@ -122,8 +120,8 @@ export class UsersService {
     }
 
     user.isDeleted = true;
-    user.followed = null;
-    user.followers = null;
+    user.followed = Promise.resolve([]);
+    user.followers = Promise.resolve([]);
     user.likes = Promise.resolve([]);
     user.posts = Promise.resolve([]);
     user.comments = Promise.resolve([]);
