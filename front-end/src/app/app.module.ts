@@ -24,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
 import { MatDialogModule } from '@angular/material';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostDetailPreviewComponent } from './post/post-detail-preview/post-detail-preview.component';
+import { ServerErrorInterceptor } from './common/exceptons/server-error';
 
 @NgModule({
     declarations: [
@@ -63,6 +64,7 @@ import { PostDetailPreviewComponent } from './post/post-detail-preview/post-deta
             useClass: TokenInterceptorService,
             multi: true,
         },
+        { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
     ],
     entryComponents: [
         ConformationDialogBoxComponent,
