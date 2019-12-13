@@ -56,7 +56,7 @@
 }
 
 .user-info {
-  padding-left: 5%;
+  padding-left: 5vw;
   width: 70%;
   height: 2.5rem;
   display: flex;
@@ -67,11 +67,14 @@
 }
 
 .date {
+  display: flex;
   font-size: 0.9rem;
   font-style: italic;
   color: rgb(72, 70, 70);
-  margin-right: 7%;
-  margin-top: 2%;
+  margin-right: 5vw;
+  width: 30%;
+  justify-content: flex-end;
+  align-self: center;
 }
 
 .content {
@@ -98,4 +101,10 @@
 .likes-count {
   margin-left: 0.3rem;
   font-size: 1.2rem;
+}
+
+@media screen and (max-width: 575px) {
+  .date {
+    font-size: 0.7rem;
+  }
 }

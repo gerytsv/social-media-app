@@ -11,12 +11,12 @@ import { CreatePostDTO } from '../models/create-post.dto';
 export class PostsDataService {
   constructor(private readonly http: HttpClient) {}
 
-  public allPosts(): Observable<any> {
-    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts`);
+  public allPosts(take: number, skip: number): Observable<any> {
+    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts?take=${take}&skip=${skip}`);
   }
 
-  public followedPosts(): Observable<any> {
-    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/feed`);
+  public followedPosts(take: number, skip: number): Observable<any> {
+    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/feed?take=${take}&skip=${skip}`);
   }
 
   public getPostById(id: string): Observable<PostDTO> {

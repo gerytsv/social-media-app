@@ -1,4 +1,3 @@
-import { NewsfeedResolver } from '../../core/resolvers/newsfeed.resolver';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { PostsDataService } from '../../post/services/posts-data.service';
@@ -11,8 +10,12 @@ import { PostDTO } from '../../post/models/post.dto';
 })
 export class NewsfeedComponent implements OnInit {
   public posts: PostDTO[] = [];
+  public take = 5;
+  public skip = 5;
+  public ready = false;
+
   constructor(
-    private readonly postsServive: PostsDataService,
+    private readonly postsService: PostsDataService,
     private route: ActivatedRoute
   ) {}
 
@@ -21,6 +24,16 @@ export class NewsfeedComponent implements OnInit {
       posts.posts.subscribe(postsArray => {
         this.posts = postsArray;
       });
+    });
+  }
+
+  public onScroll() {
+    this.postsService.followedPosts(this.take, this.skip).subscribe(res => {
+      if (res.length === 0) {
+        this.ready = true;
+      }
+      this.posts = [...this.posts, ...res];
+      this.skip += this.take;
     });
   }
 }

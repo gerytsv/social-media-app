@@ -15,7 +15,6 @@ import { ConformationDialogBoxComponent } from '../../../shared/conformation-dia
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileInfoComponent implements OnInit, OnDestroy {
-  private loggedInSubscription: Subscription;
   private userSubscription: Subscription;
   private routeSubscription: Subscription;
 

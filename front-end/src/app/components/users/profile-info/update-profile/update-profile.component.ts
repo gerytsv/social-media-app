@@ -20,7 +20,7 @@ export class UpdateProfileComponent implements OnInit {
   constructor(
     private readonly usersDataService: UsersDataService,
     private readonly notificator: NotificatorService,
-    private readonly dialog: DialogService
+    private readonly dialog: DialogService,
   ) {}
 
   public ngOnInit() {}
@@ -57,7 +57,7 @@ export class UpdateProfileComponent implements OnInit {
               this.updatedUser.emit(this.user);
             },
             error => {
-              this.notificator.error('Could not update profile');
+              this.notificator.error('Email is not valid');
             },
             () => {
               this.notificator.success('Profile updated');

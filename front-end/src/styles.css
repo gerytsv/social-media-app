@@ -78,3 +78,11 @@ body::-webkit-scrollbar-thumb {
     max-height: 150%;
   }
 }
+
+@media only screen and (max-width: 800px) {
+  .cdk-overlay-pane {
+    max-width: 100% !important;
+    max-height: 150%;
+  }
+}
+
