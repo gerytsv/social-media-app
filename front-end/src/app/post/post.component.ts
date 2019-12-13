@@ -26,7 +26,7 @@ export class PostComponent implements OnInit {
 
   public likePost() {
     this.postsDataService.likePost(this.post.id).subscribe(response => {
-      this.postsDataService.getLikesOfPost(this.post.id).subscribe( res => {
+      this.postsDataService.getLikesOfPost(this.post.id).subscribe(res => {
         this.likes.likes = res.likes.likes;
         this.myLike = res.myLikes.isLiked;
       });

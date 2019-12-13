@@ -12,7 +12,7 @@ import {
   Body,
   Delete,
   Put,
-  Query,
+  Query
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
