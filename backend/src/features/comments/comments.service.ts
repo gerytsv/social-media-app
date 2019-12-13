@@ -103,7 +103,7 @@ export class CommentsService {
       where: { id: commentId, isDeleted: false },
     });
     if (!comment) {
-      throw new SystemError('No such comment', 400);
+      throw new SystemError('No such comment found', 400);
     }
     const commentOwner = await comment.user;
     if (!isAdmin(commentOwner)) {
@@ -129,18 +129,15 @@ export class CommentsService {
     const user = await comment.user;
     if (!isAdmin(user)) {
       if (!user || user.id !== userId) {
-        throw new SystemError("This user can't delete the comment", 400);
+        throw new SystemError("This user can't delete this comment", 400);
       }
     }
 
     comment.isDeleted = true;
-    console.log(
-      'Im right before saving the removal of a comment (isDeleted: true)!',
-    );
 
     this.commentsRepository.save(comment);
     return {
-      messege: 'Comment Deleted',
+      message: 'Comment Deleted',
     };
   }
 }

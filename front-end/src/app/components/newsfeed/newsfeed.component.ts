@@ -7,7 +7,7 @@ import { PostDTO } from '../../post/models/post.dto';
 @Component({
   selector: 'app-newsfeed',
   templateUrl: './newsfeed.component.html',
-  styleUrls: ['./newsfeed.component.css']
+  styleUrls: ['./newsfeed.component.css'],
 })
 export class NewsfeedComponent implements OnInit {
   public posts: PostDTO[] = [];

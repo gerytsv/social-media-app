@@ -4,10 +4,11 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   min-width: 18rem;
   background-color: #8befc8;
   height: 2.5rem;
+  border: 0.025rem solid white;
 }
 
 input {
@@ -19,15 +20,14 @@ input {
 }
 
 input::placeholder {
- 
   color: white;
 }
 
-.search-results{
+.search-results {
   height: auto;
   max-height: 1000%;
   cursor: pointer;
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   display: flex;
   position: absolute;
   flex: 1;
@@ -35,10 +35,9 @@ input::placeholder {
   flex-direction: column;
   width: 100%;
   overflow: auto;
-  
 }
 
-.search-input{
+.search-input {
   margin-left: 1rem;
   width: 93%;
   display: flex;

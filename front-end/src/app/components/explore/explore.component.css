@@ -18,6 +18,13 @@ body {
   grid-gap: 0.5vw;
 }
 
+p {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(110, 104, 104);
+}
+
 .single-post {
   width: 100%;
   height: 100%;
@@ -36,9 +43,8 @@ body {
   }
 }
 
-@media screen and (min-width: 575px) and  (max-width: 1000px) {
+@media screen and (min-width: 575px) and (max-width: 1000px) {
   .posts-container {
     grid-template-columns: 25% 25% 25% 25%;
   }
-
 }

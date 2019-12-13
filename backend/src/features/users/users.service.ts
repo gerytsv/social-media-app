@@ -136,7 +136,7 @@ export class UsersService {
       } has been deleted`;
       this.historyRepository.save(adminHistoryEntity);
     }
-    return { messege: 'User deleted succesfully' };
+    return { message: 'User deleted succesfully' };
   }
 
   public async validate(payload: JwtPayload): Promise<User> {

@@ -1,5 +1,5 @@
 <nav>
-  <div class="logo">
+  <div class="logo" [routerLink]="['/home']">
     <img src="../../../assets/logo.png">
   </div>
   <i class="material-icons" *ngIf="!this.showHamMenu" (click)=toggleHam()>menu</i>
