@@ -16,6 +16,18 @@ img {
   object-fit: cover;
 }
 
+.edit,
+.delete {
+  width: 2rem;
+  height: 2rem;
+}
+
+.follow,
+.unfollow {
+  width: 4rem;
+  height: 4rem;
+}
+
 .profile-container {
   padding-top: 2rem;
   padding-bottom: 2rem;
@@ -137,7 +149,6 @@ hr {
 }
 
 @media only screen and (max-width: 500px) {
-
   div.posts-container {
     width: 100%;
   }
@@ -149,5 +160,4 @@ hr {
   .info {
     width: 100%;
   }
-
 }
