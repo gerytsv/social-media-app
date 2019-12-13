@@ -10,7 +10,7 @@ import {
 import { Role } from './roles.entity';
 import { Post } from './posts.entity';
 import { PostComment } from './comments.entity';
-import { Notification } from './notifications.entity';
+import { PostLike } from './posts-likes.entity';
 
 @Entity('users')
 export class User {
@@ -62,9 +62,10 @@ export class User {
   @OneToMany(type => Post, post => post.user)
   public posts: Promise<Post[]>;
 
-  @OneToMany(type => PostComment, comment => comment.user)
-  public comments: Promise<Post[]>;
+  @OneToMany(type => PostLike, postlike => postlike.user)
+  public likes: Promise<PostLike[]>;
 
-  @OneToMany(type => Notification, notifications => notifications.user)
-  public notifications: Promise<Notification[]>;
+  @OneToMany(type => PostComment, comment => comment.user)
+  public comments: Promise<Comment[]>;
+
 }

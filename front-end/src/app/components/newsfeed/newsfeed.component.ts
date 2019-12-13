@@ -19,7 +19,7 @@ export class NewsfeedComponent implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(({ posts }) => {
       posts.posts.subscribe(postsArray => {
-        this.posts = postsArray.flat();
+        this.posts = postsArray;
       });
     });
   }

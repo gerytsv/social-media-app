@@ -79,6 +79,7 @@
 .edit-section {
   display: flex;
   align-items: space-between;
+  align-items: center;
   height: fit-content;
   background-color: #ddffc1;
   margin-top: 0.3em;
@@ -108,7 +109,6 @@ textarea:focus {
   width: 20%;
   color: rgb(0, 154, 113);
   font-size: 0.9rem;
-  margin: auto;
   font-weight: bolder;
   text-align: center;
   text-decoration: none;

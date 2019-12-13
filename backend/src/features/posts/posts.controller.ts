@@ -1,5 +1,3 @@
-import { User } from './../../database/entities/users.entity';
-import { ShowUserOnPost } from './../users/models/show-user-on-post.dto';
 import {
   Controller,
   Get,
@@ -21,8 +19,8 @@ import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
 import { TransformInterceptor } from '../../transformer/interceptors/transform.interceptor';
 import { ShowPostDTO } from './models/show-post.dto';
-import { SystemError } from '../../common/exceptions/system.error';
 import { CreatePostDTO } from './models/create-post.dto';
+import { ShowPostInfoDTO } from './models/show-post-info-only.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -30,7 +28,7 @@ export class PostsController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(ShowPostDTO))
+  @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
   public async allPosts(@Request() request: any) {
     const posts = await this.postsService.allPosts();
@@ -39,7 +37,7 @@ export class PostsController {
 
   @Get('feed')
   @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(ShowPostDTO))
+  @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
   public async allPostsByFollowed(@Request() request: any) {
     const posts = await this.postsService.allPostsByFollowed(
@@ -65,7 +63,6 @@ export class PostsController {
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
   @HttpCode(HttpStatus.OK)
   public async postById(@Param('id') postId: string) {
-    if (postId) {
       return await this.postsService.findPostById(postId);
     } else {
       throw new BadRequestException('Wrong post id!');

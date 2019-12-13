@@ -12,7 +12,7 @@ import { PostDTO } from '../../models/post.dto';
 })
 export class AllCommentsComponent implements OnInit {
   @Input() post: PostDTO;
-  public haveComments: boolean = false;
+  public haveComments = false;
   public user: User;
 
   constructor(
@@ -25,7 +25,6 @@ export class AllCommentsComponent implements OnInit {
   }
 
   public createComment(content: any) {
-    // console.log(this.post, '<- POST!');
     this.commentsDataService.createComment(this.post.id, content).subscribe(
       res => {
         this.post.comments = [res, ...this.post.comments];

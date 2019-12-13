@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../../database/entities/users.entity';
-import { Repository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 import { Role } from '../../database/entities/roles.entity';
 import { UserLoginDTO } from './models/login-user.dto';
 import { SystemError } from '../../common/exceptions/system.error';
@@ -85,8 +85,6 @@ export class UsersService {
       followed: Promise.resolve([]),
       posts: Promise.resolve([]),
       comments: Promise.resolve([]),
-      history: Promise.resolve([]),
-      notifications: Promise.resolve([]),
     };
 
     const userEntity = this.userRepository.create(user);
@@ -104,6 +102,7 @@ export class UsersService {
   public async delete(userId: string, requestUserId: string) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
+      relations: [ 'followed', 'followers', 'posts', 'comments', 'likes']
     });
     if (!user) {
       throw new SystemError('The user is not found', 404);
@@ -121,6 +120,12 @@ export class UsersService {
     }
 
     user.isDeleted = true;
+    user.followed = Promise.resolve([]);
+    user.followers = Promise.resolve([]);
+    user.likes = Promise.resolve([]);
+    user.posts = Promise.resolve([]);
+    user.comments = Promise.resolve([]);
+
     const deletedUser = await this.userRepository.save(user);
     if (deletedUser) {
       const adminHistoryEntity = this.historyRepository.create();
@@ -137,17 +142,27 @@ export class UsersService {
   }
 
   public async getUserInfo(username: string) {
-    const info = await this.userRepository.findOne({
-      where: { username, isDeleted: false },
-      relations: ['followers', 'posts', 'followed'],
-    });
-    if (!info) {
+    const user = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.username = :username' , {username})
+      .leftJoinAndSelect(
+        'user.followers',
+        'followers',
+        'followers.isDeleted = false',
+      )
+      .leftJoinAndSelect(
+        'user.followed',
+        'followed',
+        'followed.isDeleted = false',
+      )
+      .leftJoinAndSelect('user.posts', 'posts', 'posts.isDeleted = false')
+      .getOne();
+
+    if (!user) {
       throw new SystemError('The user is not found', 404);
     }
 
-    return {
-      ...info,
-    };
+    return user;
   }
 
   public async updateUserInfo(
