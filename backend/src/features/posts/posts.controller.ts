@@ -12,13 +12,13 @@ import {
   Body,
   Delete,
   Put,
-  Req,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
 import { TransformInterceptor } from '../../transformer/interceptors/transform.interceptor';
 import { ShowPostDTO } from './models/show-post.dto';
 import { CreatePostDTO } from './models/create-post.dto';
+import { ShowPostInfoDTO } from './models/show-post-info-only.dto';
 
 @Controller('posts')
 export class PostsController {
@@ -26,7 +26,7 @@ export class PostsController {
 
   @Get()
   @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(ShowPostDTO))
+  @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
   public async allPosts(@Request() request: any) {
     const posts = await this.postsService.allPosts();
@@ -35,7 +35,7 @@ export class PostsController {
 
   @Get('feed')
   @UseGuards(AuthGuard('jwt'))
-  @UseInterceptors(new TransformInterceptor(ShowPostDTO))
+  @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
   public async allPostsByFollowed(@Request() request: any) {
     const posts = await this.postsService.allPostsByFollowed(

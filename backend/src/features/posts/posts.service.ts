@@ -16,16 +16,16 @@ export class PostsService {
     private readonly usersRepository: Repository<User>,
   ) {}
 
-  // Public and Private posts -> we will filter them on the front-end
   public async allPosts() {
     const posts: Post[] = await this.postsRepository.find({
       where: { isDeleted: false, isPrivate: false },
       order: { postedOn: 'DESC' },
     });
-
-    const filterPosts = posts.filter(post => post.user.isDeleted === false);
-
+    if (posts) {
+    const filterPosts = posts.filter(post => post.user && post.user.isDeleted === false  );
     return filterPosts;
+    }
+    return [];
   }
 
   public async allPostsByFollowed(username: string) {
@@ -43,6 +43,7 @@ export class PostsService {
     const sorted = flattednedPosts.sort(
       (x: any, y: any) => y.postedOn - x.postedOn,
     );
+
     return sorted;
   }
 
