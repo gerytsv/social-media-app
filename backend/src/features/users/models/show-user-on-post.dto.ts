@@ -1,6 +1,6 @@
 import { Publish } from '../../../transformer/decorators/publish';
 
-export class ShowUserOnPost {
+export class ShowUserOnPostDTO {
   @Publish()
   public username: string;
 
