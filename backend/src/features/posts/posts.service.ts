@@ -58,14 +58,14 @@ export class PostsService {
       }
     });
 
-    let resolvedRosts = await Promise.all(followedUsersPosts);
-    resolvedRosts = resolvedRosts.flat(2);
+    const resolvedPosts = await Promise.all(followedUsersPosts);
+    const flattenedPosts = resolvedPosts.reduce((acc, val) => acc.concat(val), []);
 
-    if (!resolvedRosts) {
+    if (!resolvedPosts) {
       throw new SystemError('Followed users have no posts');
     }
 
-    const follwedUsersPostsIds = resolvedRosts.map((post: any) => {
+    const follwedUsersPostsIds = flattenedPosts.map((post: any) => {
       if (post.isDeleted === false && post.user) {
         return post.id;
       }
