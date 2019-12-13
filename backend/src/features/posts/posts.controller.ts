@@ -63,10 +63,7 @@ export class PostsController {
   @UseInterceptors(new TransformInterceptor(ShowPostDTO))
   @HttpCode(HttpStatus.OK)
   public async postById(@Param('id') postId: string) {
-      return await this.postsService.findPostById(postId);
-    } else {
-      throw new BadRequestException('Wrong post id!');
-    }
+    return await this.postsService.findPostById(postId);
   }
 
   @Put(':id')
