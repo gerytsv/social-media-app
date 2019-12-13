@@ -92,8 +92,8 @@ export class PostsService {
       throw new SystemError('No such post found', 404);
     }
 
-    post.comments = post.comments.filter( comment => comment.isDeleted === false);
-    post.likes =  post.likes.filter( like => like.isLiked === true);
+    post.comments = post.comments.filter( comment => comment.isDeleted === false && comment.user);
+    post.likes =  post.likes.filter( like => like.isLiked === true && like.user);
 
     return post;
   }
@@ -105,7 +105,7 @@ export class PostsService {
     if (!post) {
       throw new SystemError('No such post found', 400);
     }
-    const postOwner = await post.user;
+    const postOwner = post.user;
     if (!isAdmin(postOwner)) {
       if (postOwner.id !== userId) {
         throw new SystemError('This user cannot edit this post', 400);
