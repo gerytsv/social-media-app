@@ -5,8 +5,6 @@ export class ShowCommentDTO {
   public id: string;
   @Publish()
   public content: string;
-  // @Publish(ShowPostDTO)
-  // public post: ShowPostDTO;
   @Publish(ShowUserDTO)
   public user: ShowUserDTO;
   @Publish()
