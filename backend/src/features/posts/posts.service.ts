@@ -1,10 +1,7 @@
-import { ShowAvatarUrlDTO } from './../users/models/show-avatarUrl.dto';
-import { ShowUserOnPost } from './../users/models/show-user-on-post.dto';
-import { ShowUserDTO } from './../users/models/show-user.dto';
 import { CreatePostDTO } from './models/create-post.dto';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 import { Post } from '../../database/entities/posts.entity';
 import { User } from '../../database/entities/users.entity';
 import { SystemError } from '../../common/exceptions/system.error';
@@ -21,33 +18,40 @@ export class PostsService {
   // Public and Private posts -> we will filter them on the front-end
   public async allPosts() {
     const posts: Post[] = await this.postsRepository.find({
-      where: { isDeleted: false },
+      where: { isDeleted: false, isPrivate: false },
       order: { postedOn: 'DESC' },
     });
 
-    return posts;
+    const filterPosts = posts.filter(post => post.user.isDeleted === false);
+
+    return filterPosts;
   }
 
   public async allPostsByFollowed(username: string) {
+
     const currentUser = await this.usersRepository.findOne({
       where: { username, isDeleted: false },
-      relations: ['followed', 'followed.posts'],
+      relations: ['followed' , 'followed.posts']
     });
+
     const followed = await currentUser.followed;
     const posts = followed.map(followedUser => followedUser.posts);
-    return Promise.all(posts);
+    const readyPosts = await Promise.all(posts);
+
+    const flattednedPosts = readyPosts.flat(2);
+    const sorted = flattednedPosts.sort(
+      (x: any, y: any) => y.postedOn - x.postedOn,
+    );
+    return sorted;
   }
 
   public async getAllPostsByUser(userId: string) {
     const posts: Post[] = await this.postsRepository.find({
-      where: { userId },
+      where: { userId, isDeleted: false },
       order: { postedOn: 'DESC' },
     });
-    if (posts) {
-      return posts;
-    } else {
-      throw new SystemError('User has no posts.');
-    }
+    return posts;
+
   }
 
   public async getPublicPostsByUser(userId: string) {
@@ -78,17 +82,19 @@ export class PostsService {
   }
 
   public async findPostById(postId: string): Promise<Post> {
-    const foundPost: Post = await this.postsRepository.findOne({
-      id: postId,
-      isDeleted: false,
+    const post: Post = await this.postsRepository.findOne({
+      where: {id: postId , isDeleted: false},
+      relations: ['comments' , 'likes']
     });
-    const foundComments = await foundPost.comments;
-    foundPost.comments = foundComments.filter(comment => !comment.isDeleted);
 
-    if (foundPost === undefined || foundPost.isDeleted) {
+    if (!post) {
       throw new SystemError('No such post found', 404);
     }
-    return foundPost;
+
+    post.comments = post.comments.filter( comment => comment.isDeleted === false);
+    post.likes =  post.likes.filter( like => like.isLiked === true);
+
+    return post;
   }
 
   public async deletePost(userId: string, postId: string) {
