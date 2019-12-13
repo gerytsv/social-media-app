@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from '../../database/entities/users.entity';
-import { Repository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 import { Role } from '../../database/entities/roles.entity';
 import { UserLoginDTO } from './models/login-user.dto';
 import { SystemError } from '../../common/exceptions/system.error';
@@ -18,7 +18,8 @@ export class UsersService {
   public constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
     @InjectRepository(Role) private readonly rolesRepository: Repository<Role>,
-    @InjectRepository(History) private readonly historyRepository: Repository<History>
+    @InjectRepository(History)
+    private readonly historyRepository: Repository<History>,
   ) {}
 
   public async signIn(user: UserLoginDTO): Promise<User> {
@@ -92,7 +93,9 @@ export class UsersService {
     const savedUser = await this.userRepository.save(userEntity);
     if (savedUser) {
       const adminHistoryEntity = this.historyRepository.create();
-      adminHistoryEntity.content = `Account with username ${body.username} has been created`;
+      adminHistoryEntity.content = `Account with username ${
+        body.username
+      } has been created`;
       this.historyRepository.save(adminHistoryEntity);
     }
     return savedUser;
@@ -101,6 +104,7 @@ export class UsersService {
   public async delete(userId: string, requestUserId: string) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
+      relations: [ 'followed', 'followers', 'posts', 'comments', 'likes']
     });
     if (!user) {
       throw new SystemError('The user is not found', 404);
@@ -112,16 +116,24 @@ export class UsersService {
       throw new SystemError('The user is not found', 404);
     }
     if (!isAdmin(requestUser)) {
-      if ( requestUser.username !== user.username ) {
+      if (requestUser.username !== user.username) {
         throw new SystemError('Not owner of the account', 400);
       }
     }
 
     user.isDeleted = true;
+    user.followed = null;
+    user.followers = null;
+    user.likes = Promise.resolve([]);
+    user.posts = Promise.resolve([]);
+    user.comments = Promise.resolve([]);
+
     const deletedUser = await this.userRepository.save(user);
     if (deletedUser) {
       const adminHistoryEntity = this.historyRepository.create();
-      adminHistoryEntity.content = `Account with username ${user.username} has been deleted`;
+      adminHistoryEntity.content = `Account with username ${
+        user.username
+      } has been deleted`;
       this.historyRepository.save(adminHistoryEntity);
     }
     return { messege: 'User deleted succesfully' };
@@ -132,17 +144,27 @@ export class UsersService {
   }
 
   public async getUserInfo(username: string) {
-    const info = await this.userRepository.findOne({
-      where: { username, isDeleted: false },
-      relations: ['followers', 'posts', 'followed'],
-    });
-    if (!info) {
+    const user = await getRepository(User)
+      .createQueryBuilder('user')
+      .where('user.username = :username' , {username})
+      .leftJoinAndSelect(
+        'user.followers',
+        'followers',
+        'followers.isDeleted = false',
+      )
+      .leftJoinAndSelect(
+        'user.followed',
+        'followed',
+        'followed.isDeleted = false',
+      )
+      .leftJoinAndSelect('user.posts', 'posts', 'posts.isDeleted = false')
+      .getOne();
+
+    if (!user) {
       throw new SystemError('The user is not found', 404);
     }
 
-    return {
-      ...info,
-    };
+    return user;
   }
 
   public async updateUserInfo(
@@ -152,7 +174,7 @@ export class UsersService {
     country: string,
     description: string,
     avatarUrl: string,
-    requestUserId: string
+    requestUserId: string,
   ) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
@@ -167,7 +189,7 @@ export class UsersService {
       throw new SystemError('User not found', 404);
     }
     if (!isAdmin(requestUser)) {
-      if ( requestUser.username !== user.username ) {
+      if (requestUser.username !== user.username) {
         throw new SystemError('Not owner of the account', 400);
       }
     }
