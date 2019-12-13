@@ -20,9 +20,6 @@ export class NewsfeedComponent implements OnInit {
     this.route.data.subscribe(({ posts }) => {
       posts.posts.subscribe(postsArray => {
         this.posts = postsArray;
-        if (this.posts.length === 0) {
-          //
-        }
       });
     });
   }
