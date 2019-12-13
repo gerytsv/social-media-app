@@ -17,7 +17,7 @@
         <p>{{ this.post.user.username }}</p>
       </div>
       <div class="likes">
-        <app-likes class="likes"> </app-likes>
+        <app-likes class="likes" [post]=this.post> </app-likes>
       </div>
     </div>
     <p class="description">{{ this.post.description }}</p>
