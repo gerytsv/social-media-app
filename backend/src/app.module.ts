@@ -8,7 +8,6 @@ import { UsersModule } from './features/users/users.module';
 import { PassportModule } from '@nestjs/passport';
 import { ConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
-import { NotificationModule } from './features/notifications/notifications.module';
 import { PhotoStorageModule } from './photo/photo-storage.module';
 import { FollowingsModule } from './features/followings/followings.module';
 import { AdminHistoryModule } from './features/admin-history/admin-history.module';
@@ -21,7 +20,6 @@ import { CommentsModule } from './features/comments/comments.module';
     UsersModule,
     PostsModule,
     AuthModule,
-    NotificationModule,
     PhotoStorageModule,
     PassportModule.register({ defaultStrategy: 'jwt' }),
     FollowingsModule,
