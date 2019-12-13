@@ -27,7 +27,6 @@ export class PostDetailPreviewComponent implements OnInit {
         this.post = response;
         this.username = this.post.user.username;
         this.avatar = this.post.user.avatar;
-        console.log(this.post);
       });
   }
 
