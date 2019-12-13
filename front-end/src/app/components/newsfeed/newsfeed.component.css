@@ -7,7 +7,7 @@ body {
 }
 
 .no-posts {
-  margin: 0 auto;
+  margin: 1rem auto;
   text-align: center;
   font-size: 1.3rem;
   color: rgb(110, 104, 104);
