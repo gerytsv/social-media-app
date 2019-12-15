@@ -1,1 +1,14 @@
-<p>Front-end works!</p>
+<app-nav *ngIf=loggedIn></app-nav>
+<div class="fake-nav" *ngIf=!loggedIn>
+  <div class="back-icon icon" *ngIf="router.url != '/homepage'" (click)=navigateToHomepage()>
+    <img src="assets/icons/back_arrow.svg" alt="Back">
+    <span class="back-text">Back</span>
+  </div>
+  <div class="explore-icon icon" *ngIf="router.url != '/explore/posts'" (click)=navigateToExplore()>
+    <img src="assets/icons/compass.svg" alt="explore">
+    <span class="explore-text">Explore</span>
+  </div>
+</div>
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

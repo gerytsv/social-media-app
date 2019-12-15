@@ -13,8 +13,6 @@ import {
   MatInputModule,
 } from '@angular/material';
 
-
-
 @NgModule({
   declarations: [],
   imports: [
@@ -41,14 +39,12 @@ import {
     MatSidenavModule,
     MatIconModule,
     MatInputModule,
-  ]
+  ],
 })
 export class MaterialModule {
-
   constructor(@Optional() @SkipSelf() parent: MaterialModule) {
     if (parent) {
       throw new Error(`MaterialModule has already been initialized!`);
     }
   }
-
 }

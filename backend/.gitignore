@@ -39,4 +39,3 @@ ormconfig.json
 .env
 
 #other
-seed.ts

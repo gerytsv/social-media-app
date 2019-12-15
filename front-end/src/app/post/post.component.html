@@ -1,0 +1,24 @@
+<div class="post" *ngIf=this.post>
+  <img class="photo" src={{this.post.photoUrl}}>
+  <div class="info">
+    <div class="header">
+      <div class="user-info" [routerLink]="this.userLink">
+        <img class="avatar" src={{this.post.user.avatarUrl}}>
+        <p class="username">{{this.post.user.username}}</p>
+      </div>
+      <div class="date">{{this.dateOfPost}}</div>
+    </div>
+    <div class="content">
+      <p class="caption">{{this.post.description}}</p>
+      <div class="icons">
+        <div class="comments-tag animated rubberBand" (click)=this.toggleComments()><img src="assets/icons/comment.svg"
+            class="comments" title="comments" /></div>
+        <div class="likes">
+          <app-likes [post]=this.post></app-likes>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-comments-under-post *ngIf="this.showComments" [postId]="this.post.id"></app-comments-under-post>
+</div>

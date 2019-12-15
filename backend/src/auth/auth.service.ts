@@ -8,7 +8,6 @@ import { UsersService } from '../features/users/users.service';
 
 @Injectable()
 export class AuthService {
-
   constructor(
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
@@ -17,10 +16,18 @@ export class AuthService {
   public async signIn(user: UserLoginDTO) {
     const userFound = await this.usersService.signIn(user);
     if (userFound && !userFound.isDeleted) {
+      let isAdmin = false;
+      userFound.roles.map(item => {
+        if (item.name === 'Admin') {
+          isAdmin = true;
+        }
+      });
       // Returning the token
       return await this.jwtService.signAsync({
+        isAdmin,
         username: userFound.username,
-        email: userFound.email
+        email: userFound.email,
+        avatarUrl: userFound.avatarUrl,
       } as JwtPayload);
     }
     if (!userFound) {
@@ -28,9 +35,7 @@ export class AuthService {
     }
   }
 
-  // For the strategy
   public async validateUser(payload: JwtPayload): Promise<User> {
     return await this.usersService.validate(payload);
   }
-
 }

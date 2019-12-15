@@ -1,0 +1,137 @@
+.comment-container {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(0, 128, 0, 0.349);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+}
+
+.username {
+  font-size: 0.8rem;
+  padding-left: 7%;
+  display: inline;
+  margin: 0;
+  top: 50%;
+  bottom: 50%;
+}
+
+.avatar {
+  border: 0.05rem solid grey;
+  object-fit: cover;
+  border-radius: 50%;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.timestamp {
+  font-size: 0.7rem;
+}
+
+.content {
+  flex: 2;
+  font-size: 0.8rem;
+  max-width: 12rem;
+  min-width: 12rem;
+  overflow-wrap: break-word;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  text-align: right;
+  flex: 1;
+}
+
+.edit-button {
+  text-align: right;
+  flex: 1;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: row wrap;
+}
+
+.options img {
+  max-width: 1.2rem;
+  max-height: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.options img:hover {
+  cursor: pointer;
+}
+
+.material-icons {
+  color: black;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+}
+
+.edit-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: fit-content;
+  background-color: #ddffc1;
+  margin-top: 0.3em;
+  margin-bottom: 0.3em;
+  border-radius: 0.4rem;
+}
+
+.edit-section textarea {
+  border: none;
+  font-family: 'Segoe UI';
+  background-color: transparent;
+  resize: none;
+  padding: 0.5em;
+  min-width: 11rem;
+  max-height: 4rem;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.options {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.post-edit-button {
+  width: 20%;
+  color: rgb(0, 154, 113);
+  font-size: 0.9rem;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  margin-right: 3%;
+  transition: transform 0.5s ease-out;
+}
+
+.post-edit-button:hover {
+  color: rgb(0, 211, 155);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.post-edit-button:active {
+  color: #00f0a4;
+}
+
+textarea {
+  padding: 1rem;
+}

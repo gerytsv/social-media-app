@@ -1,0 +1,165 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.controls {
+  display: flex;
+}
+
+img {
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit,
+.delete {
+  width: 2rem;
+  height: 2rem;
+}
+
+.follow,
+.unfollow {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.1rem;
+  border-radius: 0;
+}
+
+.profile-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.info {
+  padding: 1.5rem;
+  max-width: 25rem;
+  min-width: 20rem;
+  justify-content: space-between;
+}
+
+.info div {
+  margin-bottom: 0.5rem;
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.follows {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-style: oblique;
+}
+
+.followers-count span {
+  font-weight: bolder;
+  font-style: normal;
+}
+
+.material-icons {
+  transition: transform 300ms;
+  color: rgb(0, 0, 0);
+}
+
+div.mat-wrap {
+  margin: 0 0.1 0 0.1rem;
+  padding: 0.5rem;
+  margin-bottom: 0 !important;
+}
+
+div.controls {
+  margin-bottom: 0 !important;
+}
+
+.mat-wrap:hover {
+  background-color: rgba(130, 123, 136, 0.322);
+}
+
+.material-icons:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.username {
+  font-size: 1.3rem;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.edit-wrapper {
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  padding-bottom: 4rem;
+}
+
+.close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+}
+
+.close:hover {
+  cursor: pointer;
+  transform: none;
+}
+
+div.posts-container {
+  width: 75%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+hr {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+@media only screen and (max-width: 500px) {
+  div.posts-container {
+    width: 100%;
+  }
+
+  hr {
+    display: none;
+  }
+
+  .info {
+    width: 100%;
+  }
+}

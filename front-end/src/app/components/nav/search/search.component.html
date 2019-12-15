@@ -1,0 +1,13 @@
+<div class="search">
+  <div class="search-input">
+    <input type="text" placeholder="Search..." (input)="emitToSubject($event.target.value)" (input)="this.showResults()"
+      (input)="this.closeResults($event.target.value)" [(ngModel)]="this.inputValue" />
+    <i class="material-icons" *ngIf="!showUsersResults">search</i>
+    <i class="material-icons" *ngIf="showUsersResults" (click)="this.toggleResults()"
+      (click)="this.clearInput()">close</i>
+  </div>
+  <div *ngIf="this.showUsersResults" class="search-results" (click)="this.toggleResults()">
+    <app-minimized-user *ngFor="let user of this.users" [user]="user" (click)="this.clearInput()"
+      (click)="this.closeNav()"></app-minimized-user>
+  </div>
+</div>

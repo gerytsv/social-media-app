@@ -1,0 +1,90 @@
+.wrapper {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem 1rem;
+  padding-top: 4rem;
+}
+
+.options {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+}
+
+.options > * {
+  margin: 1.5rem 0;
+}
+
+#status {
+  margin-bottom: 4rem;
+}
+
+.status > span {
+  padding-right: 1rem;
+}
+
+.options > button {
+  width: 100%;
+}
+
+.options > span {
+  margin: 0;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  height: 5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.photo-sec {
+  padding: 0rem 2rem;
+}
+
+button {
+  all: unset;
+  position: relative;
+  z-index: 0;
+  background: #48e7a8;
+  cursor: pointer;
+  color: #fff;
+  padding: 0.5rem 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  text-align: center;
+}
+
+button.create-post {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 0 !important;
+  max-width: 100%;
+}
+
+.disabled {
+  pointer-events: none;
+  background-color: grey;
+}
+
+
+@media screen and (min-width: 300px) and (max-width: 800px) {
+  .wrapper {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-top: 1rem;
+  }
+
+  .options {
+    width: 100%;
+  }
+
+  div.photo-sec {
+    padding: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,39 @@
+<div class="comment-container">
+
+  <div class="header">
+
+    <div class="user-info">
+
+      <img class="avatar" src={{comment.user.avatarUrl}}>
+      <p class="username">{{comment.user.username}}</p>
+
+    </div>
+
+    <p class="timestamp">{{ comment.createdOn | date  }}</p>
+
+  </div>
+
+  <div class="main">
+
+    <div class="content">
+      {{ comment.content }}
+    </div>
+
+    <div class="options">
+      <img class="delete-button" *ngIf=this.isCommentOwner (click)=this.deleteCommentEmit() type="image/svg+xml"
+        src="assets/icons/trash-bin-2.svg">
+
+      <img class="edit-button" *ngIf=this.isCommentOwner (click)=this.toggleEditButton() type="image/svg+xml"
+        src="assets/icons/edit_button.svg">
+    </div>
+
+  </div>
+
+  <div class="edit-section" *ngIf=this.show>
+    <textarea class="edit-field" type="text" [(ngModel)]="this.updatedComment"></textarea>
+
+    <div *ngIf=this.isCommentOwner class="post-edit-button" (click)=this.toggleEditButton();this.updateComment()>
+      Update</div>
+  </div>
+
+</div>

@@ -1,17 +1,14 @@
-import Swal from 'sweetalert2';
-// import 'sweetalert2/src/sweetalert2.scss';
-
 import { Router } from '@angular/router';
 import { StorageService } from './storage.service';
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from '../../common/users/user';
-import { UserLoginDTO } from '../../common/users/user-login-dto';
-import { UserRegisterDTO } from '../../common/users/user-register-dto';
+import { User } from '../../components/users/models/user';
+import { UserLoginDTO } from '../../components/users/models/user-login-dto';
+import { UserRegisterDTO } from '../../components/users/models/user-register-dto';
+import { CONFIG } from '../../config/config';
 
 @Injectable()
 export class AuthService {
@@ -39,7 +36,7 @@ export class AuthService {
 
   public login(user: UserLoginDTO) {
     return this.http
-      .post<{ token: string }>(`http://localhost:3000/session/login`, user)
+      .post<{ token: string }>(`${CONFIG.DOMAIN_NAME}/session/login`, user)
       .pipe(
         tap(({ token }) => {
           try {
@@ -48,9 +45,7 @@ export class AuthService {
 
             this.isLoggedInSubject$.next(true);
             this.loggedUserSubject$.next(loggedUser);
-          } catch (error) {
-            // error handling on the consumer side
-          }
+          } catch (error) {}
         })
       );
   }
@@ -59,11 +54,11 @@ export class AuthService {
     this.storage.save('token', '');
     this.isLoggedInSubject$.next(false);
     this.loggedUserSubject$.next(null);
-    this.router.navigate(['home']);
+    this.router.navigate(['homepage']);
   }
 
   public register(user: UserRegisterDTO) {
-    return this.http.post(`http://localhost:3000/api/users`, user);
+    return this.http.post(`${CONFIG.DOMAIN_NAME}/users`, user);
   }
 
   private isUserLoggedIn(): boolean {

@@ -11,7 +11,7 @@ export class RegistrationValidator {
 
     if (repeatPassword !== password) {
       return {
-        doesMatchPassword: true
+        doesMatchPassword: true,
       };
     }
 

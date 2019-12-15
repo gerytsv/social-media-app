@@ -1,0 +1,31 @@
+.main {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  display: flex;
+  font-family: 'Roboto', Arial;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  box-sizing: inherit;
+}
+
+.likes {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  cursor: pointer;
+}
+
+.likes > i {
+  color: red;
+}
+
+.likes-count {
+  margin-left: 0.3rem;
+  font-size: 1.5rem;
+  margin-left: 0.6rem;
+}
+
+.material-icons {
+  font-size: 2rem;
+}

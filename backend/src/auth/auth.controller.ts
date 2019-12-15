@@ -4,7 +4,7 @@ import {
   Post,
   Body,
   ValidationPipe,
-  BadRequestException
+  BadRequestException,
 } from '@nestjs/common';
 import { UserLoginDTO } from '../features/users/models/login-user.dto';
 
@@ -24,5 +24,4 @@ export class AuthController {
 
     return { token };
   }
-
 }

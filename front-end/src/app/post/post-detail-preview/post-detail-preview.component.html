@@ -1,0 +1,35 @@
+<div class="wrapper" *ngIf="this.post">
+  <div class="img-wrapper">
+    <div class="close-button">
+      <i class="material-icons" (click)="this.close()">arrow_back</i>
+      <span (click)="this.close()">Back</span>
+    </div>
+    <img class="photo" src="{{ this.post.photoUrl }}" />
+  </div>
+  <div class="info">
+    <div class="date">{{ this.dateOfPost }}</div>
+
+    <div class="user-info" >
+      <div class="avatar" [routerLink]="this.userLink" (click)=this.close()>
+        <img src="{{ this.post.user.avatarUrl }}" />
+      </div>
+      <div class="username" [routerLink]="this.userLink" (click)=this.close()>
+        <p>{{ this.post.user.username }}</p>
+      </div>
+      <div class="likes">
+        <app-likes class="likes" [post]=this.post> </app-likes>
+      </div>
+    </div>
+    <p class="description">{{ this.post.description }}</p>
+
+    <div class="tag-section">
+      <p class="comments-tag">Comments:</p>
+      <p class="liked-tag" float="right">Liked by:</p>
+    </div>
+    <hr />
+
+    <div class="comments">
+      <app-all-comments [post]="this.post"></app-all-comments>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <div class="profile-container" *ngIf="this.user">
+    <img class="avatar" src="{{ this.user.avatarUrl }}" alt="logo" />
+    <div class="info">
+      <div class="profile-header">
+        <div class="username">{{ this.user.username }}</div>
+        <div class="controls">
+          <div class="mat-wrap" (click)="this.toggleEditMenu()" *ngIf="
+              this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
+            ">
+            <img src="assets/icons/settings.svg" class="edit" title="Edit Profile" />
+          </div>
+          <div class="mat-wrap" *ngIf="!this.isOwner && !this.followed" title="follow" (click)="this.followUser()">
+            <img src="assets/icons/follow.png" class="follow" title="follow" />
+          </div>
+          <div class="mat-wrap" *ngIf="!this.isOwner && this.followed" title="unfollow" (click)="this.unfollowUser()">
+            <img src="assets/icons/unfollow.png" class="unfollow" title="unfollow" />
+          </div>
+          <div class="mat-wrap" *ngIf="
+              this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
+            " (click)="this.delete()" title="Delete">
+            <img src="assets/icons/trash_bin.svg" class="delete" title="Delete Profile" />
+          </div>
+        </div>
+      </div>
+      <div class="followers-count">
+        <app-follows class="follows" [user]="this.user"></app-follows>
+      </div>
+      <div class="info-wrapper">
+        <div class="name">{{ this.user.name }}</div>
+        <div class="email">{{ this.user.email }}</div>
+        <div class="country">{{ this.user.country }}</div>
+        <div class="description">{{ this.user.description }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper" *ngIf="this.showEditMenu">
+    <app-update-profile [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"
+      (cancelUpdate)="this.toggleEditMenu()"></app-update-profile>
+  </div>
+</div>
+<hr>
+<div class="posts-container">
+  <app-user-posts [user]="this.user" [isOwner]="this.isOwner" [followed]=this.followed></app-user-posts>
+</div>

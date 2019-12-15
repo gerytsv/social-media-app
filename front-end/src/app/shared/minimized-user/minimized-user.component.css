@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    font-style: normal;
+    font-size: 1.2rem;
+    border-bottom: 1px solid grey;
+}
+
+.container:hover {
+    background-color: lightgray;
+}
+img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 1rem;
+}

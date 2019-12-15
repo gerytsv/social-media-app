@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="other-comments">
+    <app-comment *ngFor="let comment of this.post.comments" [comment]="comment"
+      (deleteComment)="this.removeComment($event)">
+    </app-comment>
+  </div>
+
+  <div class="create-comment">
+    <app-create-comment (bodyToSend)="this.createComment($event)"></app-create-comment>
+  </div>
+</div>

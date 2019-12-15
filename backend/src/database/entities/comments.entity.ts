@@ -1,25 +1,30 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from 'typeorm';
 import { User } from './users.entity';
 import { Post } from './posts.entity';
 
 @Entity('comments')
-export class Comment {
+export class PostComment {
   @PrimaryGeneratedColumn('increment')
   public id: string;
 
-  @Column({ length: 300})
+  @Column({ length: 300 })
   public content: string;
 
   @CreateDateColumn({ type: 'timestamp' })
   public postedOn: Date;
 
-  @Column({type: 'boolean', default: false})
+  @Column({ type: 'boolean', default: false })
   public isDeleted: boolean;
 
-  @ManyToOne(type => User, user => user.comments , {eager : true})
+  @ManyToOne(type => User, user => user.comments, { eager: true })
   public user: User;
 
   @ManyToOne(type => Post, post => post.comments)
   public post: Post;
-
 }
