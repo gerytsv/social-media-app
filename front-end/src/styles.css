@@ -43,7 +43,7 @@ body::-webkit-scrollbar-thumb {
 
 .my-class .mat-dialog-container {
   max-height: 100vh;
-  /* max-width: 100%; */
+  /* max-width: 100vw; */
   overflow-y: auto !important;
   background: rgba(255, 255, 255, 0);
   color: rgb(0, 0, 0);
@@ -67,6 +67,10 @@ body::-webkit-scrollbar-thumb {
 
 .cdk-global-scrollblock {
   overflow: hidden;
+}
+
+.cdk-overlay-pane {
+  max-width: 100vw !important;
 }
 
 @media only screen and (max-width: 500px) {
