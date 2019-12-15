@@ -1,5 +1,5 @@
 <div class="post" *ngIf=this.post>
-  <img class="photo" src={{this.post.photoUrl}} (click)=this.openPost()>
+  <img class="photo" src={{this.post.photoUrl}}>
   <div class="info">
     <div class="header">
       <div class="user-info">
@@ -11,7 +11,7 @@
     <div class="content">
       <p class="caption">{{this.post.description}}</p>
       <div class="icons">
-        <div class="comments-tag animated rubberBand" (click)=this.openPost()><img src="assets/icons/comment.svg"
+        <div class="comments-tag animated rubberBand" (click)=this.toggleComments()><img src="assets/icons/comment.svg"
             class="comments" title="comments" /></div>
         <div class="likes">
           <app-likes [post]=this.post></app-likes>
@@ -20,4 +20,5 @@
     </div>
 
   </div>
+  <app-comments-under-post *ngIf="this.showComments" [postId]="this.post.id"></app-comments-under-post>
 </div>

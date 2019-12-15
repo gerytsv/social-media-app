@@ -13,6 +13,7 @@ export class PostComponent implements OnInit {
   public dateOfPost: string;
   public likes = { likes: 0 };
   public myLike = false;
+  public showComments = false;
 
   constructor(
     private readonly postsDataService: PostsDataService,
@@ -41,5 +42,9 @@ export class PostComponent implements OnInit {
     this.dialogService.openPostPreview({
       data: { user: this.post.user, post: this.post },
     });
+  }
+
+  public toggleComments() {
+    this.showComments = !this.showComments;
   }
 }

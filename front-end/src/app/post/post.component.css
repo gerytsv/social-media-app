@@ -6,6 +6,7 @@
   /* display: inline-block; */
   flex-wrap: wrap;
   margin-bottom: 10%;
+  background-color: white;
 }
 
 .post:hover {
