@@ -25,10 +25,12 @@ export class AdminGuard implements CanActivate {
   ): Observable<boolean> {
     let admin;
     this.authService.loggedUser$.subscribe(res => {
-      admin = res.isAdmin;
-      if (!admin) {
-        this.router.navigate(['homepage']);
-        this.notificator.error(`Forbidden page!`);
+      if (res) {
+        admin = res.isAdmin;
+        if (!admin) {
+          this.router.navigate(['homepage']);
+          this.notificator.error(`Forbidden page!`);
+        }
       }
     });
     return admin;
