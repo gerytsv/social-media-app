@@ -1,6 +1,8 @@
 .wrapper {
     margin-bottom: 1rem;
     border-bottom: 1px solid grey;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
 }
 
 .content{

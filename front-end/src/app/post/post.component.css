@@ -127,6 +127,10 @@
   align-content: center;
 }
 
+img.comments {
+  cursor: pointer;
+}
+
 @media screen and (max-width: 575px) {
   .date {
     font-size: 0.7rem;
