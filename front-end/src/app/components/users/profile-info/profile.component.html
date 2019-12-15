@@ -8,18 +8,18 @@
           <div class="mat-wrap" (click)="this.toggleEditMenu()" *ngIf="
               this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
             ">
-            <img src="../../../../assets/icons/settings2.svg" class="edit" title="Edit Profile" />
+            <img src="assets/icons/settings2.svg" class="edit" title="Edit Profile" />
           </div>
           <div class="mat-wrap" *ngIf="!this.isOwner && !this.followed" title="follow" (click)="this.followUser()">
-            <img src="../../../../assets/icons/follow.svg" class="follow" title="follow" />
+            <img src="assets/icons/follow.svg" class="follow" title="follow" />
           </div>
           <div class="mat-wrap" *ngIf="!this.isOwner && this.followed" title="unfollow" (click)="this.unfollowUser()">
-            <img src="../../../../assets/icons/unfollow.svg" class="unfollow" title="unfollow" />
+            <img src="assets/icons/unfollow.svg" class="unfollow" title="unfollow" />
           </div>
           <div class="mat-wrap" *ngIf="
               this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
             " (click)="this.delete()" title="Delete">
-            <img src="../../../../assets/icons/trash_bin.svg" class="delete" title="Delete Profile" />
+            <img src="assets/icons/trash_bin.svg" class="delete" title="Delete Profile" />
           </div>
         </div>
       </div>

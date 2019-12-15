@@ -1,3 +1,4 @@
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { NewsfeedResolver } from './../../core/resolvers/newsfeed.resolver';
 import { NewsfeedRoutingModule } from './newsfeed-routing.module';
 import { CoreModule } from '../../core/core.module';
@@ -9,8 +10,14 @@ import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [NewsfeedComponent],
-  imports: [CommonModule, NewsfeedRoutingModule, PostsModule, SharedModule],
+  imports: [
+    CommonModule,
+    NewsfeedRoutingModule,
+    PostsModule,
+    SharedModule,
+    NgxSpinnerModule,
+  ],
   providers: [NewsfeedResolver],
-  exports: []
+  exports: [],
 })
 export class NewsfeedModule {}
