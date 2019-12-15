@@ -22,7 +22,7 @@ export class CommentsDataService {
 
   public getCommentsOfPost(postId: string): Observable<CommentDTO[]> {
     return this.http.get<any>(
-      `${CONFIG.DOMAIN_NAME}/api/comments/${postId}/comments`
+      `${CONFIG.DOMAIN_NAME}/api/posts/${postId}/comments`
     );
   }
 
