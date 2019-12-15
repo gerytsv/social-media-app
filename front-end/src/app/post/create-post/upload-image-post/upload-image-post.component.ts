@@ -44,6 +44,11 @@ export class UploadImagePostComponent {
   imageLoaded() {
     this.showCropper = true;
   }
+
+  cropperReady() {}
+
+  iamgeLoadedReady() {}
+
   rotateLeft() {
     this.imageCropper.rotateLeft();
   }
