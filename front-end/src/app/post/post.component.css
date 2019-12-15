@@ -66,6 +66,10 @@
   flex-direction: row;
 }
 
+.material-icons {
+ color: red;
+}
+
 .date {
   display: flex;
   font-size: 0.9rem;
@@ -78,8 +82,9 @@
 }
 
 .content {
-  margin-left: 7%;
-  margin-right: 7%;
+  padding-bottom: 1vw;
+  margin-left: 5vw;
+  margin-right: 5vw;
   margin-top: 1%;
   margin-bottom: 2%;
   display: flex;
