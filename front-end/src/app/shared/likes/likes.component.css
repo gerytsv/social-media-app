@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.likes > i {
+  color: red;
+}
+
 .likes-count {
   margin-left: 0.3rem;
   font-size: 1.5rem;

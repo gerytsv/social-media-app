@@ -66,7 +66,7 @@ export class PostsService {
     }
 
     const follwedUsersPostsIds = flattenedPosts.map((post: any) => {
-      if (post.isDeleted === false && post.user) {
+      if (post && post.user && post.isDeleted === false  ) {
         return post.id;
       }
     });
