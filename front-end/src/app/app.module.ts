@@ -25,51 +25,54 @@ import { MatDialogModule } from '@angular/material';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostDetailPreviewComponent } from './post/post-detail-preview/post-detail-preview.component';
 import { ServerErrorInterceptor } from './common/exceptons/server-error';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LoginComponent,
-        RegisterComponent,
-        NavComponent,
-        SearchComponent,
-        HomepageComponent,
-        NotFoundComponent,
-    ],
-    imports: [
-        MatDialogModule,
-        MinimizedUserModule,
-        CoreModule,
-        CommonModule,
-        AppRoutingModule,
-        BrowserModule,
-        BrowserAnimationsModule,
-        FormsModule,
-        MaterialModule,
-        HttpClientModule,
-        ReactiveFormsModule,
-        UsersModule,
-        ToastrModule.forRoot({
-            timeOut: 3000,
-            positionClass: 'toast-top-right',
-            preventDuplicates: true,
-            countDuplicates: true,
-        }),
-        JwtModule.forRoot({ config: {} }),
-        SharedModule,
-    ],
-    providers: [
-        {
-            provide: HTTP_INTERCEPTORS,
-            useClass: TokenInterceptorService,
-            multi: true,
-        },
-        { provide: HTTP_INTERCEPTORS, useClass: ServerErrorInterceptor, multi: true }
-    ],
-    entryComponents: [
-        ConformationDialogBoxComponent,
-        PostDetailPreviewComponent,
-    ],
-    bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    RegisterComponent,
+    NavComponent,
+    SearchComponent,
+    HomepageComponent,
+    NotFoundComponent,
+  ],
+  imports: [
+    NgxSpinnerModule,
+    MatDialogModule,
+    MinimizedUserModule,
+    CoreModule,
+    CommonModule,
+    AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MaterialModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    UsersModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      countDuplicates: true,
+    }),
+    JwtModule.forRoot({ config: {} }),
+    SharedModule,
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorInterceptor,
+      multi: true,
+    },
+  ],
+  entryComponents: [ConformationDialogBoxComponent, PostDetailPreviewComponent],
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
