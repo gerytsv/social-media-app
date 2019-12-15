@@ -10,6 +10,7 @@ import { SearchService } from './services/search.service';
 import { DialogService } from './services/dialog.service';
 import { MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { ExploreModule } from '../components/explore/explore.module';
+import { AdminGuard } from '../common/auth/admin.guard';
 
 @NgModule({
   declarations: [],
@@ -17,6 +18,7 @@ import { ExploreModule } from '../components/explore/explore.module';
   providers: [
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } },
     AuthGuard,
+    AdminGuard,
     AuthService,
     NotificatorService,
     StorageService,

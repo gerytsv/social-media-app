@@ -47,4 +47,8 @@ export class PostComponent implements OnInit {
   public toggleComments() {
     this.showComments = !this.showComments;
   }
+
+  public get userLink() {
+    return ['/users', this.post.user.username];
+  }
 }

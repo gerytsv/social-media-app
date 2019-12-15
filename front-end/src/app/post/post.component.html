@@ -2,7 +2,7 @@
   <img class="photo" src={{this.post.photoUrl}}>
   <div class="info">
     <div class="header">
-      <div class="user-info">
+      <div class="user-info" [routerLink]="this.userLink">
         <img class="avatar" src={{this.post.user.avatarUrl}}>
         <p class="username">{{this.post.user.username}}</p>
       </div>

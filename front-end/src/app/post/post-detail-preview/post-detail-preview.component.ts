@@ -33,4 +33,8 @@ export class PostDetailPreviewComponent implements OnInit {
   public close() {
     this.dialog.closeAll();
   }
+
+  public get userLink() {
+    return ['/users', this.post.user.username];
+  }
 }
