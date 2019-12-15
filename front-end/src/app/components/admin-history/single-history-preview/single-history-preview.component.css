@@ -1,8 +1,9 @@
 .wrapper {
-    margin-bottom: 1rem;
+    padding: 1rem 0;
     border-bottom: 1px solid grey;
     display: grid;
-    grid-template-columns: 20% 60% 20%;
+    grid-template-columns: 9% 60% 29%;
+    grid-gap: 2%;
 }
 
 .content{

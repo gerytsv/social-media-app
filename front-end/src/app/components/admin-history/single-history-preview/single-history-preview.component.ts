@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ShowHistoryDTO } from '../models/show-history-dto';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-single-history-preview',
@@ -13,6 +14,7 @@ export class SingleHistoryPreviewComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    (this.singleHistory.postedOn as any) = moment(this.singleHistory.postedOn).format('llll');
   }
 
 }
