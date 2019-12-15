@@ -20,8 +20,8 @@ export function transformBase64BasedOnExifRotation(
     img.onload = function() {
       const width = img.width;
       const height = img.height;
-      const canvas = document.createElement("canvas");
-      const ctx = canvas.getContext("2d");
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
 
       if (ctx) {
         if (4 < exifRotation && exifRotation < 9) {
@@ -35,7 +35,7 @@ export function transformBase64BasedOnExifRotation(
         ctx.drawImage(img, 0, 0);
         resolve(canvas.toDataURL());
       } else {
-        reject(new Error("No context"));
+        reject(new Error('No context'));
       }
     };
     img.src = srcBase64;
@@ -77,7 +77,7 @@ function getExifRotation(imageBase64: string): number {
 }
 
 function base64ToArrayBuffer(imageBase64: string) {
-  imageBase64 = imageBase64.replace(/^data\:([^\;]+)\;base64,/gim, "");
+  imageBase64 = imageBase64.replace(/^data\:([^\;]+)\;base64,/gim, '');
   const binaryString = atob(imageBase64);
   const len = binaryString.length;
   const bytes = new Uint8Array(len);
