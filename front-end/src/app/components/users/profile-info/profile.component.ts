@@ -42,13 +42,15 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
           this.copyOfUser = { ...response };
           this.userSubscription = this.authService.loggedUser$.subscribe(
             user => {
-              this.loggedInUser = user;
-              this.followed = this.user.followers.some(
-                item => item.username === this.loggedInUser.username
-              );
-              this.user.username === user.username
-                ? (this.isOwner = true)
-                : (this.isOwner = false);
+              if (user) {
+                this.loggedInUser = user;
+                this.followed = this.user.followers.some(
+                  item => item.username === this.loggedInUser.username
+                );
+                this.user.username === user.username
+                  ? (this.isOwner = true)
+                  : (this.isOwner = false);
+              }
             }
           );
         },
