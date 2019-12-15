@@ -10,7 +10,7 @@ import {
   Delete,
   Put,
   Request,
-  Query
+  Query,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -22,7 +22,7 @@ import { ShowUserInfoDTO } from './models/show-user-info.dto';
 import { UpdateInfoDTO } from './models/update-Info.dto';
 import { ShowDetailedInfoDTO } from './models/show-detailed-info.dto';
 
-@Controller('api/users')
+@Controller('users')
 export class UsersController {
   public constructor(private readonly userService: UsersService) {}
 
@@ -40,7 +40,7 @@ export class UsersController {
     const users = await this.userService.allUsers();
     if (username) {
       return users.filter(user =>
-       user.username.toLowerCase().includes(username.toLowerCase()),
+        user.username.toLowerCase().includes(username.toLowerCase()),
       );
     } else {
       return users;
@@ -78,7 +78,7 @@ export class UsersController {
       body.country,
       body.description,
       body.avatarUrl,
-      req.user.id
+      req.user.id,
     );
   }
 }

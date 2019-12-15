@@ -10,13 +10,21 @@ import { SharedModule } from '../../shared/shared.module';
 import { UserPostsComponent } from '../user-posts/user-posts.component';
 import { PostsModule } from '../../post/posts.module';
 
-
 @NgModule({
-  declarations: [ProfileInfoComponent, UpdateProfileComponent, FollowsComponent, UserPostsComponent],
+  declarations: [
+    ProfileInfoComponent,
+    UpdateProfileComponent,
+    FollowsComponent,
+    UserPostsComponent,
+  ],
   imports: [
-   SharedModule, UsersRoutingModule, FormsModule, CommonModule, PostsModule
+    SharedModule,
+    UsersRoutingModule,
+    FormsModule,
+    CommonModule,
+    PostsModule,
   ],
   providers: [UsersDataService],
-  exports: [ProfileInfoComponent, UpdateProfileComponent, UserPostsComponent]
+  exports: [ProfileInfoComponent, UpdateProfileComponent, UserPostsComponent],
 })
-export class UsersModule { }
+export class UsersModule {}

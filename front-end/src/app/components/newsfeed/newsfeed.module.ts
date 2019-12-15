@@ -1,7 +1,6 @@
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NewsfeedResolver } from './../../core/resolvers/newsfeed.resolver';
 import { NewsfeedRoutingModule } from './newsfeed-routing.module';
-import { CoreModule } from '../../core/core.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsfeedComponent } from './newsfeed.component';

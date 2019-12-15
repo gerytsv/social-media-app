@@ -63,7 +63,8 @@ export class LikesService {
     }
 
     const likes: PostLike[] = await this.likesRepository.find({
-      where: { post }});
+      where: { post },
+    });
 
     if (!likes) {
       return { likes: 0 };
@@ -71,7 +72,11 @@ export class LikesService {
 
     const likesToReturn = likes.reduce(
       (acc, like) => {
-        if (like.isLiked === true &&  like.user && like.user.isDeleted === false ) {
+        if (
+          like.isLiked === true &&
+          like.user &&
+          like.user.isDeleted === false
+        ) {
           acc.likes++;
         }
         return acc;

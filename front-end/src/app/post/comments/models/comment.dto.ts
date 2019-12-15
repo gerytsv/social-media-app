@@ -1,11 +1,11 @@
-import { User } from './../../../components/users/models/user'
+import { User } from './../../../components/users/models/user';
 
 export class CommentDTO {
-    public id: string
+  public id: string;
 
-    public content: string
+  public content: string;
 
-    public user: User
+  public user: User;
 
-    public createdOn: Date
+  public createdOn: Date;
 }

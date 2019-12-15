@@ -7,9 +7,7 @@ import { AdminRoutingModule } from './admin-routing.module';
 
 @NgModule({
   declarations: [AdminHistoryComponent, SingleHistoryPreviewComponent],
-  imports: [
-    CommonModule, AdminRoutingModule
-  ],
-  providers: [AdminDataService]
+  imports: [CommonModule, AdminRoutingModule],
+  providers: [AdminDataService],
 })
-export class AdminHistoryModule { }
+export class AdminHistoryModule {}

@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { ProfileInfoComponent } from './profile.component';
 import { UsersDataService } from '../users-data.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../../../core/services/auth.service';
 import { NotificatorService } from '../../../core/services/notificator.service';
 import { DialogService } from '../../../core/services/dialog.service';
@@ -37,7 +37,7 @@ describe('ProfileComponent', () => {
       get loggedUser$() {
         return of();
       },
-      logout() {}
+      logout() {},
     };
     activatedRoute = {
       params: of({
@@ -652,7 +652,9 @@ describe('ProfileComponent', () => {
           return of(true);
         },
       });
-      const spy4 = jest.spyOn(usersDataService, 'deleteUser').mockReturnValue(of({}));
+      const spy4 = jest
+        .spyOn(usersDataService, 'deleteUser')
+        .mockReturnValue(of({}));
 
       // Act
       component.ngOnInit();
@@ -661,7 +663,9 @@ describe('ProfileComponent', () => {
       expect(dialogService.openConfDialog).toHaveBeenCalledTimes(1);
       expect(dialogService.openConfDialog).toHaveBeenCalledWith(
         ConformationDialogBoxComponent,
-        {description : 'Do you want to delete this account?'}
+        {
+          description: 'Do you want to delete this account?',
+        }
       );
       done();
     });
@@ -686,14 +690,18 @@ describe('ProfileComponent', () => {
           return of(true);
         },
       });
-      const spy4 = jest.spyOn(usersDataService, 'deleteUser').mockReturnValue(of({}));
+      const spy4 = jest
+        .spyOn(usersDataService, 'deleteUser')
+        .mockReturnValue(of({}));
 
       // Act
       component.ngOnInit();
       component.delete();
       // Assert
       expect(usersDataService.deleteUser).toHaveBeenCalledTimes(1);
-      expect(usersDataService.deleteUser).toHaveBeenCalledWith(mockedLoggedInUserData.id);
+      expect(usersDataService.deleteUser).toHaveBeenCalledWith(
+        mockedLoggedInUserData.id
+      );
       done();
     });
 
@@ -717,7 +725,9 @@ describe('ProfileComponent', () => {
           return of(true);
         },
       });
-      const spy4 = jest.spyOn(usersDataService, 'deleteUser').mockReturnValue(of({}));
+      const spy4 = jest
+        .spyOn(usersDataService, 'deleteUser')
+        .mockReturnValue(of({}));
       const spy5 = jest.spyOn(authService, 'logout');
 
       // Act
@@ -748,7 +758,9 @@ describe('ProfileComponent', () => {
           return of(true);
         },
       });
-      const spy4 = jest.spyOn(usersDataService, 'deleteUser').mockReturnValue(of({}));
+      const spy4 = jest
+        .spyOn(usersDataService, 'deleteUser')
+        .mockReturnValue(of({}));
       const spy5 = jest.spyOn(authService, 'logout');
       const spy6 = jest.spyOn(notificatorService, 'success');
 
@@ -757,9 +769,10 @@ describe('ProfileComponent', () => {
       component.delete();
       // Assert
       expect(notificatorService.success).toHaveBeenCalledTimes(1);
-      expect(notificatorService.success).toHaveBeenCalledWith(`Account with username ${mockedLoggedInUserData.username} has been deleted`);
+      expect(notificatorService.success).toHaveBeenCalledWith(
+        `Account with username ${mockedLoggedInUserData.username} has been deleted`
+      );
       done();
     });
-
   });
 });

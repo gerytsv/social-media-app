@@ -1,41 +1,41 @@
 .create {
-    display: flex;
-    align-items: space-between;
-    height: fit-content;
+  display: flex;
+  align-items: space-between;
+  height: fit-content;
 }
 
 textarea {
-    border: none;
-    width: 80%;
-    font-size: 1rem;
-    font-family: 'Segoe UI';
-    background-color: transparent;
-    resize: none;
-    padding-top: 1.5em;
+  border: none;
+  width: 80%;
+  font-size: 1rem;
+  font-family: 'Segoe UI';
+  background-color: transparent;
+  resize: none;
+  padding-top: 1.5em;
 }
 
 textarea:focus {
-    outline: none;
+  outline: none;
 }
 
 .post-btn {
-    width: 20%;
-    color: rgb(0, 154, 113);
-    font-size: 1rem;
-    margin: auto;
-    font-weight: bolder;
-    text-align: center;
-    text-decoration: none;
-    padding-left: 3%;
-    transition: transform 0.5s ease-out;
+  width: 20%;
+  color: rgb(0, 154, 113);
+  font-size: 1rem;
+  margin: auto;
+  font-weight: bolder;
+  text-align: center;
+  text-decoration: none;
+  padding-left: 3%;
+  transition: transform 0.5s ease-out;
 }
 
 .post-btn:hover {
-    color: rgb(0, 211, 155);
-    transform: scale(1.1);
-    cursor: pointer;
+  color: rgb(0, 211, 155);
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .post-btn:active {
-    color: #00f0a4;
+  color: #00f0a4;
 }

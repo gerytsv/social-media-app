@@ -2,19 +2,16 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class StorageService {
-
-  constructor() { }
+  constructor() {}
 
   public save(key: string, value: any) {
     localStorage.setItem(key, String(value));
   }
 
   public read(key: string) {
-    const value =  localStorage.getItem(key);
+    const value = localStorage.getItem(key);
 
-    return value && value !== 'undefined'
-      ? value
-      : null;
+    return value && value !== 'undefined' ? value : null;
   }
 
   public delete(key: string) {
@@ -24,5 +21,4 @@ export class StorageService {
   public clear() {
     localStorage.clear();
   }
-
 }

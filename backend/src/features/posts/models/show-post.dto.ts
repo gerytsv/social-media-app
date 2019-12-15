@@ -1,6 +1,5 @@
-import {  ShowUserOnPostDTO } from './../../users/models/show-user-on-post.dto';
+import { ShowUserOnPostDTO } from './../../users/models/show-user-on-post.dto';
 import { Publish } from '../../../transformer/decorators/publish';
-import { User } from '../../../database/entities/users.entity';
 import { PostLike } from '../../../database/entities/posts-likes.entity';
 import { Comment } from '@babel/types';
 import { ShowCommentDTO } from '../../comments/models/show-comment.dto';

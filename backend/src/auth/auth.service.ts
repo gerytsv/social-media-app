@@ -20,13 +20,14 @@ export class AuthService {
       userFound.roles.map(item => {
         if (item.name === 'Admin') {
           isAdmin = true;
-        }})
+        }
+      });
       // Returning the token
       return await this.jwtService.signAsync({
         isAdmin,
         username: userFound.username,
         email: userFound.email,
-        avatarUrl: userFound.avatarUrl
+        avatarUrl: userFound.avatarUrl,
       } as JwtPayload);
     }
     if (!userFound) {
@@ -34,7 +35,6 @@ export class AuthService {
     }
   }
 
-  // For the strategy
   public async validateUser(payload: JwtPayload): Promise<User> {
     return await this.usersService.validate(payload);
   }

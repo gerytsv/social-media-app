@@ -7,7 +7,7 @@ import { StorageService } from '../../core/services/storage.service';
 @Component({
   selector: 'app-conformation-dialog-box',
   templateUrl: './conformation-dialog-box.component.html',
-  styleUrls: ['./conformation-dialog-box.component.css']
+  styleUrls: ['./conformation-dialog-box.component.css'],
 })
 export class ConformationDialogBoxComponent implements OnInit {
   public description: string;

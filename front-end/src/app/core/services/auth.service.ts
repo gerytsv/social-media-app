@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../../components/users/models/user';
 import { UserLoginDTO } from '../../components/users/models/user-login-dto';
 import { UserRegisterDTO } from '../../components/users/models/user-register-dto';
+import { CONFIG } from '../../config/config';
 
 @Injectable()
 export class AuthService {
@@ -23,8 +24,7 @@ export class AuthService {
     private readonly storage: StorageService,
     private readonly router: Router,
     private readonly helper: JwtHelperService
-  ) {
-  }
+  ) {}
 
   public get isLoggedIn$(): Observable<boolean> {
     return this.isLoggedInSubject$.asObservable();
@@ -36,7 +36,7 @@ export class AuthService {
 
   public login(user: UserLoginDTO) {
     return this.http
-      .post<{ token: string }>(`http://localhost:3000/session/login`, user)
+      .post<{ token: string }>(`${CONFIG.DOMAIN_NAME}/session/login`, user)
       .pipe(
         tap(({ token }) => {
           try {
@@ -45,8 +45,7 @@ export class AuthService {
 
             this.isLoggedInSubject$.next(true);
             this.loggedUserSubject$.next(loggedUser);
-          } catch (error) {
-          }
+          } catch (error) {}
         })
       );
   }
@@ -59,7 +58,7 @@ export class AuthService {
   }
 
   public register(user: UserRegisterDTO) {
-    return this.http.post(`http://localhost:3000/api/users`, user);
+    return this.http.post(`${CONFIG.DOMAIN_NAME}/users`, user);
   }
 
   private isUserLoggedIn(): boolean {

@@ -39,7 +39,6 @@ export class CommentsUnderPostComponent implements OnInit {
 
   public removeComment(commentToBeDeleted: CommentDTO) {
     const index = this.comments.indexOf(commentToBeDeleted);
-    console.log(index);
     this.comments.splice(index, 1);
   }
 }

@@ -1,5 +1,5 @@
 <div class="container">
-  <i class="material-icons close" (click)="this.cancel()" >close</i>
+  <i class="material-icons close" (click)="this.cancel()">close</i>
   <div class="pic-section">
     <img class="img-preview" src="{{ this.user.avatarUrl }}" />
     <div class="alert">Maximum size 10MB</div>
@@ -7,15 +7,8 @@
       <span class="label">
         Upload avatar
       </span>
-      <input
-        type="file"
-        #fileInput
-        (change)="updateProfilePic(fileInput.files[0])"
-        accept="image/*"
-        type="file"
-        class="upload-box"
-        id="upload"
-      />
+      <input type="file" #fileInput (change)="updateProfilePic(fileInput.files[0])" accept="image/*" type="file"
+        class="upload-box" id="upload" />
     </div>
   </div>
   <div class="info-sec">
@@ -33,16 +26,9 @@
     </div>
     <div class="field  text">
       <span>Description</span>
-      <textarea
-        [(ngModel)]="this.user.description"
-        class="description"
-      ></textarea>
+      <textarea [(ngModel)]="this.user.description" class="description"></textarea>
     </div>
-    <button
-      type="button"
-      (click)="this.updateProfileInfo()"
-      class="submit"
-    >
+    <button type="button" (click)="this.updateProfileInfo()" class="submit">
       Save changes
     </button>
   </div>

@@ -1,11 +1,20 @@
-import { Controller, Post, UseGuards, UseInterceptors, Request, Param, Delete, Get } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  UseGuards,
+  UseInterceptors,
+  Request,
+  Param,
+  Delete,
+  Get,
+} from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FollowingsService } from './followings.service';
 import { TransformInterceptor } from '../../transformer/interceptors/transform.interceptor';
 import { ShowUserDTO } from '../users/models/show-user.dto';
 import { ShowDetailedInfoDTO } from '../users/models/show-detailed-info.dto';
 
-@Controller('api/follow/users')
+@Controller('follow/users')
 export class FollowingsController {
   public constructor(private readonly followingsService: FollowingsService) {}
 

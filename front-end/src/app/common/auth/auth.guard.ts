@@ -5,7 +5,7 @@ import {
   CanActivate,
   ActivatedRouteSnapshot,
   RouterStateSnapshot,
-  Router
+  Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
   constructor(
     private readonly authService: AuthService,
     private readonly notificator: NotificatorService,
-    private readonly router: Router,
+    private readonly router: Router
   ) {}
 
   canActivate(
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     return this.authService.isLoggedIn$.pipe(
-      tap((loggedIn) => {
+      tap(loggedIn => {
         if (!loggedIn) {
           this.notificator.error(`You not authorized to access this page!`);
           this.router.navigate(['homepage']);

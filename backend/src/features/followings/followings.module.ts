@@ -6,8 +6,8 @@ import { User } from '../../database/entities/users.entity';
 import { History } from '../../database/entities/history.entity';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([User, History])],
-    providers: [FollowingsService],
-    controllers: [FollowingsController],
+  imports: [TypeOrmModule.forFeature([User, History])],
+  providers: [FollowingsService],
+  controllers: [FollowingsController],
 })
 export class FollowingsModule {}

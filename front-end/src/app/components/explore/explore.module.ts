@@ -7,9 +7,9 @@ import { PostsModule } from '../../post/posts.module';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-    declarations: [ExploreComponent],
-    imports: [CommonModule, ExploreRoutingModule, PostsModule, SharedModule],
-    providers: [AllPostsResolver],
-    exports: [],
+  declarations: [ExploreComponent],
+  imports: [CommonModule, ExploreRoutingModule, PostsModule, SharedModule],
+  providers: [AllPostsResolver],
+  exports: [],
 })
 export class ExploreModule {}

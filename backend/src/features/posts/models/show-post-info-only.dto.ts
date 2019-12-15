@@ -1,4 +1,4 @@
-import {  ShowUserOnPostDTO } from './../../users/models/show-user-on-post.dto';
+import { ShowUserOnPostDTO } from './../../users/models/show-user-on-post.dto';
 import { Publish } from '../../../transformer/decorators/publish';
 
 export class ShowPostInfoDTO {
@@ -19,5 +19,4 @@ export class ShowPostInfoDTO {
 
   @Publish(ShowUserOnPostDTO)
   public user: ShowUserOnPostDTO;
-
 }

@@ -15,7 +15,6 @@ body {
   grid-gap: 3vw;
 }
 
-
 @media screen and (min-width: 320px) and (max-width: 535px) {
   .posts-container {
     grid-template-columns: repeat(3, 31.5vw);

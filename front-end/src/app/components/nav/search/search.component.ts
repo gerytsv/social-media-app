@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { SearchService } from '../../../core/services/search.service';
 import { ShowDetailedInfoDTO } from '../../users/models/show-detailed-info.dto';
 import { debounceTime, distinctUntilChanged, debounce } from 'rxjs/operators';
@@ -8,10 +14,9 @@ import { Subject, Subscription } from 'rxjs';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  styleUrls: ['./search.component.css'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
-
   @Output() public closeMenu: EventEmitter<null> = new EventEmitter();
 
   private readonly searchSubject$ = new Subject<string>();
@@ -21,17 +26,14 @@ export class SearchComponent implements OnInit, OnDestroy {
   public inputValue = '';
   public searchInput = new FormControl();
 
-  constructor(private readonly searchService: SearchService) {
-  }
+  constructor(private readonly searchService: SearchService) {}
 
   ngOnInit() {
-
-    this.searchSubscription = this.searchSubjectAsObservable.pipe(
-      debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe(res => {
-      this.search(res); }
-      );
+    this.searchSubscription = this.searchSubjectAsObservable
+      .pipe(debounceTime(500), distinctUntilChanged())
+      .subscribe(res => {
+        this.search(res);
+      });
   }
 
   ngOnDestroy() {
@@ -73,5 +75,4 @@ export class SearchComponent implements OnInit, OnDestroy {
   public closeNav() {
     this.closeMenu.emit();
   }
-
 }

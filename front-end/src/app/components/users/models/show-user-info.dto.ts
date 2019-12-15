@@ -1,24 +1,23 @@
 export class ShowUserInfoDTO {
+  public id: string;
 
-    public id: string;
+  public username: string;
 
-    public username: string;
+  public email: string;
 
-    public email: string;
+  public name: string;
 
-    public name: string;
+  public registered: Date;
 
-    public registered: Date;
+  public description: string;
 
-    public description: string;
+  public country: string;
 
-    public country: string;
+  public avatarUrl: string;
 
-    public avatarUrl: string;
+  public followersCount: number;
 
-    public followersCount: number;
+  public followedCount: number;
 
-    public followedCount: number;
-
-    public postsCount: number;
+  public postsCount: number;
 }

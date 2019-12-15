@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
 import { AuthService } from '../../../core/services/auth.service';
 import { CommentsDataService } from '../comments-data.service';
 import { CommentDTO } from '../models/comment.dto';

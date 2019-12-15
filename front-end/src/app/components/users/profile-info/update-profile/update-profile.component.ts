@@ -20,7 +20,7 @@ export class UpdateProfileComponent implements OnInit {
   constructor(
     private readonly usersDataService: UsersDataService,
     private readonly notificator: NotificatorService,
-    private readonly dialog: DialogService,
+    private readonly dialog: DialogService
   ) {}
 
   public ngOnInit() {}

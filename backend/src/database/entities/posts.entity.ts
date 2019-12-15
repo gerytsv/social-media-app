@@ -4,7 +4,6 @@ import {
   PrimaryGeneratedColumn,
   ManyToOne,
   OneToMany,
-  Like,
   CreateDateColumn,
 } from 'typeorm';
 import { User } from './users.entity';

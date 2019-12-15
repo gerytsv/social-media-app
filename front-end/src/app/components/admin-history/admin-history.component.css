@@ -1,20 +1,20 @@
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    width: fit-content;
-    padding: 2rem;
-    flex-wrap: wrap;
-    margin: 1rem auto;
-    box-shadow:5px 5px 9px 0px #ccc;
-    background-color: white;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  padding: 2rem;
+  flex-wrap: wrap;
+  margin: 1rem auto;
+  box-shadow: 5px 5px 9px 0px #ccc;
+  background-color: white;
 }
-.title{
-    flex: 100%;
-    font-size: 1.5rem;
-    text-align: center;
-    margin-bottom: 1rem;
+.title {
+  flex: 100%;
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-.single{
-    flex: 50%;
+.single {
+  flex: 50%;
 }

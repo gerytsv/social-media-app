@@ -18,7 +18,7 @@ import { ShowCommentDTO } from './models/show-comment.dto';
 import { AdminGuard } from '../../common/guards/admin.guard';
 import { CreateCommentDTO } from './models/create-comment.dto';
 
-@Controller('api')
+@Controller('')
 export class CommentsController {
   public constructor(private readonly commentsService: CommentsService) {}
 

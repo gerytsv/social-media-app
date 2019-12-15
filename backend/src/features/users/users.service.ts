@@ -102,7 +102,7 @@ export class UsersService {
   public async delete(userId: string, requestUserId: string) {
     const user = await this.userRepository.findOne({
       where: { id: userId, isDeleted: false },
-      relations: [ 'followed', 'followers', 'posts', 'comments', 'likes']
+      relations: ['followed', 'followers', 'posts', 'comments', 'likes'],
     });
     if (!user) {
       throw new SystemError('The user is not found', 404);
@@ -144,7 +144,7 @@ export class UsersService {
   public async getUserInfo(username: string) {
     const user = await getRepository(User)
       .createQueryBuilder('user')
-      .where('user.username = :username' , {username})
+      .where('user.username = :username', { username })
       .leftJoinAndSelect(
         'user.followers',
         'followers',

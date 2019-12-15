@@ -1,30 +1,15 @@
 <div class="wrapper">
   <div class="photo-sec">
-    <app-upload-image-post
-      (bodyToSend)="this.imageCropped($event)"
-    ></app-upload-image-post>
+    <app-upload-image-post (bodyToSend)="this.imageCropped($event)"></app-upload-image-post>
   </div>
   <div class="options">
     Description:
-    <textarea
-      class="description"
-      type="text"
-      placeholder="Write a description..."
-      [(ngModel)]="this.description"
-    ></textarea>
+    <textarea class="description" type="text" placeholder="Write a description..."
+      [(ngModel)]="this.description"></textarea>
     <span>Status:</span>
     <div class="status" id="status">
-      <input
-        type="radio"
-        name="isPrivate"
-        (click)="this.isPrivateCheck()"
-      /><span>Private</span>
-      <input
-        type="radio"
-        name="isPrivate"
-        (click)="this.isPublicCheck()"
-        checked
-      /><span>Public</span>
+      <input type="radio" name="isPrivate" (click)="this.isPrivateCheck()" /><span>Private</span>
+      <input type="radio" name="isPrivate" (click)="this.isPublicCheck()" checked /><span>Public</span>
     </div>
     <button class="create-post" (click)="this.onPostButtonClick()">
       Create Post

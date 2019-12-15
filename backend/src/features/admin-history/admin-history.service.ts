@@ -5,12 +5,12 @@ import { History } from '../../database/entities/history.entity';
 
 @Injectable()
 export class AdminHistoryService {
+  public constructor(
+    @InjectRepository(History)
+    private readonly historyRepository: Repository<History>,
+  ) {}
 
-    public constructor(
-    @InjectRepository(History) private readonly historyRepository: Repository<History>
-    ) {}
-
-    public async getHistory() {
-        return await this.historyRepository.find({});
-    }
+  public async getHistory() {
+    return await this.historyRepository.find({});
+  }
 }

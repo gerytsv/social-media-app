@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany, Like, CreateDateColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  CreateDateColumn,
+} from 'typeorm';
 import { User } from './users.entity';
 import { Post } from './posts.entity';
 
@@ -10,13 +16,12 @@ export class PostLike {
   @CreateDateColumn({ type: 'timestamp' })
   public postedOn: Date;
 
-  @Column({type: 'boolean', default: false})
+  @Column({ type: 'boolean', default: false })
   public isLiked: boolean;
 
-  @ManyToOne(type => User, user => user.likes , {eager : true})
+  @ManyToOne(type => User, user => user.likes, { eager: true })
   public user: User;
 
   @ManyToOne(type => Post, post => post.comments)
   public post: Post;
-
 }

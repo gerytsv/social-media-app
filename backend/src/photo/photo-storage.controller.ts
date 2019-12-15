@@ -11,7 +11,7 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { PhotoStorageService } from './photo-storage.service';
 
-@Controller('api/photos')
+@Controller('photos')
 export class PhotoStorageController {
   public constructor(
     private readonly photoStorageService: PhotoStorageService,

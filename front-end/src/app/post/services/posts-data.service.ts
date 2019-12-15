@@ -12,11 +12,15 @@ export class PostsDataService {
   constructor(private readonly http: HttpClient) {}
 
   public allPosts(take: number, skip: number): Observable<any> {
-    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts?take=${take}&skip=${skip}`);
+    return this.http.get<PostDTO>(
+      `${CONFIG.DOMAIN_NAME}/posts?take=${take}&skip=${skip}`
+    );
   }
 
   public followedPosts(take: number, skip: number): Observable<any> {
-    return this.http.get<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/feed?take=${take}&skip=${skip}`);
+    return this.http.get<PostDTO>(
+      `${CONFIG.DOMAIN_NAME}/posts/feed?take=${take}&skip=${skip}`
+    );
   }
 
   public getPostById(id: string): Observable<PostDTO> {
@@ -24,7 +28,7 @@ export class PostsDataService {
   }
 
   public uploadPhoto(base64: string): Observable<any> {
-    return this.http.post<any>(`${CONFIG.DOMAIN_NAME}/api/photos/post`, {
+    return this.http.post<any>(`${CONFIG.DOMAIN_NAME}/photos/post`, {
       base64,
     });
   }
@@ -38,16 +42,13 @@ export class PostsDataService {
 
   public likePost(postId: string): Observable<{ message: string }> {
     return this.http.post<{ message: string }>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/${postId}/likes`,
+      `${CONFIG.DOMAIN_NAME}/posts/${postId}/likes`,
       {}
-      // { isLiked: true }
     );
   }
 
   public getLikesOfPost(postId: string): Observable<any> {
-    return this.http.get<any>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/${postId}/likes`
-    );
+    return this.http.get<any>(`${CONFIG.DOMAIN_NAME}/posts/${postId}/likes`);
   }
 
   public deletePost(id: number): Observable<PostDTO> {

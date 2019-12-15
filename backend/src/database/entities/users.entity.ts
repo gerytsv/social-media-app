@@ -67,5 +67,4 @@ export class User {
 
   @OneToMany(type => PostComment, comment => comment.user)
   public comments: Promise<Comment[]>;
-
 }

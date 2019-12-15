@@ -5,12 +5,12 @@ import { AdminHistoryComponent } from './admin-history.component';
 const routes: Routes = [
   {
     path: 'history',
-    component: AdminHistoryComponent
-  }
+    component: AdminHistoryComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AdminRoutingModule {}

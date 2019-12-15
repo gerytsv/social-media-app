@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  OnChanges,
-  DoCheck,
-  AfterViewInit,
-} from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { PostsDataService } from '../../post/services/posts-data.service';
 import { PostDTO } from '../../post/models/post.dto';
 
@@ -49,7 +42,6 @@ export class LikesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log('in');
     this.changeView();
   }
 }

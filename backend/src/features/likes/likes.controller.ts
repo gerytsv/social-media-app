@@ -14,7 +14,7 @@ import {
 import { AuthGuard } from '@nestjs/passport';
 import { LikesService } from './likes.service';
 
-@Controller('api')
+@Controller('')
 export class LikesController {
   public constructor(private readonly likesService: LikesService) {}
 

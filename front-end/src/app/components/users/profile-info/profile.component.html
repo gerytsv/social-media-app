@@ -8,7 +8,7 @@
           <div class="mat-wrap" (click)="this.toggleEditMenu()" *ngIf="
               this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
             ">
-            <img src="assets/icons/settings2.svg" class="edit" title="Edit Profile" />
+            <img src="assets/icons/settings.svg" class="edit" title="Edit Profile" />
           </div>
           <div class="mat-wrap" *ngIf="!this.isOwner && !this.followed" title="follow" (click)="this.followUser()">
             <img src="assets/icons/follow.png" class="follow" title="follow" />

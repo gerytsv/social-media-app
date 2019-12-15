@@ -4,12 +4,12 @@ import { Get } from '@nestjs/common';
 import { AdminGuard } from '../../common/guards/admin.guard';
 import { AuthGuard } from '@nestjs/passport';
 
-@Controller('api/admin')
+@Controller('admin')
 export class AdminHistoryController {
   public constructor(private readonly historyService: AdminHistoryService) {}
   @Get('history')
   @UseGuards(AuthGuard('jwt'), AdminGuard)
   public async getFullHistory() {
-      return await this.historyService.getHistory();
+    return await this.historyService.getHistory();
   }
 }

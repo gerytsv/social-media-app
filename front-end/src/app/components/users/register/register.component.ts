@@ -8,7 +8,7 @@ import { RegistrationValidator } from '../../../core/validators/compare-password
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
   public registerForm: FormGroup;
@@ -18,28 +18,28 @@ export class RegisterComponent implements OnInit {
     private readonly authService: AuthService,
     private readonly notificator: NotificatorService,
     private readonly router: Router,
-    private readonly fb: FormBuilder,
+    private readonly fb: FormBuilder
   ) {
     this.passwordFormGroup = this.fb.group(
       {
         password: [
           '',
-          Validators.compose([Validators.required, Validators.minLength(8)])
+          Validators.compose([Validators.required, Validators.minLength(8)]),
         ],
-        repeatPassword: ['', Validators.required]
+        repeatPassword: ['', Validators.required],
       },
       {
-        validator: RegistrationValidator.validate.bind(this)
+        validator: RegistrationValidator.validate.bind(this),
       }
     );
 
     this.registerForm = this.fb.group({
       username: [
         '',
-        Validators.compose([Validators.required, Validators.minLength(6)])
+        Validators.compose([Validators.required, Validators.minLength(6)]),
       ],
       email: ['', Validators.compose([Validators.required, Validators.email])],
-      password: this.passwordFormGroup.value.password
+      password: this.passwordFormGroup.value.password,
     });
   }
 
@@ -48,17 +48,16 @@ export class RegisterComponent implements OnInit {
   public register() {
     const user = {
       ...this.registerForm.value,
-      password: this.passwordFormGroup.value.password
+      password: this.passwordFormGroup.value.password,
     };
     this.authService.register(user).subscribe(
       () => {
         this.notificator.success(`Registration successful!`);
         this.authService
           .login({ usernameOrEmail: user.username, password: user.password })
-          .subscribe(() => {
-          });
+          .subscribe(() => {});
       },
-      (res) => this.notificator.error(res.error.error)
+      res => this.notificator.error(res.error.error)
     );
   }
 }

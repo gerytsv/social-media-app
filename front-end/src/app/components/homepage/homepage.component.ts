@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.css']
+  styleUrls: ['./homepage.component.css'],
 })
 export class HomepageComponent implements OnInit, OnDestroy {
-
   public loggedInSubscription: Subscription;
   public showLogin = true;
   public showRegister = false;
@@ -18,7 +17,7 @@ export class HomepageComponent implements OnInit, OnDestroy {
   constructor(
     private readonly authService: AuthService,
     private readonly router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(res => {
@@ -42,5 +41,4 @@ export class HomepageComponent implements OnInit, OnDestroy {
     this.showLogin = false;
     this.showRegister = true;
   }
-
 }

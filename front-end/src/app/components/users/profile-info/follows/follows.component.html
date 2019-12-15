@@ -10,24 +10,16 @@
       <span>Followers</span>
       <i class="material-icons" (click)="close()">close</i>
     </div>
-    <app-minimized-user
-      *ngFor="let user of this.user.followers"
-      [user]="user"
-      (click)="close()"
-    ></app-minimized-user>
+    <app-minimized-user *ngFor="let user of this.user.followers" [user]="user" (click)="close()"></app-minimized-user>
   </div>
   <div class="followed" (click)="toggleFollowed()">
     <span>{{ this.user.followed.length }}</span> followed
   </div>
   <div class="show-follows" *ngIf="showFollowed">
-      <div class="title">
-          <span>Followed users</span>
-          <i class="material-icons" (click)="close()">close</i>
-        </div>
-    <app-minimized-user
-      *ngFor="let user of this.user.followed"
-      [user]="user"
-      (click)="close()"
-    ></app-minimized-user>
+    <div class="title">
+      <span>Followed users</span>
+      <i class="material-icons" (click)="close()">close</i>
+    </div>
+    <app-minimized-user *ngFor="let user of this.user.followed" [user]="user" (click)="close()"></app-minimized-user>
   </div>
 </div>

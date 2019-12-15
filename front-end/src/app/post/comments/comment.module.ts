@@ -8,14 +8,19 @@ import { AllCommentsComponent } from './all-comments/all-comments.component';
 import { CommentsUnderPostComponent } from './comments-under-post/comments-under-post.component';
 
 @NgModule({
-    declarations: [
-        CommentComponent,
-        CreateCommentComponent,
-        AllCommentsComponent,
-        CommentsUnderPostComponent
-    ],
-    imports: [CommonModule, FormsModule],
-    providers: [CommentsDataService],
-    exports: [CommentComponent, CreateCommentComponent, AllCommentsComponent, CommentsUnderPostComponent],
+  declarations: [
+    CommentComponent,
+    CreateCommentComponent,
+    AllCommentsComponent,
+    CommentsUnderPostComponent,
+  ],
+  imports: [CommonModule, FormsModule],
+  providers: [CommentsDataService],
+  exports: [
+    CommentComponent,
+    CreateCommentComponent,
+    AllCommentsComponent,
+    CommentsUnderPostComponent,
+  ],
 })
 export class CommentModule {}

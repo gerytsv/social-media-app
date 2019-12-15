@@ -15,20 +15,18 @@ export class CommentsDataService {
     body: { content: string }
   ): Observable<CommentDTO> {
     return this.http.post<CommentDTO>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/${postId}/comments`,
+      `${CONFIG.DOMAIN_NAME}/posts/${postId}/comments`,
       body
     );
   }
 
   public getCommentsOfPost(postId: string): Observable<CommentDTO[]> {
-    return this.http.get<any>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/${postId}/comments`
-    );
+    return this.http.get<any>(`${CONFIG.DOMAIN_NAME}/posts/${postId}/comments`);
   }
 
   public deleteComment(commentId: string): Observable<{ message: string }> {
     return this.http.delete<{ message: string }>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/comments/${commentId}`
+      `${CONFIG.DOMAIN_NAME}/posts/comments/${commentId}`
     );
   }
 
@@ -37,7 +35,7 @@ export class CommentsDataService {
     body: { content: string }
   ): Observable<CommentDTO> {
     return this.http.put<CommentDTO>(
-      `${CONFIG.DOMAIN_NAME}/api/posts/comments/${commentId}`,
+      `${CONFIG.DOMAIN_NAME}/posts/comments/${commentId}`,
       body
     );
   }

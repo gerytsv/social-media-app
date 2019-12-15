@@ -1,15 +1,13 @@
 export interface Post {
-    id: string;
+  id: string;
 
-    description: string;
+  description: string;
 
-    photoUrl: string;
+  photoUrl: string;
 
-    // location: string;
+  postedOn: Date;
 
-    postedOn: Date;
+  user: any;
 
-    user: any;
-
-    comments: any;
+  comments: any;
 }

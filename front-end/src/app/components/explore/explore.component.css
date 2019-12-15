@@ -15,7 +15,6 @@ body {
   background: #fef1f1;
   display: grid;
   grid-template-columns: repeat(5, 19.5vw);
-  /* grid-template-rows: 19.5vw; */
   grid-gap: 0.5vw;
   margin: 0.25rem;
 }

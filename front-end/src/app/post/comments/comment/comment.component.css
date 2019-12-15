@@ -2,7 +2,7 @@
   width: 100%;
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 128, 0, 0.349)
+  border-bottom: 1px solid rgba(0, 128, 0, 0.349);
 }
 
 .user-info {
@@ -72,7 +72,6 @@
   cursor: pointer;
 }
 
-
 .material-icons {
   color: black;
 }
@@ -112,7 +111,6 @@ textarea:focus {
   flex-direction: column;
   align-items: flex-end;
 }
-
 
 .post-edit-button {
   width: 20%;

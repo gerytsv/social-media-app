@@ -1,19 +1,9 @@
-<div
-  class="posts-container"
-  id="posts-container"
-  infiniteScroll
-  [infiniteScrollDistance]="3"
-  [infiniteScrollThrottle]="500"
-  (scrolled)="onScroll()"
->
-  <app-post-preview
-    class="single-post"
-    *ngFor="let post of this.posts"
-    [post]="post"
-  >
+<div class="posts-container" id="posts-container" infiniteScroll [infiniteScrollDistance]="3"
+  [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
+  <app-post-preview class="single-post" *ngFor="let post of this.posts" [post]="post">
   </app-post-preview>
 </div>
 <div class="no-posts" *ngIf="this.posts.length === 0">
-    <p>No posts to show!</p>
+  <p>No posts to show!</p>
 </div>
 <div class="no-posts" *ngIf="this.ready">No more posts</div>

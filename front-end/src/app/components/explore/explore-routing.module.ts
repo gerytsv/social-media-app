@@ -6,13 +6,13 @@ import { PostDetailPreviewComponent } from '../../post/post-detail-preview/post-
 import { SinglePostResolver } from '../../core/resolvers/single-post.resolver';
 
 const routes: Routes = [
-    {
-        path: 'posts',
-        component: ExploreComponent,
-        pathMatch: 'full',
-        resolve: { posts: AllPostsResolver },
-    },
-    /* {
+  {
+    path: 'posts',
+    component: ExploreComponent,
+    pathMatch: 'full',
+    resolve: { posts: AllPostsResolver },
+  },
+  /* {
        path: "posts/:id",
        component: PostDetailPreviewComponent,
        resolve: { post: SinglePostResolver }
@@ -20,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule],
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
 export class ExploreRoutingModule {}
