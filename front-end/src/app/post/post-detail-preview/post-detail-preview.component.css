@@ -72,7 +72,14 @@ img:focus {
   border: 0.05rem solid grey;
   object-fit: cover;
   border-radius: 50%;
+  
 }
+
+.avatar{
+  outline: none;
+  border: none;
+}
+
 
 hr {
   display: block;
