@@ -4,6 +4,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../../../components/users/models/user';
 import { AuthService } from '../../../core/services/auth.service';
 import { PostDTO } from '../../models/post.dto';
+import { NotificatorService } from '../../../core/services/notificator.service';
 
 @Component({
   selector: 'app-all-comments',
@@ -17,7 +18,8 @@ export class AllCommentsComponent implements OnInit {
 
   constructor(
     private readonly commentsDataService: CommentsDataService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly notificator: NotificatorService
   ) {}
 
   public ngOnInit() {
@@ -31,7 +33,7 @@ export class AllCommentsComponent implements OnInit {
         this.haveComments = true;
       },
       errors => {
-        //
+        this.notificator.error('Could not create comment');
       }
     );
   }
