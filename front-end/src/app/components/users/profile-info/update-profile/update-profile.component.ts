@@ -26,6 +26,7 @@ export class UpdateProfileComponent implements OnInit {
   public ngOnInit() {}
 
   public updateProfilePic(data: any) {
+    this.notificator.warn('Proceeding...this might take a while');
     this.usersDataService.updateProfilePic(data).subscribe(
       res => {
         this.user.avatarUrl = res.photoLink;
