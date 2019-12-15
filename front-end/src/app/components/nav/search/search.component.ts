@@ -1,21 +1,21 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { SearchService } from '../../../core/services/search.service';
 import { ShowDetailedInfoDTO } from '../../users/models/show-detailed-info.dto';
 import { debounceTime, distinctUntilChanged, debounce } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { Subject } from 'rxjs';
+import { Subject, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent implements OnInit, OnDestroy {
 
   @Output() public closeMenu: EventEmitter<null> = new EventEmitter();
 
   private readonly searchSubject$ = new Subject<string>();
-
+  public searchSubscription: Subscription;
   public showUsersResults = false;
   public users: ShowDetailedInfoDTO[] = [];
   public inputValue = '';
@@ -26,12 +26,16 @@ export class SearchComponent implements OnInit {
 
   ngOnInit() {
 
-    this.searchSubjectAsObservable.pipe(
+    this.searchSubscription = this.searchSubjectAsObservable.pipe(
       debounceTime(500),
       distinctUntilChanged()
     ).subscribe(res => {
       this.search(res); }
       );
+  }
+
+  ngOnDestroy() {
+    this.searchSubscription.unsubscribe();
   }
 
   public get searchSubjectAsObservable() {

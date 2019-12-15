@@ -53,7 +53,6 @@ export class RegisterComponent implements OnInit {
     this.authService.register(user).subscribe(
       () => {
         this.notificator.success(`Registration successful!`);
-        // then login
         this.authService
           .login({ usernameOrEmail: user.username, password: user.password })
           .subscribe(() => {
