@@ -9,11 +9,11 @@
   <div class="info">
     <div class="date">{{ this.dateOfPost }}</div>
 
-    <div class="user-info">
-      <div class="avatar">
+    <div class="user-info" >
+      <div class="avatar" [routerLink]="this.userLink" (click)=this.close()>
         <img src="{{ this.post.user.avatarUrl }}" />
       </div>
-      <div class="username">
+      <div class="username" [routerLink]="this.userLink" (click)=this.close()>
         <p>{{ this.post.user.username }}</p>
       </div>
       <div class="likes">
