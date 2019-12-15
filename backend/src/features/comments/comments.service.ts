@@ -23,10 +23,10 @@ export class CommentsService {
       .leftJoinAndSelect(
         'post.comments',
         'comment',
-        'comment.isDeleted = :isDeleted',
+        'comment.isDeleted = false',
         { isDeleted: false },
       )
-      .leftJoinAndSelect('comment.user', 'user')
+      .leftJoinAndSelect('comment.user', 'user', 'user.isDeleted = false')
       .where('post.id = :id', { id: postId })
       .getOne();
     if (!post) {
