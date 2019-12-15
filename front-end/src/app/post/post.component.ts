@@ -2,6 +2,7 @@ import { PostsDataService } from './services/posts-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { PostDTO } from './models/post.dto';
 import * as moment from 'moment';
+import { DialogService } from '../core/services/dialog.service';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -13,7 +14,10 @@ export class PostComponent implements OnInit {
   public likes = { likes: 0 };
   public myLike = false;
 
-  constructor(private readonly postsDataService: PostsDataService) {}
+  constructor(
+    private readonly postsDataService: PostsDataService,
+    private readonly dialogService: DialogService
+  ) {}
 
   ngOnInit() {
     this.dateOfPost = moment(this.post.postedOn).format('MMM Do YY (HH:MM)');
@@ -30,6 +34,12 @@ export class PostComponent implements OnInit {
         this.likes.likes = res.likes.likes;
         this.myLike = res.myLikes.isLiked;
       });
+    });
+  }
+
+  public openPost() {
+    this.dialogService.openPostPreview({
+      data: { user: this.post.user, post: this.post },
     });
   }
 }

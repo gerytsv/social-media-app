@@ -1,9 +1,9 @@
 <div class="likes">
-  <i (click)=this.likePost() class="material-icons" *ngIf=!this.myLike>
+  <i (click)=this.likePost() class="material-icons animated rubberBand" *ngIf=!myLike>
     favorite_border
   </i>
-  <i (click)=this.likePost() class="material-icons" *ngIf=this.myLike>
+  <i (click)=this.likePost() class="material-icons animated rubberBand" *ngIf=myLike>
     favorite
   </i>
-  <span class="likes-count">{{ this.likes.likes }}</span>
+  <span class="likes-count">{{ getNumberOfLikes() }}</span>
 </div>

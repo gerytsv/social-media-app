@@ -20,6 +20,7 @@ export class PhotoStorageService {
     const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
       method: 'POST',
       headers: {
+        // tslint:disable-next-line: object-literal-key-quotes
         Authorization: `Client-ID ${imgurConfig.clientId}`,
         'Content-Type': 'multipart/form-data',
       },
@@ -35,6 +36,7 @@ export class PhotoStorageService {
     const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
       method: 'POST',
       headers: {
+        // tslint:disable-next-line: object-literal-key-quotes
         Authorization: `Client-ID ${imgurConfig.clientId}`,
         'Content-Type': 'multipart/form-data',
       },

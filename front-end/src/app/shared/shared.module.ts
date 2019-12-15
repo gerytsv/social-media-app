@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { LikesComponent } from './likes/likes.component';
 import { MinimizedUserModule } from './minimized-user/minimized-user.module';
@@ -8,7 +9,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 @NgModule({
   declarations: [ConformationDialogBoxComponent, LikesComponent],
-  imports: [MinimizedUserModule, MatDialogModule, CommonModule],
+  imports: [MinimizedUserModule, MatDialogModule, CommonModule, FormsModule],
   exports: [
     MinimizedUserModule,
     ConformationDialogBoxComponent,

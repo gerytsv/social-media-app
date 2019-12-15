@@ -21,6 +21,10 @@ img {
   z-index: 0;
 }
 
+.create-text {
+  padding-right: 0.2rem;
+}
+
 .menu-icon {
   padding: 1rem;
 }

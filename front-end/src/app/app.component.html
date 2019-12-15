@@ -1,7 +1,14 @@
 <app-nav *ngIf=loggedIn></app-nav>
+<div class="fake-background"></div>
 <div class="fake-nav" *ngIf=!loggedIn>
-  <img src="../assets/icons/compass.svg" alt="explore" [routerLink]="['explore/posts']">
-  <img src="../assets/icons/login.svg" alt="explore" [routerLink]="['homepage']">
+  <div class="back-icon icon" *ngIf="router.url != '/homepage'" (click)=navigateToHomepage()>
+    <img src="assets/icons/back_arrow.svg" alt="Back">
+    <span class="back-text">Back</span>
+  </div>
+  <div class="explore-icon icon" *ngIf="router.url != '/explore/posts'" (click)=navigateToExplore()>
+    <img src="assets/icons/compass.svg" alt="explore">
+    <span class="explore-text">Explore</span>
+  </div>
 </div>
 <div class="content">
   <router-outlet></router-outlet>

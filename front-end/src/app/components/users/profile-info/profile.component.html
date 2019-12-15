@@ -5,40 +5,21 @@
       <div class="profile-header">
         <div class="username">{{ this.user.username }}</div>
         <div class="controls">
-          <div
-            class="mat-wrap"
-            (click)="this.toggleEditMenu()"
-            *ngIf="
+          <div class="mat-wrap" (click)="this.toggleEditMenu()" *ngIf="
               this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
-            "
-          >
-            <i class="material-icons">build</i>
+            ">
+            <img src="assets/icons/settings2.svg" class="edit" title="Edit Profile" />
           </div>
-          <div
-            class="mat-wrap"
-            *ngIf="!this.isOwner && !this.followed"
-            title="follow"
-            (click)="this.followUser()"
-          >
-            <i class="material-icons">person_add</i>
+          <div class="mat-wrap" *ngIf="!this.isOwner && !this.followed" title="follow" (click)="this.followUser()">
+            <img src="assets/icons/follow.svg" class="follow" title="follow" />
           </div>
-          <div
-            class="mat-wrap"
-            *ngIf="!this.isOwner && this.followed"
-            title="unfollow"
-            (click)="this.unfollowUser()"
-          >
-            <i class="material-icons">person_add_disabled</i>
+          <div class="mat-wrap" *ngIf="!this.isOwner && this.followed" title="unfollow" (click)="this.unfollowUser()">
+            <img src="assets/icons/unfollow.svg" class="unfollow" title="unfollow" />
           </div>
-          <div
-            class="mat-wrap"
-            *ngIf="
+          <div class="mat-wrap" *ngIf="
               this.isOwner || (this.loggedInUser && this.loggedInUser.isAdmin)
-            "
-            (click)="this.delete()"
-            title="delete"
-          >
-            <i class="material-icons">delete</i>
+            " (click)="this.delete()" title="Delete">
+            <img src="assets/icons/trash_bin.svg" class="delete" title="Delete Profile" />
           </div>
         </div>
       </div>
@@ -54,11 +35,8 @@
     </div>
   </div>
   <div class="edit-wrapper" *ngIf="this.showEditMenu">
-    <app-update-profile
-      [user]="this.copyOfUser"
-      (updatedUser)="this.updateProfileView($event)"
-      (cancelUpdate)="this.toggleEditMenu()"
-    ></app-update-profile>
+    <app-update-profile [user]="this.copyOfUser" (updatedUser)="this.updateProfileView($event)"
+      (cancelUpdate)="this.toggleEditMenu()"></app-update-profile>
   </div>
 </div>
 <hr>

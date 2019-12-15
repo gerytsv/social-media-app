@@ -6,7 +6,7 @@
   "jsRules": {},
   "rules": {
       "jsdoc-require": false,
-      "quotemark": [true, "single"],
+      "quotemark": [true, "single", "avoid-escape"],
       "interface-name": false,
       "no-implicit-dependencies": false,
       "no-submodule-imports": false,
