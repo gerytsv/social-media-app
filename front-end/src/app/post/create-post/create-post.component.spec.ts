@@ -55,24 +55,26 @@ describe('CreatePostComponent', () => {
       });
   }));
 
-  it('should be defined', () => {
+  it('should be defined', done => {
     fixture = TestBed.createComponent(CreatePostComponent);
     component = fixture.debugElement.componentInstance;
     expect(fixture).toBeDefined();
+    done();
   });
 
   describe('imageCropped()', () => {
-    it('should set this.', () => {
+    it('should set this.', done => {
       // Arrange
       const base64 = '1,2,3';
       // Act
       component.imageCropped(base64);
       // Assert
       expect(component.imgUrl).toBe('2');
+      done();
     });
   });
   describe('onPostButtonClick()', () => {
-    it('should call this.notificator.warn with the correct arguments', () => {
+    it('should call this.notificator.warn with the correct arguments', done => {
       // Arrange
       const mockedPostData = {
         photoLink: '12345',
@@ -92,9 +94,10 @@ describe('CreatePostComponent', () => {
       expect(notificatorService.warn).toHaveBeenCalledWith(
         'Uploading new post...'
       );
+      done();
     });
 
-    it('should subscribe to this.postsDataService.createPost and invoke this.notificator.success()', () => {
+    it('should subscribe to this.postsDataService.createPost and invoke this.notificator.success()', done => {
       // Arrange
       const mockedPostData = {
         photoLink: '12345',
@@ -114,8 +117,9 @@ describe('CreatePostComponent', () => {
       expect(notificatorService.success).toHaveBeenCalledWith(
         'Post uploaded succesfully'
       );
+      done();
     });
-    it('should subscribe to this.postsDataService.createPost and call this.router.navigate on success', () => {
+    it('should subscribe to this.postsDataService.createPost and call this.router.navigate on success', done => {
       // Arrange
       const mockedPostData = {
         photoLink: '12345',
@@ -134,10 +138,11 @@ describe('CreatePostComponent', () => {
       // Assert
       expect(router.navigate).toBeCalledTimes(1);
       expect(router.navigate).toHaveBeenCalledWith(['/home']);
+      done();
     });
   });
 
-  it('should subscribe to this.postsDataService.uploadPhoto and call this.notificatorService.error on failure', () => {
+  it('should subscribe to this.postsDataService.uploadPhoto and call this.notificatorService.error on failure', done => {
     // Arrange
     jest.clearAllMocks();
     const spy = jest
@@ -151,24 +156,27 @@ describe('CreatePostComponent', () => {
     expect(notificatorService.error).toHaveBeenCalledWith(
       'Could not upload picture'
     );
+    done();
   });
 
   describe('isPrivateCheck()', () => {
-    it('should set this.isPrivate to true', () => {
+    it('should set this.isPrivate to true', done => {
       // Arrange
       // Act
       component.isPrivateCheck();
       // Assert
       expect(component.isPrivate).toBe(true);
+      done();
     });
   });
   describe('isPublicCheck()', () => {
-    it('should set this.isPrivate to false', () => {
+    it('should set this.isPrivate to false', done => {
       // Arrange
       // Act
       component.isPublicCheck();
       // Assert
       expect(component.isPrivate).toBe(false);
+      done();
     });
   });
 });

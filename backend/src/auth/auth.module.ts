@@ -11,7 +11,6 @@ import { User } from '../database/entities/users.entity';
 import { History } from '../database/entities/history.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersService } from '../features/users/users.service';
-import { Post } from '../database/entities/posts.entity';
 
 @Module({
   imports: [
