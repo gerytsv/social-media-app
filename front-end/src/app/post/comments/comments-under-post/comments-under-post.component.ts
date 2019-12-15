@@ -21,7 +21,7 @@ export class CommentsUnderPostComponent implements OnInit {
 
   public ngOnInit() {
     this.authService.loggedUser$.subscribe(res => (this.user = res));
-    this.commentsDataService.getCommentsOfPost(this.postId).subscribe( res => {
+    this.commentsDataService.getCommentsOfPost(this.postId).subscribe(res => {
       this.comments = res;
     });
   }
