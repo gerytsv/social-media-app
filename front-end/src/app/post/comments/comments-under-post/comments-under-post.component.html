@@ -1,7 +1,6 @@
 <div class="container">
   <div class="other-comments">
-    <app-comment *ngFor="let comment of this.comments" [comment]="comment"
-      (deleteComment)="this.removeComment($event)">
+    <app-comment *ngFor="let comment of this.comments" [comment]="comment" (deleteComment)="this.removeComment($event)">
     </app-comment>
   </div>
 
