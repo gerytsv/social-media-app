@@ -15,7 +15,7 @@ export class CommentComponent implements OnInit {
   ) {}
 
   @Input() public comment: CommentDTO;
-  @Output() public deleteCommentId: EventEmitter<string> = new EventEmitter();
+  @Output() public deleteComment: EventEmitter<CommentDTO> = new EventEmitter();
   public commentOwner: string;
   public updatedComment;
   public isCommentOwner = false;
@@ -45,8 +45,8 @@ export class CommentComponent implements OnInit {
       .toPromise();
   }
 
-  public deleteComment() {
-    this.deleteCommentId.emit(this.comment.id);
+  public deleteCommentEmit() {
+    this.deleteComment.emit(this.comment);
     this.commentsDataService.deleteComment(this.comment.id).toPromise();
   }
 }

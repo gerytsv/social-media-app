@@ -20,7 +20,7 @@
     </div>
 
     <div class="options">
-      <img class="delete-button" *ngIf=this.isCommentOwner (click)=this.deleteComment() type="image/svg+xml"
+      <img class="delete-button" *ngIf=this.isCommentOwner (click)=this.deleteCommentEmit() type="image/svg+xml"
         src="assets/icons/trash-bin-2.svg">
 
       <img class="edit-button" *ngIf=this.isCommentOwner (click)=this.toggleEditButton() type="image/svg+xml"
