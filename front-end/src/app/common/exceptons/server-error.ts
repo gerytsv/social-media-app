@@ -7,7 +7,7 @@ import {
   HttpErrorResponse,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import {  catchError } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -21,10 +21,9 @@ export class ServerErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 500) {
-          this.router.navigate(['/not-found']);
+          this.router.navigate(['/server-error']);
         } else {
-            return Observable.throw(error);
-
+          return Observable.throw(error);
         }
       })
     );

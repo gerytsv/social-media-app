@@ -1,4 +1,3 @@
-import { CommentModule } from './post/comments/comment.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
@@ -26,6 +25,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostDetailPreviewComponent } from './post/post-detail-preview/post-detail-preview.component';
 import { ServerErrorInterceptor } from './common/exceptons/server-error';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { ServerErrorComponent } from './components/server-error/server-error.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +36,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     SearchComponent,
     HomepageComponent,
     NotFoundComponent,
+    ServerErrorComponent,
   ],
   imports: [
     NgxSpinnerModule,
