@@ -11,7 +11,7 @@
       <input type="radio" name="isPrivate" (click)="this.isPrivateCheck()" /><span>Private</span>
       <input type="radio" name="isPrivate" (click)="this.isPublicCheck()" checked /><span>Public</span>
     </div>
-    <button class="create-post" (click)="this.onPostButtonClick()">
+    <button class="create-post" (click)="this.onPostButtonClick()" [ngClass]="this.imgUrl ? 'my-class1' : 'disabled'">
       Create Post
     </button>
   </div>

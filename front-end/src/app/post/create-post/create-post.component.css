@@ -66,6 +66,12 @@ button.create-post {
   max-width: 100%;
 }
 
+.disabled {
+  pointer-events: none;
+  background-color: grey;
+}
+
+
 @media screen and (min-width: 300px) and (max-width: 800px) {
   .wrapper {
     flex-wrap: wrap;
