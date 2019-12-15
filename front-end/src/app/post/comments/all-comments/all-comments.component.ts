@@ -36,8 +36,9 @@ export class AllCommentsComponent implements OnInit {
     );
   }
 
-  public removeComment(commentId: string) {
-    this.post.comments.shift();
-    this.haveComments = false;
+  public removeComment(commentToBeDeleted: CommentDTO) {
+    const index = this.post.comments.indexOf(commentToBeDeleted);
+    console.log(index);
+    this.post.comments.splice(index, 1);
   }
 }
