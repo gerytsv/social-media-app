@@ -7,6 +7,7 @@ body {
 }
 
 .posts-container {
+  z-index: 15;
   overflow: hidden;
   max-width: 100%;
   /* height: 100%; */
@@ -29,6 +30,13 @@ p {
 .single-post {
   width: 100%;
   height: 100%;
+}
+
+.no-posts {
+  margin: 1rem auto;
+  text-align: center;
+  font-size: 1.3rem;
+  color: rgb(110, 104, 104);
 }
 
 @media screen and (min-width: 320px) and (max-width: 575px) {

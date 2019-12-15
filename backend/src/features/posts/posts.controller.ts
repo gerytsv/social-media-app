@@ -12,7 +12,7 @@ import {
   Body,
   Delete,
   Put,
-  Query
+  Query,
 } from '@nestjs/common';
 import { PostsService } from './posts.service';
 import { AuthGuard } from '@nestjs/passport';
@@ -26,7 +26,6 @@ export class PostsController {
   public constructor(private readonly postsService: PostsService) {}
 
   @Get()
-  @UseGuards(AuthGuard('jwt'))
   @UseInterceptors(new TransformInterceptor(ShowPostInfoDTO))
   @HttpCode(HttpStatus.OK)
   public async allPosts(
