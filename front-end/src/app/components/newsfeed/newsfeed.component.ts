@@ -29,7 +29,7 @@ export class NewsfeedComponent implements OnInit {
 
   public onScroll() {
     this.postsService.followedPosts(this.take, this.skip).subscribe(res => {
-      if (res.length === 0) {
+      if (res.length === 0 && this.posts.length !== 0) {
         this.ready = true;
       }
       this.posts = [...this.posts, ...res];
