@@ -7,9 +7,8 @@
     <img class="photo" src="{{ this.post.photoUrl }}" />
   </div>
   <div class="info">
-    <div class="date">{{ this.dateOfPost }}</div>
 
-    <div class="user-info" >
+    <div class="user-info">
       <div class="avatar" [routerLink]="this.userLink" (click)=this.close()>
         <img src="{{ this.post.user.avatarUrl }}" />
       </div>
@@ -24,7 +23,7 @@
 
     <div class="tag-section">
       <p class="comments-tag">Comments:</p>
-      <p class="liked-tag" float="right">Liked by:</p>
+      <div class="date">{{ this.dateOfPost }}</div>
     </div>
     <hr />
 
