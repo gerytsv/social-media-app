@@ -26,6 +26,7 @@ import { PostDetailPreviewComponent } from './post/post-detail-preview/post-deta
 import { ServerErrorInterceptor } from './common/exceptons/server-error';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
+import { SnowflakesComponent } from './components/snowflakes/snowflakes.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { ServerErrorComponent } from './components/server-error/server-error.com
     HomepageComponent,
     NotFoundComponent,
     ServerErrorComponent,
+    SnowflakesComponent,
   ],
   imports: [
     NgxSpinnerModule,
