@@ -51,4 +51,8 @@ export class PostComponent implements OnInit {
   public get userLink() {
     return ['/users', this.post.user.username];
   }
+
+  public deletePost() {
+    this.postsDataService.deletePost(this.post.id);
+  }
 }

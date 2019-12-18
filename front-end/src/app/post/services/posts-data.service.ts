@@ -51,7 +51,7 @@ export class PostsDataService {
     return this.http.get<any>(`${CONFIG.DOMAIN_NAME}/posts/${postId}/likes`);
   }
 
-  public deletePost(id: number): Observable<PostDTO> {
-    return this.http.delete<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/${id}`);
+  public deletePost(postId: string): Observable<PostDTO> {
+    return this.http.delete<PostDTO>(`${CONFIG.DOMAIN_NAME}/posts/${postId}`);
   }
 }
