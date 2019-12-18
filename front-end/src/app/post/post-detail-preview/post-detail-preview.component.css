@@ -33,12 +33,6 @@ img:focus {
   max-width: 75vw;
 }
 
-.date {
-  float: right;
-  font-size: 0.8rem;
-  color: rgb(72, 70, 70);
-}
-
 .likes:active {
   outline: none;
 }
@@ -110,10 +104,9 @@ p {
   margin-top: 3%;
 }
 
-.liked-tag {
+.date {
   width: 100%;
   text-align: right;
-  cursor: pointer;
 }
 
 .comments {
