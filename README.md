@@ -56,7 +56,7 @@ Which is a self-contained file,
 
 To start the back-end server open backend folder
 
-        npm run start
+        npm run start:dev
 
 Important! In order to run your nestjs Api you need to include
 
