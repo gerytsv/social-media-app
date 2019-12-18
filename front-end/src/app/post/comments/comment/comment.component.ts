@@ -1,4 +1,12 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Subscription } from 'rxjs';
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  OnDestroy,
+} from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
 import { CommentsDataService } from '../comments-data.service';
 import { CommentDTO } from '../models/comment.dto';
@@ -7,7 +15,7 @@ import { CommentDTO } from '../models/comment.dto';
   templateUrl: './comment.component.html',
   styleUrls: ['./comment.component.css'],
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent implements OnInit, OnDestroy {
   constructor(
     private readonly authService: AuthService,
     private readonly commentsDataService: CommentsDataService
@@ -19,16 +27,21 @@ export class CommentComponent implements OnInit {
   public updatedComment;
   public isCommentOwner = false;
   public show = false;
+  public userSubscription: Subscription;
 
   ngOnInit() {
     this.updatedComment = this.comment.content;
-    this.authService.loggedUser$.subscribe(res => {
+    this.userSubscription = this.authService.loggedUser$.subscribe(res => {
       this.comment.createdOn = new Date();
       this.commentOwner = res.username;
       this.comment.user.username === this.commentOwner
         ? (this.isCommentOwner = true)
         : (this.isCommentOwner = false);
     });
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 
   public toggleEditButton() {
