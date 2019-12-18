@@ -3,6 +3,7 @@ import { AuthService } from '../../../core/services/auth.service';
 import { NotificatorService } from '../../../core/services/notificator.service';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-login',
@@ -29,8 +30,14 @@ export class LoginComponent implements OnInit {
   public login() {
     this.authService.login(this.loginForm.value).subscribe(
       () => {
+        Swal.fire({
+          title: 'Login successful!',
+          text: 'Welcome back!',
+          type: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this.router.navigate(['/home']);
-        this.notificator.success('Login Succesfull');
       },
       () => this.notificator.error(`Invalid username/password!`)
     );

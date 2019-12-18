@@ -4,7 +4,7 @@ import { NotificatorService } from '../../../core/services/notificator.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegistrationValidator } from '../../../core/validators/compare-password';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -52,7 +52,13 @@ export class RegisterComponent implements OnInit {
     };
     this.authService.register(user).subscribe(
       () => {
-        this.notificator.success(`Registration successful!`);
+        Swal.fire({
+          title: 'Register successful!',
+          text: 'Welcome to Huggo!',
+          type: 'success',
+          showConfirmButton: false,
+          timer: 1500,
+        });
         this.authService
           .login({ usernameOrEmail: user.username, password: user.password })
           .subscribe(() => {});

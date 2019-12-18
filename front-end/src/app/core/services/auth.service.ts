@@ -9,6 +9,7 @@ import { User } from '../../components/users/models/user';
 import { UserLoginDTO } from '../../components/users/models/user-login-dto';
 import { UserRegisterDTO } from '../../components/users/models/user-register-dto';
 import { CONFIG } from '../../config/config';
+import Swal from 'sweetalert2';
 
 @Injectable()
 export class AuthService {
@@ -54,6 +55,14 @@ export class AuthService {
     this.storage.save('token', '');
     this.isLoggedInSubject$.next(false);
     this.loggedUserSubject$.next(null);
+    Swal.fire({
+      title: 'Logout successful!',
+      text: 'See you soon! ^^',
+      type: 'success',
+      background: '#fff',
+      showConfirmButton: false,
+      timer: 1500,
+    });
     this.router.navigate(['homepage']);
   }
 
