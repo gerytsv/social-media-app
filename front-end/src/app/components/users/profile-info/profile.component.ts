@@ -90,7 +90,7 @@ export class ProfileInfoComponent implements OnInit, OnDestroy {
     this.usersDataService.unfollowUser(this.user.id).subscribe(() => {
       this.followed = false;
       this.user.followers = this.user.followers.filter(
-        follower => follower.id !== this.loggedInUser.id
+        follower => follower.username !== this.loggedInUser.username
       );
       this.notificator.success(`${this.user.username} has been unfollowed`);
     });
