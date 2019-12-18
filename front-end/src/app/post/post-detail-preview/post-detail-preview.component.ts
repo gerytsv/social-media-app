@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
 import { Post } from '../../common/post';
 import { PostsDataService } from '../services/posts-data.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-post-detail-preview',
   templateUrl: './post-detail-preview.component.html',
@@ -27,6 +27,9 @@ export class PostDetailPreviewComponent implements OnInit {
         this.post = response;
         this.username = this.post.user.username;
         this.avatar = this.post.user.avatar;
+        this.dateOfPost = moment(this.post.postedOn).format(
+          'MMM DD YYYY HH:mm'
+        );
       });
   }
 
