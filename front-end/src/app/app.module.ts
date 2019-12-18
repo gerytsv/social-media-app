@@ -54,7 +54,7 @@ import { ServerErrorComponent } from './components/server-error/server-error.com
     UsersModule,
     ToastrModule.forRoot({
       timeOut: 3000,
-      positionClass: 'toast-top-right',
+      positionClass: 'toast-bottom-right',
       preventDuplicates: true,
       countDuplicates: true,
     }),
