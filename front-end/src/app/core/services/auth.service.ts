@@ -55,14 +55,7 @@ export class AuthService {
     this.storage.save('token', '');
     this.isLoggedInSubject$.next(false);
     this.loggedUserSubject$.next(null);
-    Swal.fire({
-      title: 'Logout successful!',
-      text: 'See you soon! ^^',
-      type: 'success',
-      background: '#fff',
-      showConfirmButton: false,
-      timer: 1500,
-    });
+
     this.router.navigate(['homepage']);
   }
 
