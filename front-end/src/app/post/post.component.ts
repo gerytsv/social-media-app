@@ -21,7 +21,7 @@ export class PostComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.dateOfPost = moment(this.post.postedOn).format('MMM Do YY (HH:MM)');
+    this.dateOfPost = moment(this.post.postedOn).format('MMM Do YY (HH:mm)');
 
     this.postsDataService.getLikesOfPost(this.post.id).subscribe(res => {
       this.likes = res.likes;
