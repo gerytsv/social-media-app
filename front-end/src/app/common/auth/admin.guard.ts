@@ -24,15 +24,17 @@ export class AdminGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean> {
     let admin;
-    this.authService.loggedUser$.subscribe(res => {
-      if (res) {
-        admin = res.isAdmin;
-        if (!admin) {
-          this.router.navigate(['homepage']);
-          this.notificator.error(`Forbidden page!`);
+    this.authService.loggedUser$.pipe(
+      tap(res => {
+        if (res) {
+          admin = res.isAdmin;
+          if (!admin) {
+            this.router.navigate(['homepage']);
+            this.notificator.error(`Forbidden page!`);
+          }
         }
-      }
-    });
+      })
+    );
     return admin;
   }
 }

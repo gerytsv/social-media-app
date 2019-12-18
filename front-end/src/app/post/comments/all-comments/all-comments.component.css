@@ -7,7 +7,8 @@
 }
 
 .other-comments {
-  max-height: 80%;
+  /* max-height: 80%; */
+  max-height: 300px;
   overflow-y: auto;
   overflow-x: hidden;
   padding-right: 2%;

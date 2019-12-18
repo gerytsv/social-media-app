@@ -72,14 +72,12 @@ img:focus {
   border: 0.05rem solid grey;
   object-fit: cover;
   border-radius: 50%;
-  
 }
 
-.avatar{
+.avatar {
   outline: none;
   border: none;
 }
-
 
 hr {
   display: block;
@@ -99,6 +97,9 @@ p {
   padding-bottom: 1rem;
   margin: 1rem 0.5rem;
   overflow: wrap;
+  max-width: 30vw;
+  max-height: 5vw;
+  overflow: auto;
 }
 
 .tag-section {
@@ -191,5 +192,10 @@ p {
 
   img {
     min-width: 100%;
+  }
+
+  .description {
+    max-height: 31vw;
+    max-width: none;
   }
 }
