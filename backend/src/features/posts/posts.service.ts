@@ -78,11 +78,14 @@ export class PostsService {
       throw new SystemError('Followed users have no posts');
     }
 
+    const currentUserPosts = await (currentUser.posts);
+    const currentUserPostsIds = currentUserPosts.map(post => post.id);
+
     let posts = [];
 
     try {
       posts = await this.postsRepository.find({
-        where: { id: In(follwedUsersPostsIds), isDeleted: false },
+        where: { id: In([...follwedUsersPostsIds, ...currentUserPostsIds]), isDeleted: false },
         order: { postedOn: 'DESC' },
         take: +take,
         skip: +skip,
