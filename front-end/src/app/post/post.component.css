@@ -68,7 +68,7 @@
 }
 
 .material-icons {
-  color: red;
+  color: #b33aff;
 }
 
 .date {
@@ -102,6 +102,7 @@
 }
 
 .likes {
+  color: #5b5b5d;
   display: flex;
   justify-content: center;
   align-items: flex-end;
