@@ -47,6 +47,7 @@
 
 .info {
   background-color: white;
+  max-width: 40.5rem;
 }
 
 .header {
@@ -91,10 +92,13 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  max-width: 32rem;
 }
 
 .caption {
   font-size: 1rem;
+  height: auto;
+  padding-right: 3%;
 }
 
 .likes {
@@ -132,7 +136,14 @@ img.comments {
 
 @media screen and (max-width: 575px) {
   .date {
+    text-align: right;
     font-size: 0.7rem;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .info {
+    max-width: 21rem;
   }
 }
 
