@@ -15,7 +15,7 @@ export class Post {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
-  @Column({ length: 300 })
+  @Column({ length: 300, default: '' })
   public description: string;
 
   @Column({ type: 'nvarchar' })
