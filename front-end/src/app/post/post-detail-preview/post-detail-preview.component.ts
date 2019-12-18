@@ -28,7 +28,7 @@ export class PostDetailPreviewComponent implements OnInit {
         this.username = this.post.user.username;
         this.avatar = this.post.user.avatar;
         this.dateOfPost = moment(this.post.postedOn).format(
-          'MMM DD YYYY HH:mm'
+          'MMM DD YYYY, HH:mm'
         );
       });
   }
