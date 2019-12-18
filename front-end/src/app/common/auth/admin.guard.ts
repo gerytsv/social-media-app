@@ -9,7 +9,7 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { User } from '../../components/users/models/user';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 
 @Injectable()
 export class AdminGuard implements CanActivate {
@@ -23,18 +23,16 @@ export class AdminGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    let admin;
-    this.authService.loggedUser$.pipe(
-      tap(res => {
+    return this.authService.loggedUser$.pipe(
+      map(res => {
         if (res) {
-          admin = res.isAdmin;
-          if (!admin) {
+          if (!res.isAdmin) {
             this.router.navigate(['homepage']);
             this.notificator.error(`Forbidden page!`);
           }
+          return res.isAdmin;
         }
       })
     );
-    return admin;
   }
 }
