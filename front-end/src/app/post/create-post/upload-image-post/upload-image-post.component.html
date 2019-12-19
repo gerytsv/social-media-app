@@ -4,14 +4,9 @@
       <span class="label">
         Choose file
       </span>
-      <input
-        type="file"
-        (change)="fileChangeEvent($event)"
-        class="file"
-        id="upload"
-      />
+      <input type="file" (change)="fileChangeEvent($event)" class="file" id="upload" />
     </div>
-    <div class="options">
+    <div class="options" *ngIf="this.imageChangedEvent">
       <button (click)="rotateLeft()">
         <i class="material-icons">arrow_back</i>
       </button>
@@ -28,22 +23,10 @@
   </div>
   <div class="placeholder" *ngIf="!this.imageChangedEvent"></div>
   <div class="img-wrapper" *ngIf="this.imageChangedEvent">
-    <image-cropper
-      [imageChangedEvent]="imageChangedEvent"
-      [maintainAspectRatio]="true"
-      [aspectRatio]="3 / 3"
-      [resizeToWidth]="600"
-      [onlyScaleDown]="true"
-      [roundCropper]="false"
-      format="png"
-      outputType="base64"
-      (imageCropped)="imageCropped($event)"
-      (imageLoaded)="imageLoaded()"
-      (cropperReady)="cropperReady()"
-      (loadImageFailed)="loadImageFailed()"
-      [style.display]="showCropper ? null : 'none'"
-      [alignImage]="'left'"
-    >
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="3 / 3"
+      [resizeToWidth]="600" [onlyScaleDown]="true" [roundCropper]="false" format="png" outputType="base64"
+      (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()" [style.display]="showCropper ? null : 'none'" [alignImage]="'left'">
     </image-cropper>
   </div>
 </div>
