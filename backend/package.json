@@ -35,6 +35,7 @@
     "@types/helmet": "0.0.44",
     "@types/passport": "^1.0.1",
     "@types/passport-jwt": "^3.0.2",
+    "@types/validator": "^13.7.1",
     "axios": "^0.25.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.5.1",
