@@ -24,7 +24,7 @@ import { MatDialogModule } from '@angular/material';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PostDetailPreviewComponent } from './post/post-detail-preview/post-detail-preview.component';
 import { ServerErrorInterceptor } from './common/exceptons/server-error';
-import { NgxSpinnerModule } from 'ngx-spinner';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { SnowflakesComponent } from './components/snowflakes/snowflakes.component';
 
@@ -41,7 +41,7 @@ import { SnowflakesComponent } from './components/snowflakes/snowflakes.componen
     SnowflakesComponent,
   ],
   imports: [
-    NgxSpinnerModule,
+    // NgxSpinnerModule,
     MatDialogModule,
     MinimizedUserModule,
     CoreModule,

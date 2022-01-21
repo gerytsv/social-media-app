@@ -1,4 +1,4 @@
-import { NgxSpinnerModule } from 'ngx-spinner';
+// import { NgxSpinnerModule } from 'ngx-spinner';
 import { NewsfeedResolver } from './../../core/resolvers/newsfeed.resolver';
 import { NewsfeedRoutingModule } from './newsfeed-routing.module';
 import { NgModule } from '@angular/core';
@@ -14,7 +14,7 @@ import { SharedModule } from '../../shared/shared.module';
     NewsfeedRoutingModule,
     PostsModule,
     SharedModule,
-    NgxSpinnerModule,
+    // NgxSpinnerModule,
   ],
   providers: [NewsfeedResolver],
   exports: [],

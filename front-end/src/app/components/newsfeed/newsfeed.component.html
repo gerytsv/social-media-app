@@ -1,5 +1,11 @@
-<div class="posts-container" *ngIf="this.posts" infiniteScroll [infiniteScrollDistance]="3"
-  [infiniteScrollThrottle]="500" (scrolled)="onScroll()">
+<div
+  class="posts-container"
+  *ngIf="this.posts"
+  infiniteScroll
+  [infiniteScrollDistance]="3"
+  [infiniteScrollThrottle]="500"
+  (scrolled)="onScroll()"
+>
   <app-post *ngFor="let post of this.posts" [post]="post"></app-post>
 </div>
 
@@ -8,6 +14,6 @@
 </div>
 
 <div class="no-posts" *ngIf="this.ready">No more posts</div>
-<ngx-spinner bdOpacity=0 bdColor="#333" size="default" color="#504848" type="ball-newton-cradle" [fullScreen]="false">
+<!-- <ngx-spinner bdOpacity=0 bdColor="#333" size="default" color="#504848" type="ball-newton-cradle" [fullScreen]="false">
   <p style="color: white"> </p>
-</ngx-spinner>
+</ngx-spinner> -->
