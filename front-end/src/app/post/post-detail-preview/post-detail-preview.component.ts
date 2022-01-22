@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { Post } from '../../common/post';
 import { PostsDataService } from '../services/posts-data.service';
 import * as moment from 'moment';
@@ -23,7 +23,7 @@ export class PostDetailPreviewComponent implements OnInit {
   ngOnInit() {
     this.postsService
       .getPostById(this.data.data.post.id)
-      .subscribe(response => {
+      .subscribe((response) => {
         this.post = response;
         this.username = this.post.user.username;
         this.avatar = this.post.user.avatar;

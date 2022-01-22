@@ -23,7 +23,7 @@
     "@types/sweetalert": "^2.0.4",
     "animate.css": "^3.7.2",
     "class-validator": "^0.13.2",
-    "majestic": "^1.6.1",
+    "majestic": "^1.2.12",
     "moment": "^2.24.0",
     "ngx-infinite-scroll": "^8.0.1",
     "ngx-toastr": "^11.2.1",

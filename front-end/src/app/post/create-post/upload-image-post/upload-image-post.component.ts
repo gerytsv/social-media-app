@@ -16,7 +16,7 @@ export class UploadImagePostComponent {
   public croppedImage: any = '';
   public showCropper = false;
 
-  @ViewChild(ImageCropperComponent, null) imageCropper: ImageCropperComponent;
+  @ViewChild(ImageCropperComponent) imageCropper: ImageCropperComponent;
 
   constructor(private readonly notificator: NotificatorService) {}
 

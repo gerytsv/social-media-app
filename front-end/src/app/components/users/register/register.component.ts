@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
-import { NotificatorService } from '../../../core/services/notificator.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { RegistrationValidator } from '../../../core/validators/compare-password';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { NotificatorService } from 'src/app/core/services/notificator.service';
+import { RegistrationValidator } from 'src/app/core/validators/compare-password';
 import Swal from 'sweetalert2';
 @Component({
   selector: 'app-register',
@@ -63,7 +63,7 @@ export class RegisterComponent implements OnInit {
           .login({ usernameOrEmail: user.username, password: user.password })
           .subscribe(() => {});
       },
-      res => this.notificator.error(res.error.error)
+      (res) => this.notificator.error(res.error.error)
     );
   }
 }

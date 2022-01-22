@@ -16,21 +16,24 @@ export class NavComponent implements OnInit, OnDestroy {
   public loggedIn = false;
   public isAdmin = false;
   public showHamMenu = false;
+
   constructor(
     private readonly authService: AuthService,
     private readonly dialog: DialogService
   ) {}
 
   ngOnInit() {
-    this.userSubscription = this.authService.loggedUser$.subscribe(user => {
+    this.userSubscription = this.authService.loggedUser$.subscribe((user) => {
       if (user) {
         this.isAdmin = user.isAdmin;
         this.username = user.username;
       }
     });
-    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(res => {
-      this.loggedIn = res;
-    });
+    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(
+      (res) => {
+        this.loggedIn = res;
+      }
+    );
   }
 
   ngOnDestroy() {
@@ -51,7 +54,7 @@ export class NavComponent implements OnInit, OnDestroy {
       confirmData
     );
 
-    refDialog.afterClosed().subscribe(result => {
+    refDialog.afterClosed().subscribe((result) => {
       if (result) {
         this.authService.logout();
       }

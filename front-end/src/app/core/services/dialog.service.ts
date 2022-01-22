@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatDialog, MatDialogConfig } from '@angular/material';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { PostDetailPreviewComponent } from '../../post/post-detail-preview/post-detail-preview.component';
 
 @Injectable({ providedIn: 'root' })

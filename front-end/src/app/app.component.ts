@@ -16,13 +16,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
   constructor(
     private readonly authService: AuthService,
-    private readonly router: Router
+    readonly router: Router
   ) {}
 
   ngOnInit() {
-    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(res => {
-      this.loggedIn = res;
-    });
+    this.loggedInSubscription = this.authService.isLoggedIn$.subscribe(
+      (res) => {
+        this.loggedIn = res;
+      }
+    );
   }
 
   navigateToHomepage() {

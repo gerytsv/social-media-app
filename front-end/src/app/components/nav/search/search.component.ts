@@ -31,7 +31,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.searchSubscription = this.searchSubjectAsObservable
       .pipe(debounceTime(500), distinctUntilChanged())
-      .subscribe(res => {
+      .subscribe((res) => {
         this.search(res);
       });
   }
@@ -45,7 +45,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   public search(username: string) {
-    this.searchService.searchUsers(username).subscribe(res => {
+    this.searchService.searchUsers(username).subscribe((res) => {
       this.users = res;
     });
   }

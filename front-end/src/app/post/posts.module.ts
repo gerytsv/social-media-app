@@ -5,7 +5,6 @@ import { PostsRoutingModule } from './posts-routing.module';
 import { PostsDataService } from './services/posts-data.service';
 import { PostComponent } from './post.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { UploadImagePostComponent } from './create-post/upload-image-post/upload-image-post.component';
 import { ImageCropperModule } from './create-post/image-cropper/image-cropper.module';
 import { CreatePostComponent } from './create-post/create-post.component';
@@ -23,7 +22,6 @@ import { PostDetailPreviewComponent } from './post-detail-preview/post-detail-pr
   ],
   imports: [
     SharedModule,
-    CommonModule,
     ImageCropperModule,
     PostsRoutingModule,
     CommentModule,

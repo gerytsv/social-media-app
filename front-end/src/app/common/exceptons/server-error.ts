@@ -6,7 +6,7 @@ import {
   HttpInterceptor,
   HttpErrorResponse,
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -23,7 +23,7 @@ export class ServerErrorInterceptor implements HttpInterceptor {
         if (error.status === 500) {
           this.router.navigate(['/server-error']);
         } else {
-          return Observable.throw(error);
+          return throwError(() => error);
         }
       })
     );
