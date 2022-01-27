@@ -39,10 +39,7 @@ const routes: Routes = [
   },
   {
     path: 'homepage',
-    loadChildren: () =>
-      import('./../app/components/homepage/homepage.module').then(
-        (m) => m.HomepageModule
-      ),
+    component: HomepageComponent,
   },
   {
     path: 'posts',

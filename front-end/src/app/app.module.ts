@@ -6,7 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './common/auth/token-interceptor.service';
 import { ServerErrorInterceptor } from './common/exceptons/server-error';
-import { HomepageModule } from './components/homepage/homepage.module';
+import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavigationPaneModule } from './components/nav/nav.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 // import { NgxSpinnerModule } from 'ngx-spinner';
@@ -16,14 +16,18 @@ import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
-  declarations: [AppComponent, NotFoundComponent, ServerErrorComponent],
+  declarations: [
+    AppComponent,
+    NotFoundComponent,
+    ServerErrorComponent,
+    HomepageComponent,
+  ],
   imports: [
     // NgxSpinnerModule,
     SharedModule,
     CoreModule,
     NavigationPaneModule,
     AppRoutingModule,
-    HomepageModule,
     UsersModule,
     ToastrModule.forRoot({
       timeOut: 3000,
