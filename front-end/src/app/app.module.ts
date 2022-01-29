@@ -1,5 +1,7 @@
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ToastrModule } from 'ngx-toastr';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +15,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { UsersModule } from './components/users/users.module';
 import { CoreModule } from './core/core.module';
+import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
@@ -24,6 +27,10 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     // NgxSpinnerModule,
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    MaterialModule,
     SharedModule,
     CoreModule,
     NavigationPaneModule,
