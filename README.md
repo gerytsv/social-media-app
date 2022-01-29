@@ -58,50 +58,6 @@ To start the back-end server open backend folder
 
         npm run start:dev
 
-Important! In order to run your nestjs Api you need to include
-
-        getType(): string;        
-
-in backend\node_modules\@nestjs\platform-express\adapters\express-adapter.d.ts  
-This file should look like this.
-
-        import { RequestMethod } from '@nestjs/common';
-        import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface';
-        import { NestApplicationOptions } from '@nestjs/common/interfaces/nest-application-options.interface';
-        import { AbstractHttpAdapter } from '@nestjs/core/adapters/http-adapter';
-        import { ServeStaticOptions } from './../interfaces/serve-static-options.interface';
-        export declare class ExpressAdapter extends AbstractHttpAdapter {
-        private readonly routerMethodFactory;
-        constructor(instance?: any);
-        reply(response: any, body: any, statusCode?: number): any;
-        status(response: any, statusCode: number): any;
-        render(response: any, view: string, options: any): any;
-        redirect(response: any, statusCode: number, url: string): any;
-        setErrorHandler(handler: Function): any;
-        setNotFoundHandler(handler: Function): any;
-        setHeader(response: any, name: string, value: string): any;
-        listen(port: string | number, callback?: () => void): any;
-        listen(port: string | number, hostname: string, callback?: () => void): any;
-        close(): any;
-        set(...args: any[]): any;
-        enable(...args: any[]): any;
-        disable(...args: any[]): any;
-        engine(...args: any[]): any;
-        useStaticAssets(path: string, options: ServeStaticOptions): any;
-        setBaseViewsDir(path: string | string[]): any;
-        setViewEngine(engine: string): any;
-        getRequestMethod(request: any): string;
-        getRequestUrl(request: any): string;
-        enableCors(options: CorsOptions): void;
-        createMiddlewareFactory(requestMethod: RequestMethod): (path: string, callback: Function) => any;
-        initHttpServer(options: NestApplicationOptions): void;
-        registerParserMiddleware(): void;
-        private isMiddlewareApplied;
-        getType(): string;
-}
-
-
-
 To start the client :
 
         ng serve --open 
