@@ -23,7 +23,7 @@ const main = async () => {
 
   const firstAdmin = new User();
   (firstAdmin.username = 'Administrator'),
-    (firstAdmin.password = await bcrypt.hash('georgi123!', 10));
+    (firstAdmin.password = await bcrypt.hash('password', 10));
   firstAdmin.roles = [adminRole, basicRole];
   firstAdmin.email = 'administrator@abv.bg';
   firstAdmin.followers = Promise.resolve([]);
