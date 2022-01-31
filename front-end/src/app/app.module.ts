@@ -11,7 +11,7 @@ import { ServerErrorInterceptor } from './common/exceptons/server-error';
 import { HomepageComponent } from './components/homepage/homepage.component';
 import { NavigationPaneModule } from './components/nav/nav.module';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-// import { NgxSpinnerModule } from 'ngx-spinner';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { ServerErrorComponent } from './components/server-error/server-error.component';
 import { UsersModule } from './components/users/users.module';
 import { CoreModule } from './core/core.module';
@@ -26,7 +26,7 @@ import { SharedModule } from './shared/shared.module';
     HomepageComponent,
   ],
   imports: [
-    // NgxSpinnerModule,
+    NgxSpinnerModule,
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
