@@ -62,3 +62,8 @@ To start the client :
         ng serve --open
 
 The port is http://localhost:4200/
+
+<h2>4. If you want to seed some mockup data you can</h2>
+        <h4> - copy the content of the file `seed-huggo-db.sql` located at the root of the project and run it as sql query inside the MySQL Workbench in the `socialdb` schema;
+</h4>
+        <h4> - seed only an administrator by running `npm run seed` in the `backend` folder;</h4>
