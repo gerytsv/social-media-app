@@ -17,7 +17,7 @@ export class PhotoStorageService {
 
     const image = photo.buffer;
 
-    const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
+    const { data } = await axios(`${imgurConfig.baseUrl}`, {
       method: 'POST',
       headers: {
         // tslint:disable-next-line: object-literal-key-quotes
@@ -33,7 +33,7 @@ export class PhotoStorageService {
   public async uploadPhotoForPost(
     photo: any,
   ): Promise<{ photoLink: string; photoDeleteHash: string }> {
-    const { data } = await axios(`${imgurConfig.baseUrl}/upload`, {
+    const { data } = await axios(`${imgurConfig.baseUrl}`, {
       method: 'POST',
       headers: {
         // tslint:disable-next-line: object-literal-key-quotes
@@ -42,6 +42,7 @@ export class PhotoStorageService {
       },
       data: photo.base64,
     });
+    console.log('bye');
 
     return { photoLink: data.data.link, photoDeleteHash: data.data.deletehash };
   }
