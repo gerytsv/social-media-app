@@ -30,6 +30,7 @@ Just replace with your password and username.<br>
             "entitiesDir": "src/database/entities",
             "migrationsDir": "src/database/migration"
         }
+       }
 
 Set the .env file following the example :<br>
 **The file must be in the backend folder.**
