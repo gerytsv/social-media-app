@@ -24,7 +24,7 @@
     "animate.css": "^3.7.2",
     "class-validator": "^0.13.2",
     "majestic": "^1.2.12",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "ngx-infinite-scroll": "^8.0.1",
     "ngx-spinner": "^13.0.0",
     "ngx-toastr": "^14.2.1",
