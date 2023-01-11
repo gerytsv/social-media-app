@@ -22,7 +22,7 @@
     "@types/moment": "^2.13.0",
     "@types/sweetalert": "^2.0.4",
     "animate.css": "^3.7.2",
-    "class-validator": "^0.13.2",
+    "class-validator": "^0.14.0",
     "majestic": "^1.2.12",
     "moment": "^2.24.0",
     "ngx-infinite-scroll": "^8.0.1",
